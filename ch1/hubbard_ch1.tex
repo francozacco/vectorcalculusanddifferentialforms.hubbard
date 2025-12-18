@@ -1,0 +1,2227 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Vector Calculus, Linear Algebra and
+Differential Forms by Hubbard}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\ei}[1]{\vec{\bm{e}}_#1}
+\newcommand{\bvec}[1]{\vec{\bm{#1}}}
+\newcommand{\tr}{\text{tr}}
+\theoremstyle{definition}
+% \newtheorem*{solution*}{Solution}
+% \renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{1.1 - Introducing the Actors: Points and Vectors}
+\begin{proof}{1.1.6}
+\begin{itemize}
+\item [a.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}0 \\ 1\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/a.png}
+\end{center}
+
+\cleardoublepage
+\item [b.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}x \\ 0\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/b.png}
+\end{center}
+\item [c.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}x \\ y\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/c.png}
+\end{center}
+\item [d.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}x \\ -y\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/d.png}
+\end{center}
+
+\cleardoublepage
+\item [e.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}y \\ x\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/e.png}
+\end{center}
+\item [f.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}-y \\ x\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/f.png}
+\end{center}
+\item [g.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}y \\ x-y\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/g.png}
+\end{center}
+
+\cleardoublepage
+\item [h.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}x-y \\ x+y\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/h.png}
+\end{center}
+\item [i.]
+$\vec{F}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{bmatrix}x^2-y -1 \\ x-y\end{bmatrix}$
+\begin{center}
+    \includegraphics[scale=0.2]{hubbard_ch1_1.1.6_images/i.png}
+\end{center}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.1.8}
+\begin{itemize}
+\item [a.] Assuming the pipe is in the direction of $z$-axis and we are in
+$\R^3$ space then the vector field describing the flow in the pipe must be
+\begin{align*}
+    \vec{F}\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    = \begin{bmatrix} 0 \\ 0 \\ r^2 - x^2 - y^2 \end{bmatrix}
+\end{align*}
+Where we used that $a^2 = x^2 + y^2$.
+
+\item [b.] Let us define a tube with a "torus" form, centered at 0, where the
+distance from the center to the tube axis is 1 (the unit circle is the axis of
+the tube), with a tube radius $r$ then any point in the tube is given by
+\begin{align*}
+    x &= (1 + r\cos\phi)\cos\theta\\
+    y &= (1 + r\cos\phi)\sin\theta\\
+    z &= r\sin\phi
+\end{align*}
+Also, we see that the distance from any point inside the tube and the axis of the tube
+is given by
+\begin{align*}
+    a^2 = (x - \cos\theta)^2 + (y - \sin\theta)^2 + z^2
+\end{align*}
+Then the vector field describing the flow is given by
+\begin{align*}
+    \vec{F}\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+    = \begin{bmatrix}-(r^2 - a^2)\sin\theta\\ (r^2 - a^2)\cos\theta\\ 0\end{bmatrix}
+\end{align*}
+The equation can be written only in terms of $x,y$ and $z$ using that
+$\theta = \arctan(y/x)$.
+The vector field looks like the following
+\begin{center}
+    \includegraphics[scale=0.31]{hubbard_ch1_1.1.8.png}
+\end{center}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\section*{1.2 - Introducing the Actors: Matrices}
+\begin{proof}{1.2.16}\\
+Let $A$ be a $n \times m$ matrix, we write $A$ as
+\begin{align*}
+    A = \begin{bmatrix}
+        a_{1,1} & a_{1,2} & a_{1,3} & ... & a_{1,m}\\
+        a_{2,1} & a_{2,2} & a_{2,3} & ... & a_{2,m}\\
+        a_{3,1} & a_{3,2} & a_{3,3} & ... & a_{3,m}\\
+        \vdots  & \vdots  & \vdots  & ... & \vdots \\
+        a_{n,1} & a_{n,2} & a_{n,3} & ... & a_{n,m}\\
+    \end{bmatrix}
+\end{align*}
+Then $A^T$ is
+\begin{align*}
+    A^T = \begin{bmatrix}
+        a_{1,1} & a_{2,1} & a_{3,1} & ... & a_{n,1}\\
+        a_{1,2} & a_{2,2} & a_{3,2} & ... & a_{n,2}\\
+        a_{1,3} & a_{2,3} & a_{3,3} & ... & a_{n,3}\\
+        \vdots  & \vdots  & \vdots  & ... & \vdots \\
+        a_{1,m} & a_{2,m} & a_{3,m} & ... & a_{n,m}\\
+    \end{bmatrix}
+\end{align*}
+So $A^TA$ is given by
+\begin{align*}
+    A^TA = \begin{bmatrix}
+        A_{1,1} & A_{1,2} & ... & A_{1,m}\\
+        A_{2,1} & A_{2,2} & ... & A_{2,m}\\
+        \vdots  & \vdots  & ... & \vdots \\
+        A_{m,1} & A_{m,2} & ... & A_{m,m}
+    \end{bmatrix}
+\end{align*}
+Where
+\begin{align*}
+    A_{1,1} &= a_{1,1}^2 + a_{2,1}^2 + a_{3,1}^2 ... + a_{n,1}^2\\
+    A_{1,2} &= a_{1,1}a_{1,2} + a_{2,1}a_{2,2} + a_{3,1}a_{3,2} + ... + a_{n,1}a_{n,2}\\
+    A_{1,m} &= a_{1,1}a_{1,m} + a_{2,1}a_{2,m} + a_{3,1}a_{3,m} + ... + a_{n,1}a_{n,m}\\
+    \\
+    A_{2,1} &= a_{1,2}a_{1,1} + a_{2,2}a_{2,1} + a_{3,2}a_{3,1} + ... + a_{n,2}a_{n,1}\\
+    A_{2,2} &= a_{1,2}^2 + a_{2,2}^2 + a_{2,3}^2 + ... + a_{n,2}^2\\
+    A_{2,m} &= a_{1,2}a_{1,m} + a_{2,2}a_{2,m} + a_{3,2}a_{3,m} + ... + a_{n,2}a_{n,m}\\
+    \\
+    A_{m,1} &= a_{1,m}a_{1,1} + a_{2,m}a_{2,1} + a_{3,m}a_{3,1} + ... + a_{n,m}a_{n,1}\\
+    A_{m,2} &= a_{1,m}a_{1,2} + a_{2,m}a_{2,2} + a_{3,m}a_{3,2} + ... + a_{n,m}a_{n,2}\\
+    A_{m,m} &= a_{1,m}^2 + a_{2,m}^2 + a_{3,m}^2 + ... + a_{n,m}^2
+\end{align*}
+As we can see $A_{1,2} = A_{2,1}$, $A_{m,1} = A_{1,m}$ and $A_{m,2} = A_{2,m}$,
+and hence $A^TA$ is a symmetric matrix.
+\\
+In the same way, if we let $AA^T$ be
+\begin{align*}
+    AA^T = \begin{bmatrix}
+        A_{1,1} & A_{1,2} & ... & A_{1,n}\\
+        A_{2,1} & A_{2,2} & ... & A_{2,n}\\
+        \vdots  & \vdots  & ... & \vdots \\
+        A_{n,1} & A_{n,2} & ... & A_{n,n}
+    \end{bmatrix}
+\end{align*}
+Where
+\begin{align*}
+    A_{1,1} &= a_{1,1}^2 + a_{1,2}^2 + a_{1,3}^2 ... + a_{1,m}^2\\
+    A_{1,2} &= a_{1,1}a_{2,1} + a_{1,2}a_{2,2} + a_{1,3}a_{2,3} + ... + a_{1,m}a_{2,m}\\
+    A_{1,n} &= a_{1,1}a_{n,1} + a_{1,2}a_{n,2} + a_{1,3}a_{n,3} + ... + a_{1,m}a_{n,m}\\
+    \\
+    A_{2,1} &= a_{2,1}a_{1,1} + a_{2,2}a_{1,2} + a_{2,3}a_{1,3} + ... + a_{2,m}a_{1,m}\\
+    A_{2,2} &= a_{2,1}^2 + a_{2,2}^2 + a_{2,3}^2 + ... + a_{2,m}^2\\
+    A_{2,n} &= a_{2,1}a_{n,1} + a_{2,2}a_{n,2} + a_{2,3}a_{n,3} + ... + a_{2,m}a_{n,m}\\
+    \\
+    A_{n,1} &= a_{n,1}a_{1,1} + a_{n,2}a_{1,2} + a_{n,3}a_{1,3} + ... + a_{n,m}a_{1,m}\\
+    A_{n,2} &= a_{n,1}a_{2,1} + a_{n,2}a_{2,2} + a_{n,3}a_{2,3} + ... + a_{n,m}a_{2,m}\\
+    A_{n,n} &= a_{n,1}^2 + a_{n,2}^2 + a_{n,3}^2 + ... + a_{n,m}^2
+\end{align*}
+We see again that $A_{1,2} = A_{2,1}$, $A_{n,1} = A_{1,n}$ and $A_{n,2} = A_{2,n}$.
+Therefore $AA^T$ is also a symmetric matrix.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.2.20}\\
+Let $z = x + iy \in \C$ and the matrix $M_z$ be
+\begin{align*}
+    M_z = \begin{bmatrix} x & y \\ -y & x \end{bmatrix}
+\end{align*}
+Then $M_{z_1 + z_2}$ for $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$ in $\C$ is
+\begin{align*}
+    M_{z_1 + z_2} = \begin{bmatrix}
+        x_1 + x_2 & y_1 + y_2 \\ -(y_1 + y_2) & x_1 + x_2
+    \end{bmatrix}
+\end{align*}
+But we see that
+\begin{align*}
+    M_{z_1} + M_{z_2}
+    = \begin{bmatrix}x_1 & y_1 \\ -y_1 & x_1\end{bmatrix}
+    + \begin{bmatrix}x_2 & y_2 \\ -y_2 & x_2\end{bmatrix}
+    = \begin{bmatrix}
+        x_1 + x_2 & y_1 + y_2 \\ -(y_1 + y_2) & x_1 + x_2
+    \end{bmatrix}
+\end{align*}
+Therefore $M_{z_1 + z_2} = M_{z_1} + M_{z_2}$.
+\\
+On the other hand, let us compute $M_{z_1z_2}$ where
+$$z_1z_2 = (x_1 + iy_1)(x_2 + iy_2) = (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)$$
+So
+\begin{align*}
+    M_{z_1z_2}
+    = \begin{bmatrix}
+        x_1x_2 - y_1y_2 & x_1y_2 + x_2y_1 \\
+        -(x_1y_2 + x_2y_1) & x_1x_2 - y_1y_2
+    \end{bmatrix}
+\end{align*}
+Now we compute $M_{z_1}M_{z_2}$ as follows
+\begin{align*}
+    M_{z_1}M_{z_2}
+    = \begin{bmatrix}x_1 & y_1 \\ -y_1 & x_1\end{bmatrix}
+    \cdot \begin{bmatrix}x_2 & y_2 \\ -y_2 & x_2\end{bmatrix}
+    = \begin{bmatrix}
+        x_1x_2 - y_1y_2 & x_1y_2 + y_1x_2 \\
+        -(y_1x_2 + x_1y_2) & - y_1y_2 + x_1x_2
+    \end{bmatrix}
+\end{align*}
+Hence $M_{z_1z_2} = M_{z_1}M_{z_2}$.
+\end{proof}
+
+\cleardoublepage
+\section*{1.3 - What the Actors do: Matrix multiplication as a linear transformation}
+\begin{proof}{1.3.4}\\
+\begin{itemize}
+\item [a.] Let $T$ be a linear transformation such that
+$$T\begin{bmatrix} v_1 \\ v_2 \\ v_3\end{bmatrix}
+= \begin{bmatrix} 2v_1 \\ v_2 \\ v_3\end{bmatrix}$$
+We know that applying $T$ to $\vec{\bm{e}}_1$ we get the first column of the
+matrix $T$ then
+\begin{align*}
+    T\ei{1} = \begin{bmatrix} 2 \\ 0 \\ 0\end{bmatrix}
+\end{align*}
+So in the same way we get that the matrix of this linear transformation is
+\begin{align*}
+    T = \begin{bmatrix}
+        2 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+\item [b.] In the case of 
+$$T\begin{bmatrix} v_1 \\ v_2 \\ v_3\end{bmatrix}
+= \begin{bmatrix} v_2 \\ v_1 + 2v_2 \\ v_3 + v_1\end{bmatrix}$$
+We get by the same procedure that
+\begin{align*}
+    T = \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 2 & 0\\
+        1 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.3.8}\\
+\begin{itemize}
+\item [a.] Given that the linear transformation is $T:\R^5 \to \R^6$ we know
+that the matrix representing $T$ is of size $6 \times 5$ so to reconstitute
+the matrix $T$ we need to ask what is the output of $T\ei{i}$ for
+$i \in \{1, 2, 3, 4, 5\}$ so we get as the output the values of i-th column of
+$T$. Therefore we need to ask 5 questions to reconstitute it.
+
+\item [b.] If $T: \R^6 \to \R^5$ then the matrix representing it is of size
+$5 \times 6$ and hence following the same procedure as in part "a" we need 
+to ask what is the output of $T\ei{i}$ for $i \in \{1, 2, 3, 4, 5, 6\}$ i.e.
+we need to ask 6 questions.
+
+\item [c.] Given that $\ei{i}$ is a standard basis vectors in $\R^5$ or $\R^6$
+depending on the case, if we multiply $T$ times a different basis vector we
+will get a different output but the answer still represents the ith-column of
+$T$ in that basis, so there is not only one right answer to the question,
+it depends on the basis.
+Although, in any case, we still need to ask five or six questions.
+\end{itemize}
+\end{proof}
+\begin{proof}{1.3.9}\\
+We know that
+\begin{align*}
+    T\begin{bmatrix} 2 \\ -1 \\ 4 \end{bmatrix}
+    = \begin{bmatrix} 7 \\ 0 \\ 4 \end{bmatrix}
+\end{align*}
+We can write that
+\begin{align*}
+    \begin{bmatrix} 2 \\ -1 \\ 4 \end{bmatrix}
+    = 2\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    - 1\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    + 4\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\end{align*}
+If $T$ were linear then must happen that
+\begin{align*}
+    T\Bigg(2\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    - 1\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    + 4\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\Bigg)
+    = 2T\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    - T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    + 4T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\end{align*}
+The LHS is
+$$T\Bigg(2\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    - 1\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    + 4\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\Bigg)
+= T\begin{bmatrix} 2 \\ -1 \\ 4 \end{bmatrix}
+= \begin{bmatrix} 7 \\ 0 \\ 4 \end{bmatrix}$$
+And the RHS is
+\begin{align*}
+    2T\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    - T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    + 4T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+    &= 2\begin{bmatrix} 2 \\ 1 \\ 1 \end{bmatrix}
+    -\begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}
+    + 4\begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}
+    = \begin{bmatrix} 7 \\ 0 \\ 5\end{bmatrix}
+\end{align*}
+Then the LHS is different from the RHS, therefore $T$ cannot be linear.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.3.10}\\
+If $T:\R^3 \to \R^3$ is a linear transformation then must be that
+\begin{align*}
+    T\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+    + T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    = T\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}
+\end{align*}
+Then 
+\begin{align*}
+    \begin{bmatrix} 3 \\ 0 \\ 1 \end{bmatrix}
+    + T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    &= \begin{bmatrix} 4 \\ 2 \\ 4 \end{bmatrix}\\
+    T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    &= \begin{bmatrix} 4 \\ 2 \\ 4 \end{bmatrix}
+    - \begin{bmatrix} 3 \\ 0 \\ 1 \end{bmatrix}\\
+    T\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+    &= \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}
+\end{align*}
+But also must be that
+\begin{align*}
+    T\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}
+    + T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+    = T\begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+\end{align*}
+Then 
+\begin{align*}
+    \begin{bmatrix} 4 \\ 2 \\ 4 \end{bmatrix}
+    + T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+    &= \begin{bmatrix} 2 \\ 3 \\ 3 \end{bmatrix}\\
+    T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+    &= \begin{bmatrix} 2 \\ 3 \\ 3 \end{bmatrix}
+    - \begin{bmatrix} 4 \\ 2 \\ 4 \end{bmatrix}\\
+    T\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+    &= \begin{bmatrix} -2 \\ 1 \\ -1 \end{bmatrix}
+\end{align*}
+Therefore, there is a linear transformation $T$ with the following matrix
+describing it
+\begin{align*}
+    [T] = \begin{bmatrix} 3 & 1 & -2\\ 0 & 2 & 1\\ 0 & 3 & -1\end{bmatrix}
+\end{align*}
+Where we used that $T(\ei{1})$, $T(\ei{2})$, and $T(\ei{3})$ are the first,
+second and third column respectively of the matrix $[T]$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.3.11}\\
+We know from Example 1.3.9 that the transformation $R_\theta$ rotates the input by
+an angle $\theta$ counterclockwise around the origin then the transformation
+$R'$ that rotates the input by an angle $\theta$ clockwise is $R_{-\theta}$,
+therefore 
+\begin{align*}
+    R' = \begin{bmatrix}
+        \cos(-\theta) & -\sin(-\theta)\\
+        \sin(-\theta) & \cos(-\theta)
+    \end{bmatrix}
+    = \begin{bmatrix}
+        \cos(\theta) & \sin(\theta)\\
+        -\sin(\theta) & \cos(\theta)
+    \end{bmatrix}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.3.12}\\
+\begin{itemize}
+\item [a.] For a linear transformation $S:\R^3 \to \R^3$ that reflects a point
+across the plane $x = y$ must be that
+\begin{align*}
+    S\begin{bmatrix}x\\ y\\ z \end{bmatrix}
+    = \begin{bmatrix}y\\ x\\ z\end{bmatrix}
+\end{align*}
+Then the matrix of $S$ must be
+\begin{align*}
+    [S] = \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+Now, for a linear transformation $T:\R^3 \to \R^3$ that reflects points
+across the plane $y = z$ must be that
+\begin{align*}
+    T\begin{bmatrix}x\\ y\\ z \end{bmatrix}
+    = \begin{bmatrix}x\\ z\\ y\end{bmatrix}
+\end{align*}
+Then the matrix of $T$ must be
+\begin{align*}
+    [T] = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & 1 & 0
+    \end{bmatrix}
+\end{align*}
+Finally, the matrix of $S \circ T$ by Theorem 1.3.10 is
+\begin{align*}
+    [S \circ T] = [S][T]
+    = \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & 1 & 0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 & 0 & 1\\
+        1 & 0 & 0\\
+        0 & 1 & 0
+    \end{bmatrix}
+\end{align*}
+\item [b.] On the other hand, matrix $[T \circ S]$ is
+\begin{align*}
+    [T \circ S] = [T][S]
+    = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & 1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+        1 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+Which is different from $[S \circ T]$ so $[S]$ and $[T]$ do not commute.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\section*{1.4 - The Geometry of $\R^n$}
+\begin{proof}{1.4.13}\\
+Let $\vec{\bm a}$ and $\vec{\bm b}$ be two vectors pointing in the same
+direction then must be that $\vec{\bm b} = k\vec{\bm a}$ for some scalar
+$k$ then
+\begin{align*}
+    \vec{\bm a}\times\vec{\bm b} = \vec{\bm a}\times k\vec{\bm a}
+    = \begin{bmatrix}a_1 \\ a_2 \\ a_3 \end{bmatrix}
+    \times k\begin{bmatrix}a_1 \\ a_2 \\ a_3 \end{bmatrix}
+    = \begin{bmatrix}
+        a_2(ka_3) - a_3(ka_2)\\
+        -a_1(ka_3) + a_3(ka_1)\\
+        a_1(ka_2) - a_2(ka_1)
+    \end{bmatrix}
+    = \vec{\bm 0}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.14}
+Let $\vec{\bm u}, \vec{\bm v}, \vec{\bm w}$ be vectors
+\begin{itemize}
+\item [a.] Let us compute $\bvec{u} \times (\bvec{v}\times \bvec{w})$ as follows
+\begin{align*}
+    \bvec{u} \times (\bvec{v}\times \bvec{w})
+    &= \begin{bmatrix}1 \\ 2 \\ 1 \end{bmatrix} 
+    \times
+    \Bigg(\begin{bmatrix}2 \\ 0 \\ 1 \end{bmatrix}
+    \times \begin{bmatrix}1 \\ 0 \\ -1 \end{bmatrix}\Bigg)\\
+    &= \begin{bmatrix}1 \\ 2 \\ 1 \end{bmatrix} 
+    \times
+    \begin{bmatrix}0 \\ 2 - 1 \\ 0 \end{bmatrix}\\
+    &= \begin{bmatrix}
+        -1 \\ 0 \\ 1
+    \end{bmatrix}
+\end{align*}
+On the other hand, $(\bvec{u} \times \bvec{v})\times \bvec{w}$ is
+\begin{align*}
+(\bvec{u} \times \bvec{v})\times \bvec{w}
+&= \Bigg(\begin{bmatrix}1 \\ 2 \\ 1 \end{bmatrix} 
+\times
+\begin{bmatrix}2 \\ 0 \\ 1 \end{bmatrix}\Bigg)
+\times \begin{bmatrix}1 \\ 0 \\ -1\end{bmatrix}\\
+&= \begin{bmatrix}2\\ 1 \\ -4\end{bmatrix} 
+\times
+\begin{bmatrix}1 \\ 0 \\ -1 \end{bmatrix}\\
+&= \begin{bmatrix}
+    -1 \\ -2 \\ -1
+\end{bmatrix}
+\end{align*}
+
+\item [b.] Let us compute $\bvec{v} \cdot (\bvec{v} \times \bvec{w})$ as follows
+\begin{align*}
+    \bvec{v} \cdot (\bvec{v}\times \bvec{w})
+    &= \begin{bmatrix}2 \\ 0 \\ 1 \end{bmatrix}
+    \cdot
+    \Bigg(\begin{bmatrix}2 \\ 0 \\ 1 \end{bmatrix}
+    \times \begin{bmatrix}1 \\ 0 \\ -1 \end{bmatrix}\Bigg)\\
+    &= \begin{bmatrix}2 \\ 0 \\ 1 \end{bmatrix} 
+    \cdot \begin{bmatrix}0 \\ 3 \\ 0\end{bmatrix}\\
+    &= 2\cdot 0 + 0 \cdot 3 + 1 \cdot 0\\
+    &= 0
+\end{align*}
+Geometrically, this implies that $\bvec{v}$ is orthogonal to
+$\bvec{v} \times \bvec{w}$.
+
+\item [c.] Let $\bvec{a}, \bvec{b}, \bvec{c} \in \R^3$ then we see that
+\begin{align*}
+    \bvec{a} \times (\bvec{b} + \bvec{c})
+    &= \begin{bmatrix}a_1 \\ a_2 \\ a_3 \end{bmatrix}
+    \times \begin{bmatrix}b_1 + c_1 \\ b_2 + c_2 \\ b_3 + c_3 \end{bmatrix}\\
+    &= \begin{bmatrix}
+        a_2(b_3 + c_3) - a_3(b_2 + c_2) \\
+        -a_1(b_3 + c_3) + a_3(b_1 + c_1) \\
+        a_1(b_2 + c_2) - a_2(b_1 + c_1)
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        a_2b_3 + a_2c_3 - a_3b_2 - a_3c_2 \\
+        -a_1b_3 - a_1c_3 + a_3b_1 + a_3c_1 \\
+        a_1b_2 + a_1c_2 - a_2b_1 - a_2c_1
+    \end{bmatrix}
+\end{align*}
+But also we see that
+\begin{align*}
+    (\bvec{a} \times \bvec{b}) + (\bvec{a}\times \bvec{c})
+    &= \begin{bmatrix}a_1 \\ a_2 \\ a_3 \end{bmatrix}
+    \times \begin{bmatrix}b_1 \\ b_2 \\ b_3 \end{bmatrix}
+    + \begin{bmatrix}a_1 \\ a_2 \\ a_3 \end{bmatrix}
+    \times \begin{bmatrix}c_1 \\ c_2 \\ c_3 \end{bmatrix}\\
+    &= \begin{bmatrix}
+        a_2b_3 - a_3b_2\\ -a_1b_3 + a_3b_1 \\ a_1b_2 - a_2b_1
+    \end{bmatrix}
+    + \begin{bmatrix}
+        a_2c_3 - a_3c_2\\ -a_1c_3 + a_3c_1 \\ a_1c_2 - a_2c_1
+    \end{bmatrix}\\
+    &=\begin{bmatrix}
+        a_2b_3 - a_3b_2 + a_2c_3 - a_3c_2\\
+        -a_1b_3 + a_3b_1 -a_1c_3 + a_3c_1 \\
+        a_1b_2 - a_2b_1 + a_1c_2 - a_2c_1
+    \end{bmatrix}
+\end{align*}
+Therefore $\bvec{a} \times (\bvec{b} + \bvec{c})
+= (\bvec{a} \times \bvec{b}) + (\bvec{a}\times \bvec{c})$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.15}
+Let $\bvec{v}$ and $\bvec{w}$ be vectors in $\R^3$ then we know that
+\begin{align*}
+    \bvec{v}\times\bvec{w} 
+    = \begin{bmatrix}v_1 \\ v_2 \\ v_3 \end{bmatrix}
+    \times \begin{bmatrix}w_1 \\ w_2 \\ w_3 \end{bmatrix}
+    = \begin{bmatrix}
+        v_2w_3 - v_3w_2\\
+        -v_1w_3 + v_3w_1\\
+        v_1w_2 - v_2w_1
+    \end{bmatrix}
+\end{align*}
+Also, we see that
+\begin{align*}
+    -(\bvec{w} \times \bvec{v})
+    = -\Bigg[\begin{bmatrix}w_1 \\ w_2 \\ w_3 \end{bmatrix}
+    \times
+    \begin{bmatrix}v_1 \\ v_2 \\ v_3 \end{bmatrix}\Bigg]
+    = -\begin{bmatrix}
+        w_2v_3 - w_3v_2\\
+        -w_1v_3 + w_3v_1\\
+        w_1v_2 - w_2v_1
+    \end{bmatrix}
+    = \begin{bmatrix}
+        w_3v_2 - w_2v_3\\
+        -w_3v_1 + w_1v_3\\
+        w_2v_1 - w_1v_2
+    \end{bmatrix}
+\end{align*}
+Therefore $\bvec{v}\times\bvec{w} = -(\bvec{w} \times \bvec{v})$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.18}
+\begin{itemize}
+\item [a.] Let the coordinates of $\bm{a}$ and $\bm{b}$ be $\geq 0$ then the
+area spanned by them is $(a_1 + b_1)(a_2 + b_2)$ minus the area of the pieces
+1-6 shown in the figure i.e.
+\begin{align*}
+    &(a_1 + b_1)(a_2 + b_2)
+    - \underbrace{a_1b_2}_{\text{area of 1}}
+    - \underbrace{b_1b_2/2}_{\text{area of 2}}
+    - \underbrace{a_2a_1/2}_{\text{area of 3}}
+    - \underbrace{a_1a_2/2}_{\text{area of 4}}
+    - \underbrace{b_1b_2/2}_{\text{area of 5}}
+    - \underbrace{a_1b_2}_{\text{area of 6}}\\[7pt]
+    &= a_1a_2 + a_1b_2 + b_1a_2 + b_1b_2 - a_1b_2 - b_1b_2 - a_2a_1 - a_1b_2\\
+    &= b_1a_2 - a_1b_2
+\end{align*}
+We see that $b_1a_2 - a_1b_2 \geq 0$ since $b_1a_2 > a_1b_2$.
+
+On the other hand, we see that
+\begin{align*}
+    \bigg|\det\begin{bmatrix}
+        a_1 & b_1 \\ a_2 & b_2
+    \end{bmatrix}\bigg| &= |a_1b_2 - a_2b_1| = a_2b_1 - a_1b_2
+\end{align*}
+Therefore we see that part 1 of Proposition 1.4.14 holds.
+
+\item [b.] Suppose now that $b_1$ is negative then we are in the situation
+described by the following figure
+\begin{center}
+    \includegraphics[scale=0.3]{hubbard_ch1_1.4.18.png}
+\end{center}
+So, to compute the spanned area between $\bm{a}$ and $\bm{b}$ we need to
+subract the areas of hte triangles 1-4. let us note that the triangles
+1 and 3 have the same area and the same is true for the triangles 2 and 4.
+Then we compute what follows
+\begin{align*}
+    &(a_1 - b_1)(a_2 + b_2) - 2\cdot \frac{a_1 a_2}{2} - 2\cdot \frac{(-b_1)b_2}{2} =\\
+    &\quad = a_1a_2 + a_1b_2 -b_1a_2 - b_1b_2 - a_1a_2 + b_1b_2\\
+    &\quad = a_1b_2 - b_1a_2
+\end{align*}
+We see that $a_1b_2 - b_1a_2 \geq 0$ since $-b_1a_2 > a_1b_2 > 0$.
+On the other hand, we see that
+\begin{align*}
+    \bigg|\det\begin{bmatrix}
+        a_1 & b_1 \\ a_2 & b_2
+    \end{bmatrix}\bigg| &= |a_1b_2 - a_2b_1| = a_1b_2 - a_2b_1
+\end{align*}
+Therefore we see that part 1 of Proposition 1.4.14 holds also in this case.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.24}
+Let $\bvec{v} \in \R^n$ be a nonzero vector, and denote
+$\bvec{v}^{\perp} \subset \R^n$ the set of vectors $\bvec{w}\in \R^n$ such
+that $\bvec{v}\cdot \bvec{w} = 0$
+\begin{itemize}
+\item [a.] Let $\bvec{w},\bvec{u} \in \bvec{v}^{\perp}$, we see that
+\begin{align*}
+    \bvec{v}\cdot(\bvec{w} + \bvec{u})
+    = \bvec{v}\cdot\bvec{w} + \bvec{v}\cdot\bvec{u}
+    = 0
+\end{align*}
+Where we used that the dot product it distributive.
+Then $\bvec{w} + \bvec{u} \in \bvec{v}^{\perp}$.
+
+On the other hand, let $a \in \R$ and let us consider the vector $a\bvec{w}$
+then
+\begin{align*}
+    \bvec{v}\cdot a\bvec{w} = a(\bvec{v}\cdot \bvec{w}) = 0
+\end{align*}
+Hence $a\bvec{w} \in \bvec{v}^{\perp}$. Therefore $\bvec{v}^{\perp}$ is a
+subspace of $\R^n$.
+
+\item [b.] Let $\bvec{a}\in\R^n$ then let us compute what follows
+\begin{align*}
+    \bvec{v}\cdot\bigg(\bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}\bvec{v}\bigg)
+    &= \bvec{v}\cdot \bvec{a} - \bvec{v}\cdot \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}\bvec{v}\\
+    &= \bvec{v}\cdot \bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}(\bvec{v}\cdot\bvec{v})\\
+    &= \bvec{v}\cdot \bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}|\bvec{v}|^2\\
+    &= \bvec{v}\cdot \bvec{a} - \bvec{a}\cdot\bvec{v}\\
+    &= \bvec{v}\cdot \bvec{a} - \bvec{v}\cdot\bvec{a}\\
+    &= 0
+\end{align*}
+Where we used that the dot product is distributive and associative.
+Therefore by the definition of $\bvec{v}^{\perp}$ we have that
+\begin{align*}
+    \bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}\bvec{v}
+    ~\in~\bvec{v}^{\perp}
+\end{align*}
+\item [c.] Let
+\begin{align*}
+    P_{\bvec{v}^\perp}(\bvec{a}) = \bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}\bvec{v}
+\end{align*}
+be the projection of $\bvec{a}$ onto $\bvec{v}^\perp$.
+
+Suppose there are two numbers $t_1(\bvec{a}), t_2(\bvec{a})$ such that
+$(\bvec{a} + t_1(\bvec{a})\bvec{v}) \in \bvec{v}^\perp$ and 
+$(\bvec{a} + t_2(\bvec{a})\bvec{v}) \in \bvec{v}^\perp$
+then by definition must be that
+\begin{align*}
+    \bvec{v} \cdot (\bvec{a} + t_1(\bvec{a})\bvec{v}) = 0
+    \quad\text{and}\quad
+    \bvec{v} \cdot (\bvec{a} + t_2(\bvec{a})\bvec{v}) = 0
+\end{align*}
+So
+\begin{align*}
+    \bvec{v} \cdot (\bvec{a} + t_1(\bvec{a})\bvec{v}) &= 
+    \bvec{v} \cdot (\bvec{a} + t_2(\bvec{a})\bvec{v})\\
+    \bvec{v} \cdot \bvec{a} + t_1(\bvec{a})|\bvec{v}|^2 &= 
+    \bvec{v} \cdot \bvec{a} + t_2(\bvec{a})|\bvec{v}|^2\\
+    t_1(\bvec{a})|\bvec{v}|^2 &= t_2(\bvec{a})|\bvec{v}|^2\\
+    t_1(\bvec{a}) &= t_2(\bvec{a})
+\end{align*}
+Where we subracted from both sides $\bvec{v} \cdot \bvec{a}$ in the third step
+and we divided by $|\bvec{v}|^2$ on both sides in the last step.
+
+Therefore there is a unique number $t(\bvec{a})$ such that
+$(\bvec{a} + t(\bvec{a})\bvec{v}) \in \bvec{v}^\perp$.
+
+Since $(\bvec{a} + t(\bvec{a})\bvec{v}) \in \bvec{v}^\perp$ then must be that
+\begin{align*}
+    \bvec{v}\cdot(\bvec{a} + t(\bvec{a})\bvec{v}) = 0
+\end{align*}
+Then
+\begin{align*}
+    \bvec{v}\cdot\bvec{a} + t(\bvec{a})|\bvec{v}|^2 &= 0\\
+    t(\bvec{a})|\bvec{v}|^2 &= - \bvec{v}\cdot\bvec{a}\\
+    t(\bvec{a}) &= - \frac{\bvec{v}\cdot\bvec{a}}{|\bvec{v}|^2}
+\end{align*}
+Therefore
+\begin{align*}
+    \bvec{a} + t(\bvec{a})\bvec{v}
+    = \bvec{a} - \frac{\bvec{a}\cdot\bvec{v}}{|\bvec{v}|^2}\bvec{v}
+    = P_{\bvec{v}^\perp}(\bvec{a})
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.27}
+Let $\bvec{a} = \begin{bmatrix} a \\ b \\ c\end{bmatrix}$ be a unit vector in
+$\R^3$
+\begin{itemize}
+\item [a.] Let $T_{\bvec{a}}$ be
+$T_{\bvec{a}}(\bvec{v}) = \bvec{v} - 2(\bvec{a} \cdot \bvec{v})\bvec{a}$
+also let $\bvec{v},\bvec{w} \in \R^3$ and $\alpha, \beta$ be scalars then
+\begin{align*}
+    T_{\bvec{a}}(\alpha\bvec{v} + \beta\bvec{w})
+    &= \alpha\bvec{v} + \beta\bvec{w}
+    - 2(\bvec{a} \cdot (\alpha\bvec{v} + \beta\bvec{w}))\bvec{a}\\
+    &= \alpha\bvec{v} + \beta\bvec{w}
+    - 2(\alpha(\bvec{a} \cdot \bvec{v}) + \beta(\bvec{a}\cdot\bvec{w}))\bvec{a}\\
+    &= \alpha\bvec{v} + \beta\bvec{w}
+    - 2\alpha(\bvec{a} \cdot \bvec{v})\bvec{a} - 2\beta(\bvec{a}\cdot\bvec{w})\bvec{a}\\
+    &= \alpha(\bvec{v} - 2(\bvec{a} \cdot \bvec{v})\bvec{a}) +
+    \beta(\bvec{w} - 2(\bvec{a} \cdot \bvec{w})\bvec{a})\\
+    &= \alpha T_{\bvec{a}}(\bvec{v}) + \beta T_{\bvec{a}}(\bvec{w})
+\end{align*}
+Where we used that the dot product is distributive. Therefore, $T_{\bvec{a}}$
+is a linear transformation.
+\item [b.] $T_{\bvec{a}}(\bvec{a})$ by definition is
+\begin{align*}
+    T_{\bvec{a}}(\bvec{a}) = \bvec{a} - 2(\bvec{a} \cdot \bvec{a})\bvec{a}
+    = \bvec{a} - 2|\bvec{a}|^2\bvec{a} = \bvec{a} - 2\bvec{a} = -\bvec{a}
+\end{align*}
+Where we used that $|\bvec{a}|^2 = 1$ because $\bvec{a}$ is a unit vector.
+So $T_{\bvec{a}}(\bvec{a})$ returns the opposite vector to $\bvec{a}$.
+
+Let $\bvec{v}\in\R^3$ be orthogonal to $\bvec{a}$ then $T_{\bvec{a}}(\bvec{v})$
+is 
+\begin{align*}
+    T_{\bvec{a}}(\bvec{v}) = \bvec{v} - 2(\bvec{a} \cdot \bvec{v})\bvec{a}
+    = \bvec{v} - 0 = \bvec{v}
+\end{align*}
+Where we used that $\bvec{a} \cdot \bvec{v} = 0$ because $\bvec{v}$ is
+orthogonal to $\bvec{a}$.
+
+We can name $T_{\bvec{a}}$ as the linear transformation that reflects
+$\bvec{v}$ across the plane orthogonal to $\bvec{a}$.
+
+\cleardoublepage
+\item [c.] To determine the matrix $M$ of $T_{\bvec{a}}$ we need to evaluate
+the output of $T_{\bvec{a}}$ when the input are the standard basis vectors
+$\ei{1},\ei{2}$ and $\ei{3}$ as follows
+\begin{align*}
+    T_{\bvec{a}}(\ei{1})
+    &= \begin{bmatrix}1\\ 0 \\0\end{bmatrix}
+    - 2(\begin{bmatrix}a \\b \\c\end{bmatrix} \cdot
+    \begin{bmatrix}1\\ 0 \\0\end{bmatrix})
+    \begin{bmatrix}a \\b \\c\end{bmatrix}
+    = \begin{bmatrix}1\\ 0 \\0\end{bmatrix}
+    - 2a\begin{bmatrix}a \\b \\c\end{bmatrix}
+    =\begin{bmatrix}1 - 2a^2 \\-2ab \\-2ac\end{bmatrix}\\
+    T_{\bvec{a}}(\ei{2})
+    &= \begin{bmatrix}0\\ 1 \\0\end{bmatrix}
+    - 2(\begin{bmatrix}a \\b \\c\end{bmatrix} \cdot
+    \begin{bmatrix}0\\ 1 \\0\end{bmatrix})
+    \begin{bmatrix}a \\b \\c\end{bmatrix}
+    = \begin{bmatrix}0\\ 1 \\0\end{bmatrix}
+    - 2b\begin{bmatrix}a \\b \\c\end{bmatrix}
+    =\begin{bmatrix}-2ab \\1 - 2b^2 \\-2bc\end{bmatrix}\\
+    T_{\bvec{a}}(\ei{3})
+    &= \begin{bmatrix}0\\ 0 \\1\end{bmatrix}
+    - 2(\begin{bmatrix}a \\b \\c\end{bmatrix} \cdot
+    \begin{bmatrix}0\\ 0 \\1\end{bmatrix})
+    \begin{bmatrix}a \\b \\c\end{bmatrix}
+    = \begin{bmatrix}0\\ 0 \\1\end{bmatrix}
+    - 2c\begin{bmatrix}a \\b \\c\end{bmatrix}
+    =\begin{bmatrix}-2ac \\-2bc \\1 - 2c^2\end{bmatrix}
+\end{align*}
+Hence $M$ is 
+\begin{align*}
+    M = \begin{bmatrix}
+        1 - 2a^2 & -2ab & -2ac\\
+        -2ab & 1 - 2b^2 & -2bc\\
+        -2ac & -2bc & 1 - 2c^2
+    \end{bmatrix}
+\end{align*}
+Finally since $M$ is a symmetric matrix $M^2$ is going to be symmetric as well.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.4.28}
+Let $M$ be an $n \times m$ matrix
+\begin{align*}
+    M = \begin{bmatrix}
+        \mu_{11} & \mu_{12} & ... & \mu_{1m}\\
+        \mu_{21} & \mu_{22} & ... & \mu_{2m}\\
+        \vdots & \vdots &   & \vdots\\ 
+        \mu_{n1} & \mu_{n2} & ... & \mu_{nm}\\
+    \end{bmatrix}
+\end{align*}
+Then, by definition
+\begin{align*}
+    |M|^2 = \sum_{i=1}^n\sum_{j=1}^m \mu_{ij}^2
+\end{align*}
+Where $\mu_{ij}$ are the entries of the matrix $M$.
+\\
+Now, let us focus on the diagonal of $M^TM$, we see that the entries of the
+diagonal are
+\begin{align*}
+    \nu_{11} &= \mu_{11}^2 + \mu_{21}^2 + ... + \mu_{n1}^2\\
+    \nu_{22} &= \mu_{12}^2 + \mu_{22}^2 + ... + \mu_{n2}^2\\
+    \vdots\\
+    \nu_{mm} &= \mu_{1m}^2 + \mu_{2m}^2 + ... + \mu_{nm}^2
+\end{align*}
+So we see that $\tr(M^TM)$ is
+\begin{align*}
+    \tr(M^TM) = \nu_{11} + \nu_{22} + ... + \nu_{mm}
+    = \sum_{i=1}^n\sum_{j=1}^m \mu_{ij}^2
+\end{align*}
+Therefore $|M|^2 = \tr(M^TM)$.
+\end{proof}
+
+\cleardoublepage
+\section*{1.5 - Limits and Continuity}
+\begin{proof}{1.5.1}
+\begin{itemize}
+\item[a.] $U = \{x \in \R| 0 < x \leq 1\}$ as a subset of $\R$
+
+This set is not open because if we take $x = 1 \in U$ then for any $r > 0$
+the ball $B_{r}(1)$ is not completely in $U$.
+
+For this set to be closed must happen that $\R - U$ is open but
+$$\R - U = (-\infty, 0] \cup (1, \infty)$$
+which is not open because $(-\infty, 0]$ is not open.
+Therefore $U$ is not closed either.
+
+\item[b.] $U = \bigg\{\begin{pmatrix}x\\y\end{pmatrix} \in \R^2|\sqrt{x^2 + y^2} < 1\bigg\}$
+as a subset of $\R^2$
+
+Let $\bm{x} = \begin{pmatrix}x\\y\end{pmatrix} \in U$, we can take $r$ such that
+$r < 1 - \sqrt{x^2 + y^2}$ then the ball $B_r(\bm{x}) \subset U$ so $U$ is open.
+
+We see that $\R^2 - U$ is
+\begin{align*}
+    \R^2 - U = \bigg\{\begin{pmatrix}x\\y\end{pmatrix} \in \R^2|\sqrt{x^2 + y^2} \geq 1\bigg\}
+\end{align*}
+so if we take $\bm{x} = \begin{pmatrix}1\\0\end{pmatrix} \in \R^2 - U$ we see
+that there is no $r > 0$ such that $B_r(\bm{x})$ is completely in $\R^2 - U$
+then $\R^2 - U$ is not open and therefore, $U$ is not closed.
+
+\item[c.] $(0,1]$ as a subset of $\R$
+
+This set can be written as $\{x \in \R| 0 < x \leq 1\}$ which is the same set
+we considered in part "a" so $(0,1]$ is neither open nor closed.
+
+\item[d.] $U = \bigg\{\begin{pmatrix}x\\y\end{pmatrix} \in \R^2|\sqrt{x^2 + y^2} \leq 1\bigg\}$
+as a subset of $\R^2$
+
+Let $\bm{x} = \begin{pmatrix}1\\0\end{pmatrix} \in U$, we see that there is no
+$r > 0$ such that $B_r(\bm{x})$ is completely in $U$ so $U$ is not open.
+
+We see that $\R^2 - U$ is defined as
+\begin{align*}
+    \R^2 - U = \bigg\{\begin{pmatrix}x\\y\end{pmatrix} \in \R^2|\sqrt{x^2 + y^2} > 1\bigg\}
+\end{align*}
+Let $\bm{x} = \begin{pmatrix}x\\y\end{pmatrix} \in \R^2 - U$, we can take $r$
+such that $r < \sqrt{x^2 + y^2} - 1$ then the ball $B_r(\bm{x}) \subset \R^2 - U$,
+hence $\R^2 - U$ is open.
+
+Therefore $U$ is closed.
+
+\item[e.] $U = \{x \in \R| 0 \leq x \leq 1\}$ as a subset of $\R$
+
+This set can be written as $[0,1] \subset \R$ and we saw in Example 1.5.3 that
+any set of the form $[a, b]$ for $a,b \in \R$ is not open, so $[0,1]$ is not
+open.
+
+We saw also in Example 1.5.3 that any interval of the form $(-\infty, b)$ and
+$(a,\infty)$ is open so $\R - [0,1] = (-\infty, 0) \cup (1, \infty)$ is open.
+Therefore $[0,1]$ is closed.
+
+\item[f.] $U=\bigg\{\begin{pmatrix}x\\y\\z\end{pmatrix} \in \R^3|
+\sqrt{x^2 + y^2 + z^2} \leq 1, \text{ and }x,y,z \neq 0\bigg\}$
+as a subset of $\R^3$
+
+Let $\bm{x} = \begin{pmatrix}1\\0\\0\end{pmatrix} \in U$, we see that there is no
+$r > 0$ such that $B_r(\bm{x})$ is completely in $U$ so $U$ is not open.
+
+Let $\bm{x} = \begin{pmatrix}0\\0\\0\end{pmatrix} \in \R^3 - U$,
+we see that there is no $r > 0$ such that $B_r(\bm{x})$ is completely in
+$\R^3 - U$ so $\R^3- U$ is not open and therefore $U$ is not closed.
+
+\item[g.] the empty set $\emptyset$ as a subset of $\R$
+
+An open set must contain a ball around each of its points.
+Since there are no points in $\emptyset$, this condition is satisfied
+vacuously, and thus $\emptyset$ is open.
+
+We see that $\R - \emptyset = \R$ and $\R$ is open, then $\emptyset$ is closed.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.2}
+\begin{itemize}
+\item [a.] $(x,y)$-plane in $\R^3$
+
+Let $\bm{x} = \begin{pmatrix}x\\y\\0\end{pmatrix} \in (x,y)$-plane,
+then for $r > 0$ we know that the ball around $\bm{x}$ is defined as
+$$B_r(\bm{x}) = \bigg\{\begin{pmatrix}x'\\y'\\z'\end{pmatrix} \in \R^3
+\text{ such that }\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2} < r\bigg\}$$
+so the ball $B_r(\bm{x})$ have values outside the $(x,y)$-plane and hence
+the $(x,y)$-plane is not open in $\R^3$.
+
+Let $\bm{x} = \begin{pmatrix}x\\y\\z\end{pmatrix} \in \R^3 - (x,y)$-plane
+i.e. $z \neq 0$. We see that taking $r < |z|$ then the ball $B_{r}(\bm{x})$
+is inside $\R^3 - (x,y)\text{-plane}$, hence $\R^3 - (x,y)\text{-plane}$
+is open and therefore the $(x,y)\text{-plane}$ is closed.
+
+\item [b.] $\R \subset \C$
+
+Let $x + i0 \in \R$ then for $r > 0$ we know that the ball around $x + i0$ is
+defined as
+\begin{align*}
+    B_r(x + i0)
+    = \{x' + iy' \in \C\text{ such that }\sqrt{(x-x')^2 + (0 - y')^2} < r\}
+\end{align*}
+so the ball $B_r(x + i0)$ contains points in $\C$ with both real and imaginary
+values. Hence $\R$ is not open in $\C$.
+
+Let $x + iy \in \C - \R$ i.e. $y \neq 0$. Taking $r < |y|$ the ball
+$B_r(x + iy)$ is inside $\C - \R$, hence $\C - \R$ is open and therefore $\R$
+is closed in $\C$.
+
+\item [c.] the line $x = 5$ in the $(x,y)\text{-plane}$
+
+Let $(5, y_0)$ be any point in the line $x = 5$ then for $r > 0$ we know that
+the ball around $(5, y_0)$ is defined as
+\begin{align*}
+    B_r(5, y_0)
+    = \{(x, y) \in \R^2 \text{ such that }\sqrt{(5-x)^2 + (y_0 - y)^2} < r\}
+\end{align*}
+so the ball $B_r(5,y_0)$ contains points in $\R^2$ which are not in the line
+$x = 5$ i.e. they have $x \neq 5$ then the line $x = 5$ is not open in $\R^2$.
+
+Let $(x_0,y_0) \in \R^2 - \{(x,y) \in \R^2 | x=5\}$ i.e. $x_0 \neq 5$.
+
+Taking $r < |x_0 - 5|$ the ball $B_r(x_0,y_0)$ is inside
+$\R^2 - \{(x,y) \in \R^2 | x=5\}$, hence $\R^2 - \{(x,y) \in \R^2 | x=5\}$
+is open and therefore the line $x = 5$ is closed in $\R^2$.
+
+\cleardoublepage
+\item [d.] $(0,1) \subset \C$
+
+Let $x_0 + i0 \in (0, 1)$ i.e. $x_0 \in (0,1)$ then for $r > 0$ we
+know that the ball around $x_0 + i0$ is defined as
+\begin{align*}
+    B_r(x_0 + i0)
+    = \{x' + iy' \in \C\text{ such that }\sqrt{(x_0-x')^2 + (0 - y')^2} < r\}
+\end{align*}
+so the ball $B_r(x_0 + i0)$ contains points in $\C$ with both real and imaginary
+values. Hence $(0,1)$ is not open in $\C$.
+
+From part (b) we know that $\C - \R$ is open so we need to check only what
+happens for points like $x_0 + i0$ where $x_0 \not\in (0,1)$.
+Suppose $x_0 = 1$ then there is no $r > 0$ such that
+$B_{r}(x_0 + i0) \subset \C - (0,1)$ then $\C - (0,1)$ is not open and
+therefore $(0,1)$ is not closed.
+
+\item [e.] $\R^n \subset \R^n$
+
+Let $\bm{x} \in \R^n$ then a ball $B_r(\bm{x}) \subset \R^n$ therefore $\R^n$
+is open in $\R^n$.
+
+We see that $\R^n - \R^n = \emptyset$ and we saw that $\emptyset$ is open so
+$\R^n$ is closed.
+
+\item [f.] the unit sphere in $\R^3$ or
+$U = \bigg\{\begin{pmatrix}x\\ y\\ z\end{pmatrix} \in \R^3~|~\sqrt{x^2 + y^2 + z^2} = 1\bigg\}$
+
+Let $\bm{x}_0 = \begin{pmatrix}x_0\\ y_0\\ z_0\end{pmatrix} \in U$,
+then for $r > 0$ we know that the ball around $\bm{x}_0$ is defined as
+$$B_r(\bm{x}_0) = \bigg\{\begin{pmatrix}x\\y\\z\end{pmatrix} \in \R^3
+\text{ such that }\sqrt{(x_0 - x)^2 + (y_0 - y)^2 + (z_0 - z)^2} < r\bigg\}$$
+so the ball $B_r(\bm{x}_0)$ have values outside $U$ and hence $U$ is not open in
+$\R^3$.
+
+Let $\bm{x}_0 = \begin{pmatrix}x_0\\ y_0\\ z_0\end{pmatrix} \in \R^3 - U$,
+then taking $r < \sqrt{(x_0 - x)^2 + (y_0 - y)^2 + (z_0 - z)^2}$ the ball
+$B_r(\bm{x}_0)$ is in $\R^3 - U$, hence $\R^3 - U$ is open and therefore
+$U$ is closed in $\R^3$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.3}
+\begin{itemize}
+\item [a.] Let us define two open sets $U_1$ and $U_2$ in $\R^n$, let
+$\bm{x} \in U_1 \cup U_2$ then if $\bm{x} \in U_1$ then there is a ball
+$B_r^{U_1}(\bm{x})$ which is contained in $U_1$ since $U_1$ is an open set.
+In the same way, if $\bm{x} \in U_2$ then there is a ball $B_r^{U_2}(\bm{x})$
+contained in $U_2$. Therefore $U_1 \cup U_2$ is an open set.
+\\
+If we have the union of infinitely many open sets $U_1 \cup U_2 \cup ...$ the
+same process can be applied. Therefore the union of open sets is open.
+
+\item [b.] Let us define two open sets $U_1$ and $U_2$ in $\R^n$, let 
+$\bm{x}\in U_1 \cap U_2$ then there is a ball $B_{r_1}^{U_1}(\bm{x})$ which is
+contained in $U_1$ and there is a ball $B_{r_2}^{U_2}(\bm{x})$ which is
+contained in $U_2$, since both $U_1$ and $U_2$ are open sets.
+Now, we select a radius $r = \min(r_1, r_2)$ then the ball $B_r(\bm{x})$ is
+contained in $U_1 \cap U_2$. Therefore $U_1 \cap U_2$ is open.
+\\
+By the same procedure, the same is true for a finite number of open sets.
+
+\item [c.] Let us consider an infinite number of open sets of the form
+$U_n = (-1/n, 1/n) \subset \R$ where $n \in \N$.
+\\
+We see that $U_1 \cap U_2 \cap U_3 \cap ... = \{0\}$ but $\{0\}$ is not open.
+\\
+Therefore an infinite intersection of open sets is not necessarily open.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.4}
+\begin{itemize}
+\item [a.] Let $B$ be the biggest open set contained in $A$, and suppose
+$B \not\subseteq \mathring{A}$. We want to arrive at a contradiction.
+\\
+Let $\bm{x} \in B$, then by the definition of open set, there must
+be $r > 0$ such that $B_r(\bm{x}) \subset B$ also, $B_r(\bm{x}) \subset A$
+but by defintion of interior must be that $B_r(\bm{x})\subset \mathring{A}$
+hence $B \subseteq \mathring{A}$, a contradiction. Therefore $\mathring{A}$ is 
+the biggest open set contained in $A$.
+
+\item [b.] Let $C$ be a closed set such that $A \subset C$.
+Let $\bm{x} \in \overline{A}$ but $\bm{x} \not\in C$.
+We want to arrive at a contradiction.
+\\
+Since $C$ is closed then $\R^n \setminus C$ is open.
+Then by defintion of open set there is $r' > 0$ such that
+$B_{r'}(\bm{x}) \in \R^n\setminus C$ but also since $\bm{x} \in \overline{A}$ 
+for all $r >0$ must be that $B_r(\bm{x}) \cap A \neq \emptyset$.
+Therefore $B_{r'}(\bm{r})$ must intersect $A$ so we have a contradiction and
+must be that $\bm{x} \in C$ and hence $C \subseteq \overline{A}$ which implies
+that $\overline{A}$ is the smallest closed set containing $A$.
+
+\item [c.] By defintion $A \subset \overline{A}$ also if $\bm{x} \in \partial A$
+then for all $r > 0$ we have that $B_r(\bm{x}) \cap A \neq \emptyset$ then
+$A \cup \partial A \subseteq \overline{A}$.
+\\
+On the other hand, if $\bm{x} \in \overline{A}$ then might be that $\bm{x} \in A$
+as well.
+\\
+But suppose $\bm{x} \not\in A$ then by definition of closure for all
+$r > 0$ we have that $B_r(\bm{x}) \cap A \neq \emptyset$.
+\\
+Also $B_r(\bm{x}) \cap \R^n \setminus A \neq \emptyset$ since at least $\bm{x}$
+is not in $A$ hence $\bm{x} \in \partial A$ this implies that
+$\overline{A} \subseteq A \cup \partial A$.
+Therefore joining both results $\overline{A} = A \cup \partial A$.
+
+\item [d.] Let $\bm{x} \in \overline{A} - \mathring{A}$, since
+$\bm{x} \in \overline{A}$, by the definition, for all $r > 0$ we have that
+$B_r(\bm{x}) \cap A \neq \emptyset$. Also, since $\bm{x} \not\in \mathring{A}$
+for all $r > 0$ must happen that $B_r(\bm{x}) \cap \R^n\setminus A \neq \emptyset$.
+Hence $\bm{x} \in \partial A$ and $\overline{A} - \mathring{A} \subseteq \partial A$.
+
+Let now, $\bm{x} \in \partial A$. Then by definition for all $r > 0$ we have that
+$B_r(\bm{x}) \cap A \neq \emptyset$ so $\bm{x} \in \overline{A}$.
+Also by definition, for all $r>0$ we have that
+$B_r(\bm{x}) \cap \R^n\setminus A \neq \emptyset$, then
+$\bm{x} \not\in \mathring{A}$.
+Therefore $\bm{x} \in \overline{A} - \mathring{A}$ so
+$\partial A \subseteq \overline{A} - \mathring{A}$ and joining both results we
+get that $\partial A = \overline{A} - \mathring{A}$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.5}
+\begin{itemize}
+\item [a.] $U = \bigg\{\begin{pmatrix}x\\ y\end{pmatrix}\in \R^2
+~\bigg|~ 1 < x^2 + y^2 < 2\bigg\}$
+
+Let $\bm{x}_0 = \begin{pmatrix}x_0\\y_0\end{pmatrix} \in U$, we can take $r$
+such that
+$$r < \min\bigg(\sqrt{x_0^2 + y_0^2} - 1, 2 -\sqrt{x_0^2 + y_0^2}\bigg)$$
+then the ball $B_r(\bm{x}_0) \subset U$ so $U$ is open.
+
+We see that $\R^2 - U$ is
+\begin{align*}
+    \R^2 - U = \bigg\{
+    \begin{pmatrix}x\\y\end{pmatrix} \in \R^2~\bigg|~x^2 + y^2 \geq 2
+    \bigg\} \cup
+    \bigg\{
+    \begin{pmatrix}x\\y\end{pmatrix} \in \R^2~\bigg|~x^2 + y^2 \leq 1
+    \bigg\}
+\end{align*}
+so if we take $\bm{x}_0 = \begin{pmatrix}1\\0\end{pmatrix} \in \R^2 - U$ we see
+that there is no $r > 0$ such that $B_r(\bm{x}_0)$ is completely in $\R^2 - U$
+then $\R^2 - U$ is not open and therefore, $U$ is not closed.
+
+\item [b.] $U = \bigg\{\begin{pmatrix}x\\ y\end{pmatrix}\in \R^2
+~\bigg|~ xy \neq 0\bigg\}$
+
+We see that $U$ can be described as $\R^2$ minus the $x$ and $y$ axes.
+
+Let $\bm{x}_0 = \begin{pmatrix}x_0\\y_0\end{pmatrix} \in U$, we can take $r$
+such that $r < \min(|x_0|,|y_0|)$ then the ball $B_r(\bm{x}_0) \subset U$ so
+$U$ is open.
+
+We see that $\R^2 - U$ is the union of the $x$ and $y$ axes, but neither of which
+is open in $\R^2$ so $\R^2 - U$ is not open and hence $U$ is not closed.
+
+\item [c.] $U = \bigg\{\begin{pmatrix}x\\ y\end{pmatrix}\in \R^2
+~\bigg|~ y = 0\bigg\}$
+
+In this case, $U$ can be described as the $x$-axis over $\R^2$.
+
+We saw in problem 1.5.2-c that the line $x=5$ over $\R^2$ is not open but
+closed over $\R^2$.
+
+This is essentially the same problem but for the line $y = 0$, and hence the
+same result applies.
+
+\item [d.] $\{\Q \subset \R\}$
+
+Let $q \in \Q$ then for any $r > 0$ the ball $B_r(q) \subset \R$ contains an
+irrational number. Therefore $\Q$ is not open.
+
+Let $x \in \R - \Q$ then for any $r > 0$ the ball $B_r(x) \subset \R$ contains
+a rational number. Therefore $\R - \Q$ is not open and hence $\Q$ is not closed.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.6}
+Let $A \subset \R^n$ and let $\bm{x} \in \partial A$ then by definition for all
+$r > 0$ we have that $B_r(\bm{x})\cap A \neq \emptyset$ and that
+$B_r(\bm{x})\cap \R^n \setminus A \neq \emptyset$. This implies by the
+definition of closure that $\bm{x} \in \overline{A}$ but also that
+$\bm{x} \in \overline{\R^n \setminus A}$, hence
+$\partial A \subseteq \overline{A} \cap \overline{\R^n \setminus A}$.
+\\
+On the other hand, let $\bm{x} \in \overline{A} \cap \overline{\R^n \setminus A}$,
+then by definition for all $r > 0$ we have that $B_r(\bm{x})\cap A \neq \emptyset$ and that
+$B_r(\bm{x})\cap \R^n \setminus A \neq \emptyset$ but this implies that
+$\bm{x} \in \partial A$, so $\overline{A} \cap \overline{\R^n \setminus A}
+\subseteq \partial A$.
+\\
+Therefore joining both results we get that
+$\partial A = \overline{A} \cap \overline{\R^n \setminus A}$.
+\end{proof}
+\begin{proof}{1.5.7}
+\begin{itemize}
+\item [a.] The natural domain of $\sin 1/xy$ is $\R^2$ minus the $x$-axis and
+the $y$-axis since neither $x$ nor $y$ can be 0.
+
+The natural domain in this case is open but not closed.
+
+\item [b.] The natural domain of $\ln\sqrt{x^2 - y}$ are all $x$ and $y$
+such that $x > 0$ and $0 \leq y < x^2$.
+
+Given that the $x$-axis is included and any ball there will include points that
+are not in the natural domain we can conclude it's not open.
+Also, it's not closed because the side $y < x^2$ does not contain all it's
+boundary points.
+
+\item [c.] The natural domain of $\ln \ln x$ is $(1, \infty)$, then the natural
+domain is open but not closed.
+
+\item [d.] The natural domain of $\arcsin x$ is $[-1, 1]$ so this implies that
+for our function $\arcsin 3/(x^2 + y^2)$ must happen that
+$x^2 + y^2 \geq -3$ or that $x^2 + y^2\geq 3$. Since $x^2 + y^2$ is always
+positive the first constraint can be dropped and therefore the natural domain
+of our function is
+\begin{align*}
+    \{(x,y)\in\R^2 ~|~ x^2 + y^2 \geq 3\}
+\end{align*}
+The natural domain is therefore closed and not open.
+
+\item [e.] For the function $\sqrt{e^{\cos xy}}$ we see that $e^{\cos xy}$
+is always positive for every $(x,y)\in\R^2$, so the natural domain of
+$\sqrt{e^{\cos xy}}$ is $\R^2$.
+
+Therefore the natural domain of this function is open and closed.
+
+\item [f.] The natural domain of $1/xyz$ is
+$(\R \setminus \{0\}) \times (\R \setminus \{0\}) \times (\R \setminus \{0\})$
+i.e $\R^3$ minus the planes $x = 0$, $y = 0$ ans $z = 0$
+since $x, y$ and $z$ cannot be 0.
+
+Therefore the natural domain of this function is open but not closed.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.8}
+\begin{itemize}
+\item [a.] Let 
+\begin{align*}
+    A = \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\
+        0 & 0 & -\epsilon\\
+        0 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+Then we see that
+\begin{align*}
+    I - A = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\
+        0 & 0 & -\epsilon\\
+        0 & 0 & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        1 & \epsilon & \epsilon\\
+        0 & 1 & \epsilon\\
+        0 & 0 & 1
+    \end{bmatrix}
+    = B
+\end{align*}
+Now, let us compute a few powers of $A$
+\begin{align*}
+    A^2 &= \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\ 0 & 0 & -\epsilon\\ 0 & 0 & 0
+    \end{bmatrix} \cdot \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\ 0 & 0 & -\epsilon\\ 0 & 0 & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        0 & 0 & \epsilon^2\\ 0 & 0 & 0\\ 0 & 0 & 0
+    \end{bmatrix}\\
+    A^3 &= \begin{bmatrix}
+        0 & 0 & \epsilon^2\\ 0 & 0 & 0\\ 0 & 0 & 0
+    \end{bmatrix} \cdot \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\ 0 & 0 & -\epsilon\\ 0 & 0 & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        0 & 0 & 0\\ 0 & 0 & 0 \\ 0 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+On the other hand, we know that $S = I + A + A^2 + A^3 + ...$ converges to
+$(I - A)^{-1} = B^{-1}$ but since $A^3 = 0$ then $S$ becomes $S = I + A + A^2$
+and it's given by
+\begin{align*}
+    S &= I + A + A^2\\
+    &= \begin{bmatrix}
+        1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1
+    \end{bmatrix}
+    + \begin{bmatrix}
+        0 & -\epsilon & -\epsilon\\ 0 & 0 & -\epsilon\\ 0 & 0 & 0
+    \end{bmatrix}
+    + \begin{bmatrix}
+        0 & 0 & \epsilon^2\\ 0 & 0 & 0\\ 0 & 0 & 0
+    \end{bmatrix}\\
+    &= \begin{bmatrix}
+        1 & -\epsilon & \epsilon^2 - \epsilon\\ 0 & 1 & -\epsilon \\ 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+\cleardoublepage
+\item [b.] Let $A$ be
+\begin{align*}
+    A = \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix}
+\end{align*}
+Then
+\begin{align*}
+    I - A =\begin{bmatrix}
+        1 & 0 \\ 0 & 1
+    \end{bmatrix}
+    - 
+    \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        1 & -\epsilon\\ \epsilon & 1
+    \end{bmatrix}
+    = C
+\end{align*}
+Now, let us compute a few powers of $A$
+\begin{align*}
+    A^2 &= \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        -\epsilon^2 & 0\\ 0 & -\epsilon^2
+    \end{bmatrix} = -\epsilon^2I\\
+    A^3 &= \begin{bmatrix}
+        -\epsilon^2 & 0\\ 0 & -\epsilon^2
+    \end{bmatrix} \cdot 
+    \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix}
+    = \begin{bmatrix}
+        0 & -\epsilon^3\\ \epsilon^3 & 0
+    \end{bmatrix} = -\epsilon^2A\\
+    A^4 &= \begin{bmatrix}
+        0 & -\epsilon^3\\ \epsilon^3 & 0
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix} 
+    = \begin{bmatrix}
+        \epsilon^4 & 0 \\ 0 & \epsilon^4
+    \end{bmatrix} = \epsilon^4I\\
+    A^5 &= \begin{bmatrix}
+        \epsilon^4 & 0 \\ 0 & \epsilon^4
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        0 & \epsilon \\ -\epsilon & 0
+    \end{bmatrix} 
+    = \begin{bmatrix}
+        0 & \epsilon^5 \\ -\epsilon^5 & 0 
+    \end{bmatrix} = \epsilon^4A
+\end{align*}
+Then we can simplify $S = I + A + A^2 + A^3 + ...$ as follows
+\begin{align*}
+    S &= I + A + A^2 + A^3 + A^4 + A^5 + ...\\
+    &= I + A - \epsilon^2I  - \epsilon^2A + \epsilon^4I + \epsilon^4A + ...\\
+    &= (1 - \epsilon^2 + \epsilon^4 - ...)I + (1 - \epsilon^2 + \epsilon^4 - ...)A\\
+    &= \frac{1}{1 + \epsilon^2}(I + A)
+\end{align*}
+Where we used that by the geometric series we see that
+$1 - \epsilon^2 + \epsilon^4 - ... = 1/(1 + \epsilon^2)$.
+
+Therefore the inverse of $C$ is
+\begin{align*}
+    C^{-1} = \frac{1}{1 + \epsilon^2}(I + A)
+    = \begin{bmatrix}
+        \frac{1}{1 + \epsilon^2} & \frac{\epsilon}{1 + \epsilon^2}\\
+        -\frac{\epsilon}{1 + \epsilon^2} & \frac{1}{1 + \epsilon^2}\\
+    \end{bmatrix}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.9}
+Let $\sum_{i = 1}^{\infty} \bm{x}_i$ be a convergent series in $\R^n$.
+\\
+If $\sum_{i = 1}^{\infty} |\bm{x}_i|$ does not converge then the triangle
+inequality is true since
+\begin{align*}
+    \bigg|\sum_{i = 1}^{\infty} \bm{x}_i\bigg| < \infty = \sum_{i = 1}^{\infty} |\bm{x}_i|
+\end{align*}
+Then let us suppose $\sum_{i = 1}^{\infty} |\bm{x}_i|$ converges.
+We know that in $\R^n$ the triangle inequality holds for finite sums so
+we can write that
+\begin{align*}
+    \bigg|\sum_{i=1}^m \bm{x}_i \bigg|
+    \leq \sum_{i=1}^m |\bm{x}_i| \leq \sum_{i = 1}^{\infty} |\bm{x}_i|
+\end{align*}
+Now, let us take the limit as $m$ goes to infinity
+\begin{align*}
+    \lim_{m \to \infty}\bigg|\sum_{i=1}^m \bm{x}_i \bigg|
+    \leq \sum_{i = 1}^{\infty} |\bm{x}_i|
+\end{align*}
+Because the continuity of the norm $|\cdot|$ and the convergence of $(\sum_{i=1}^n\bm{x}_i)$
+we get that
+\begin{align*}
+    \lim_{m \to \infty}\bigg|\sum_{i=1}^m \bm{x}_i \bigg| 
+    =\bigg|\sum_{i=1}^\infty \bm{x}_i \bigg|
+\end{align*}
+Therefore 
+\begin{align*}
+    \bigg|\sum_{i=1}^\infty \bm{x}_i \bigg|
+    \leq \sum_{i = 1}^{\infty} |\bm{x}_i|
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.11}\\
+Let $\varphi: (0, \infty) \to (0, \infty)$ be a function such that
+$\lim_{\epsilon \to 0} \varphi(\epsilon) = 0$.
+\begin{itemize}
+\item [a.] Let $i \to \bm{a}_i$ be a convergent sequence that converges to
+$\bm{a}$ in $\R^n$.
+
+Let $\varphi(\epsilon) = \epsilon' > 0$ then we know that there is $N \in \N$
+such that when $n \geq N$ we have that $|\bm{a}_i - \bm{a}| < \epsilon' = \varphi(\epsilon)$.
+
+On the other hand, if given $\epsilon > 0$ there is $N \in \N$ such that for
+$n > N$, we have that $|\bm{a}_i - \bm{a}| < \varphi(\epsilon)$. Then by
+Proposition 1.5.14 (1) we have that the sequence $i \to \bm{a}_i$ converges 
+to $\bm{a}$.
+
+\item [b.] The limit $\lim_{\bm{x}\to\bm{x}_0} f(\bm{x})$ exists if and only
+if for any $\epsilon > 0$ there is some $\delta > 0$ such that when
+$|\bm{x} - \bm{x}_0| < \delta$ we have that
+$|f(\bm{x}) - f(\bm{x}_0)| < \varphi(\epsilon)$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.12}\\
+Let $u$ be a strictly positive function of $\epsilon > 0$, such that
+$u(\epsilon) \to 0$ as $\epsilon \to 0$, and let $U$ be a subset of $\R^n$.
+\begin{itemize}
+\item [1.] A function $f:U \to \R$ has the limit $a$ at $\bm{x}_0$ if
+$\bm{x}_0 \in \overline{U}$ and if for all $\epsilon > 0$ there exists
+$\delta > 0$ such that when $|\bm{x}-\bm{x}_0| < \delta$ and $\bm{x}\in U$
+then $|f(\bm{x}) - a| < \epsilon$.
+
+Let $\epsilon > 0$, then if we take $\epsilon' = u(\epsilon)$ since the
+function has the limit $a$ at $\bm{x}_0$ then we have that there exists some
+$\delta' > 0$ such that when $|\bm{x}-\bm{x}_0| < \delta'$ and $\bm{x}\in U$
+then $|f(\bm{x}) - a| < \epsilon' = u(\epsilon)$. Therefore point 1 is
+equivalent to point 2.
+
+\item [2.] On the other hand, the second point states that:
+A function $f:U \to \R$ has the limit $a$ at $\bm{x}_0$ if
+$\bm{x}_0 \in \overline{U}$ and if for all $\epsilon > 0$ there exists
+$\delta > 0$ such that when $|\bm{x}-\bm{x}_0| < \delta$ and $\bm{x}\in U$
+then $|f(\bm{x}) - a| < u(\epsilon)$.
+
+Let $\epsilon > 0$, then if we name $u(\epsilon) = \epsilon'$ since the
+function has the limit $a$ at $\bm{x}_0$ then we have that there exists some
+$\delta' > 0$ such that when $|\bm{x}-\bm{x}_0| < \delta'$ and $\bm{x}\in U$
+then $|f(\bm{x}) - a| < u(\epsilon) = \epsilon'$. Therefore point 2 is
+equivalent to point 1.
+\end{itemize}
+Finally, joining both points, we see that both definitions are equivalent.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.13}\\
+Let every convergent sequence in $C\subset \R^n$ converge to a point in $C$.
+\\
+By definition we know that $C \subseteq \overline{C}$.
+\\
+On the other hand, suppose there is a point $\bm{c} \in \overline{C}$ such
+that $\bm{c} \not\in C$ we want to arrive at a contradiction. By definition
+we know that
+$B_{\epsilon}(\bm{c}) \cap C \neq \emptyset$ for every $\epsilon > 0$.
+So we can take a sequence $\{\bm{c}_n\}$ in $C$ such that
+$\bm{c}_n \in B_{1/n}(\bm{c})$ for all $n \in \N$ then
+$|\bm{c}_n - \bm{c}| < 1/n$ which implies that the sequence $i \to \bm{c}_i$
+converges to $\bm{c}$  as $n \to \infty$ so $\bm{c}$ must be in $C$,
+a contradiction.
+\\
+Therefore $\overline{C} \subseteq C$ but joining the previous
+result we see that $\overline{C} = C$ and hence $C$ is closed.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.14}\\
+\begin{itemize}
+\item [a.] $\lim\limits_{(x,y) \to (1,2)} \frac{x^2}{x + y}$\\[7pt]
+Let $U = (0, 2)\subset \R$ and $V = (1, 3) \subset \R$ then the function $x^2$
+is continuous over $U$ and $1/(x + y)$ is continuous over $U \times V$ then
+because of the product of continuous functions is continuous we have that
+$x^2/(x + y)$ is continuous over $U \times V$ and hence since
+$(1,2) \in U \times V$ we get that
+\begin{align*}
+    \lim\limits_{(x,y) \to (1,2)} \frac{x^2}{x + y} = \frac{1^2}{1 + 2} = \frac{1}{3}
+\end{align*}
+\item [b.] $\lim\limits_{(x,y) \to (0,0)} \frac{\sqrt{|x|}y}{x^2 + y^2}$\\[7pt]
+Let us consider the sequences $(x_n, y_n) = (1/n, 0)$ which converge to $(0, 0)$
+then we see that
+\begin{align*}
+    \frac{\sqrt{|x_n|}y_n}{x_n^2 + y_n^2}
+    = \frac{\sqrt{|1/n|}\cdot 0}{(1/n)^2 + 0^2}
+    = 0
+\end{align*}
+But if we consider the sequences $(x_n, y_n) = (1/n, 1/n)$ which also converge
+to $(0, 0)$ we get that
+\begin{align*}
+    \frac{\sqrt{|x_n|}y_n}{x_n^2 + y_n^2}
+    = \frac{\sqrt{|1/n|}\cdot 1/n}{(1/n)^2 + (1/n)^2}
+    = \frac{1/\sqrt{n}\cdot 1/n}{2/n^2}
+    = \frac{n}{2\sqrt{n}} = \frac{\sqrt{n}}{2}
+\end{align*}
+And $\sqrt{n} \neq 0$ for $n \neq 0$.
+Therefore the limit as $(x,y)\to(0,0)$ of $\sqrt{|x|}y/(x^2 + y^2)$ doesn't
+exist.
+\item [c.] $\lim\limits_{(x,y) \to (0,0)} \frac{\sqrt{|xy|}}{\sqrt{x^2 + y^2}}$\\[7pt]
+Let us consider the sequences $(x_n, y_n) = (1/n, 0)$ which converge to $(0, 0)$
+then we see that
+\begin{align*}
+    \frac{\sqrt{|x_ny_n|}}{\sqrt{x_n^2 + y_n^2}}
+    = \frac{\sqrt{|1/n \cdot 0|}}{\sqrt{(1/n)^2 + 0^2}}
+    = 0
+\end{align*}
+But if we consider the sequences $(x_n, y_n) = (1/n, 1/n)$ which also converge
+to $(0, 0)$ we get that
+\begin{align*}
+    \frac{\sqrt{|x_ny_n|}}{\sqrt{x_n^2 + y_n^2}}
+    = \frac{\sqrt{|1/n \cdot 1/n|}}{\sqrt{(1/n)^2 + (1/n)^2}}
+    = \frac{\sqrt{1/n^2}}{\sqrt{2/n^2}}
+    = \frac{1/n}{\sqrt{2}/n}
+    =\frac{1}{\sqrt{2}}
+\end{align*}
+Therefore the limit as $(x,y)\to(0,0)$ of $\sqrt{|xy|}/\sqrt{x^2 + y^2}$ doesn't
+exist.
+\item [d.] $\lim\limits_{(x,y) \to (1,2)} x^2 + y^3 - 3$\\[7pt]
+Let $U = (0, 2) \subset \R$ and $V = (1, 3) \subset \R$ then the function $x^2$
+is continuous over $U$ and $y^3 - 3$ is continuous over $V$ then because the
+sum of continuous functions is continuous we have that $x^2 + y^3 - 3$ is
+continuous over $U \times V$ and hence since $(1,2) \in U \times V$ we get that
+\begin{align*}
+    \lim\limits_{(x,y) \to (1,2)} x^2 + y^3 - 3
+    = 1^2 + 2^3 - 3 = 6
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.16}\\
+\begin{itemize}
+\item [a.] Let $D^* \subset \R^2$ be the region $0 < x^2 + y^2 < 1$, and let
+$f:D^* \to \R$ be a function. Then the assertion
+\begin{align*}
+    \lim\limits_{\begin{pmatrix}x\\y\end{pmatrix} \to
+    \begin{pmatrix}0\\0\end{pmatrix}} f\begin{pmatrix}x\\y\end{pmatrix} = a
+\end{align*}
+implies that the limit of $f$ as we approach $(0,0)$ exists and is equal to $a$
+Also, since the function is not defined at $(0,0)$ we could extend the domain
+defining that $f(0,0) = a$.
+\item [b.] Let us consider the limit as $(x,y) \to (0,0)$ of the function
+\begin{align*}
+    f\begin{pmatrix}x\\ y\end{pmatrix} = \frac{\sin(x + y)}{\sqrt{x^2 + y^2}}
+\end{align*}
+Let us consider the sequences $(x_n, y_n) = (1/n, 0)$ which converge to $(0, 0)$
+then we see that
+\begin{align*}
+    \frac{\sin(1/n + 0)}{\sqrt{1/n^2 + 0^2}}
+    = \frac{\sin(1/n)}{1/n}
+    = n\sin(1/n)
+\end{align*}
+So as $n\to \infty$ we see that $n\sin(1/n) \to 1$.
+\\
+But if we consider the sequences $(x_n, y_n) = (1/n, 1/n)$ which also converge
+to $(0, 0)$ we get that
+\begin{align*}
+    \frac{\sin(1/n + 1/n)}{\sqrt{1/n^2 + 1/n^2}}
+    = \frac{\sin(2/n)}{\sqrt{2}\cdot 1/n}
+    = \frac{n\sin(2/n)}{\sqrt{2}}
+\end{align*}
+In this case, we see that as $n \to \infty$ we get that $n\sin(2/n)/\sqrt{2} \to \sqrt{2}$.
+Therefore the limit as $(x,y)\to(0,0)$ of $\sin(x + y)/\sqrt{x^2 + y^2}$ doesn't
+exist.
+
+Now, let us consider the limit as $(x,y) \to (0,0)$ of the function
+\begin{align*}
+    g\begin{pmatrix}x\\ y\end{pmatrix} = (|x| + |y|)\ln(x^2 + y^4)
+\end{align*}
+Let us consider the region such that $0 < x^2 + y^4 < 1$, in this region
+$\ln(x^2 + y^4)$ is negative and hence
+$$(|x| + |y|)\ln(x^2 + y^4) < 0$$
+On the other hand, we know that $-1/a^n < \ln(a)$ when $a > 0$ and $n > 0$
+so we can write that
+\begin{align*}
+    -\frac{(|x| + |y|)}{(x^2 + y^4)^{1/5}} < (|x| + |y|)\ln(x^2 + y^4) < 0
+\end{align*}
+Also, we see that
+\begin{align*}
+    0 < \frac{(|x| + |y|)}{(x^2 + y^4)^{1/5}}
+    = \frac{|x|}{(x^2 + y^4)^{1/5}} + \frac{|y|}{(x^2 + y^4)^{1/5}}
+\end{align*}
+Let us analyse each term on the RHS, we see that $x^2 + y^4 \geq x^2$
+so $(x^2 + y^4)^{1/5} \geq (x^2)^{1/5}$ hence
+\begin{align*}
+    0 < \frac{|x|}{(x^2 + y^4)^{1/5}}
+    \leq \frac{|x|}{(x^2)^{1/5}}
+    = |x|^{3/5} \to 0\quad\text{ as }\quad x\to 0
+\end{align*}
+But also we see that $(x^2 + y^4)^{1/5} \geq (y^4)^{1/5}$ so in the same way
+\begin{align*}
+    0 < \frac{|y|}{(x^2 + y^4)^{1/5}}
+    \leq \frac{|y|}{(y^4)^{1/5}}
+    = |y|^{1/5} \to 0\quad\text{ as }\quad y\to 0
+\end{align*}
+Therefore using the squeeze theorem we see that 
+\begin{align*}
+    \frac{(|x| + |y|)}{(x^2 + y^4)^{1/5}} \to 0 \quad\text{ as }\quad (x,y) \to (0,0)
+\end{align*}
+And hence using the squeeze theorem again we get that
+\begin{align*}
+    (|x| + |y|)\ln(x^2 + y^4) \to 0 \quad\text{ as }\quad (x,y) \to (0,0)
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.17}\\
+\begin{itemize}
+\item [1.] Let $i \to \bm{a}_i$ and $i \to \bm{b}_i$ be two convergent sequences
+of points in $\R^n$. Let us take the $j$th component $(a_i)_j$ of $\bm{a}_i$
+and $(b_i)_j$ in $\bm{b}_i$ that converge to $a_j$ in $\bm{a}$ and $b_j$ in
+$\bm{b}$ respectively.
+\\
+Then we know that given $\epsilon/2 > 0$ there is $N_a$ and $N_b$ such that when
+$n \geq N_a$ we have that
+\begin{align*}
+    |(a_n)_j - a_j| < \epsilon/2
+\end{align*}
+and when $n \geq N_b$ we have that
+\begin{align*}
+    |(b_n)_j - b_j| < \epsilon/2
+\end{align*}
+Let us take $N = \max\{N_a, N_b\}$ so when $n \geq N$ we have that
+\begin{align*}
+    |((a_n)_j - a_j) + ((b_n)_j - b_j)| \leq
+    |(a_n)_j - a_j| + |(b_n)_j - b_j| < \frac{\epsilon}{2} + \frac{\epsilon}{2}
+    = \epsilon
+\end{align*}
+But we can write that
+$$|((a_n)_j - a_j) + ((b_n)_j - b_j)| = |((a_n)_j + (b_n)_j) - (a_j + b_j)|$$
+so
+\begin{align*}
+    |((a_n)_j + (b_n)_j) - (a_j + b_j)| < \epsilon
+\end{align*}
+This implies that $\lim_{i\to\infty}((a_i)_j + (b_i)_j) = a_j + b_j$ but by
+Proposition (1.5.13) we know that the convergence of the coordinates implies 
+the convergence of the senquence, therefore
+\begin{align*}
+    \lim_{i\to\infty}(\bm{a}_i + \bm{b}_i) = \bm{a} + \bm{b}
+    = \lim_{i\to\infty}\bm{a}_i + \lim_{i\to\infty}\bm{b}_i
+\end{align*}
+
+\item [2.] Let $i \to \bm{a}_i$ and $i \to c_i$ be two convergent sequences
+in $\R^n$ and $\R$ respectively. Let us take the $j$th component $(a_i)_j$ of
+$\bm{a}_i$ that converge to $a_j$ in $\bm{a}$.
+
+Since $c_i \to c$ let us take $\epsilon = 1$ then there is $N_1$ such that
+when $n \geq N_1$ we have that $|c_n - c| < 1$, also 
+\begin{align*}
+    |c_n| = |c_n - c + c| \leq |c_n - c| + |c| < 1 + |c|
+\end{align*}
+Hence $|c_n| \leq |c| + 1$ when $n \geq N_1$.
+
+Let us fix $\epsilon > 0$ and let us define
+$$\epsilon' = \frac{\epsilon}{1 + |c| + |a_j|} > 0$$
+Then  there is
+$N_a$ such that when $n \geq N_a$ we have that
+\begin{align*}
+    |(a_n)_j - a_j| < \epsilon'
+\end{align*}
+Also, there is some $N_c$ such that $|c_n - c| < \epsilon'$ when $n \geq N_c$.
+
+So, if we take $N = \max\{N_a, N_c, N_1\}$ when $n \geq N$ we have that
+\begin{align*}
+    |(a_n)_jc_n - a_jc| 
+    &= |(a_n)_jc_n - a_jc + a_jc_n - a_jc_n|\\
+    &= |c_n((a_n)_j - a_j) + a_j(c_n - c)|\\
+    &\leq |c_n||(a_n)_j - a_j| + |a_j||c_n - c|\\
+    &< |c_n|\epsilon' + |a_j|\epsilon'\\
+    &< (1 + |c|)\epsilon' + |a_j|\epsilon'\\
+    &< \epsilon'((1 + |c|) + |a_j|)\\
+    &< \epsilon
+\end{align*}
+Therefore this implies that $\lim_{i\to\infty} (a_i)_jc_i = a_jc$.
+Since this holds for every component $j$ of $\bm{a}_i$ then the sequence
+$\bm{a}_ic_i$ converges to $\bm{a}c$ i.e.
+\begin{align*}
+    \lim_{i\to\infty} c_i\bm{a}_i = \bm{a}c
+    = \lim_{i\to\infty} \bm{a}_i \cdot \lim_{i\to\infty} c_i
+\end{align*}
+\item [3.] Let $i \to \bm{a}_i$ and $i \to \bm{b}_i$ be two convergent sequences
+of points in $\R^m$. We can also see these sequences as sequences of vectors in
+$\R^m$ i.e. $i \to \bvec{a}_i$ and $i \to \bvec{b}_i$.
+
+Let us take the $j$th component $(a_i)_j$ of $\bvec{a}_i$
+and $(b_i)_j$ in $\bvec{b}_i$ that converge to $a_j$ in $\bvec{a}$ and $b_j$ in
+$\bvec{b}$ respectively.
+
+Then from part (2) we know that given $\epsilon/m > 0$ ($m$ is the dimmension)
+there is $N_j$ such that when $n \geq N_j$ we have that
+\begin{align*}
+    |(a_n)_j(b_n)_j - a_jb_j| < \frac{\epsilon}{m}
+\end{align*}
+i.e. $\lim_{i\to\infty} (a_i)_j(b_i)_j = a_jb_j$.
+
+Since we can do this for every component of $\bm{a}_i$ and $\bm{b}_i$ taking
+$N = \max\{N_1, N_2, ..., N_m\}$ when $n \geq N$ the following inequalities
+hold
+\begin{align*}
+    &|((a_n)_1(b_n)_1 + (a_n)_2(b_n)_2 + ... + (a_n)_m(b_n)_m)
+    - (a_1b_1 + a_2b_2 + ... + a_mb_m)|\\
+    &\quad=|((a_n)_1(b_n)_1 - a_1b_1) + ((a_n)_2(b_n)_2 - a_2b_2) + ...
+    + ((a_n)_m(b_n)_m - a_mb_m)|\\
+    &\quad\leq |(a_n)_1(b_n)_1 - a_1b_1| + |(a_n)_2(b_n)_2 - a_2b_2| + ...
+    + |(a_n)_m(b_n)_m - a_mb_m|\\
+    &\quad< \epsilon/m + \epsilon/m + ... + \epsilon/m = \epsilon
+\end{align*}
+Therefore
+\begin{align*}
+    \lim_{i\to\infty} \bvec{a}_i\cdot \bvec{b}_i = \bvec{a}\cdot \bvec{b}
+    = \lim_{i\to\infty} \bvec{a}_i \cdot \lim_{i\to\infty} \bvec{b}_i
+\end{align*}
+
+\cleardoublepage
+\item [4.] Let $i \to \bm{a}_i$ be a bounded sequence in $\R^m$ and $i \to c_i$
+be a sequence that converge to 0 in $\R$.
+
+Let us take the $j$th component $(a_i)_j$ of $\bm{a}_i$ that is bounded by
+some number $M_j$ so $|(a_i)_j| < M_j$ for every $i$.
+
+Also, let $\epsilon > 0$ and $\epsilon' = \epsilon /M_j$ then there is $N_c$
+such that when $n \geq N_c$ we have that $|c_n - 0| = |c_n| < \epsilon'$.
+
+So we see that
+\begin{align*}
+    |(a_n)_jc_n - 0| = |(a_n)_jc_n| = |(a_n)_j||c_n| < M_j \epsilon' = \epsilon
+\end{align*}
+Which implies that $\lim_{i\to\infty} (a_i)_jc_i = 0$. But since this holds for
+every component $j$ of $\bm{a}_i$ then the sequence $c_i\bm{a}_i$ converges to
+0 i.e.
+\begin{align*}
+    \lim_{i\to \infty} c_i\bm{a}_i = 0
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.5.18}\\
+Let $i \to \bm{a}_i$ be a sequence convergent to $\bm{a}$
+and let $j \to \bm{a}_{i(j)}$ be any subsequence of $\bm{a}_i$.
+\\
+Let us take the $k$th component $(a_i)_k$ of $\bm{a}_i$ that converges
+to $a_k$ in $\bm{a}$. Also, the $k$th component of the subsequence
+$\bm{a}_{i(j)}$ is $(a_{i(j)})_k$. 
+\\
+Given some $\epsilon > 0$ then there is $N$ such that when $n \geq N$
+we have that $|(a_n)_k - a_k| < \epsilon$.
+\\
+Also, since for the subsequence we know that $i(j) \to \infty$ then we can find
+$J$ such that $i(j) \geq N$ for all $j \geq J$.
+\\
+Therefore since the subsequence $(a_{i(j)})_k$ are selected elements of
+$(a_i)_k$ then must be that $|(a_{i(j)})_k - a_k| < \epsilon$ when
+$i(j) \geq N$, which implies that
+$$\lim_{j\to\infty} (a_{i(j)})_k = a_k$$
+Finally, since this holds for every component $k$ of the sequence and the
+subsequence then the subsequence $j \to \bm{a}_{i(j)}$ converges to $\bm{a}$.
+\end{proof}
+
+\cleardoublepage
+\section*{1.6 - Five Big Theorems}
+\begin{proof}{1.6.1}\\
+Let a set $X\subset\R^n$ be contained in a ball centered at $\bm{x} \in \R^n$
+hence
+$$X \subset B_{R'}(\bm{x}) \text{ for some } R' < \infty$$
+We can define $B_{R}(\bm{0})$ as a ball centered at the origin such that
+$R = R' + |\bm{x}|$. So we see that
+$$X \subset B_R'(\bm{x}) \subset B_{R}(\bm{0})$$
+Therefore $X$ is bounded.
+\end{proof}
+
+\begin{proof}{1.6.2}\\
+Let $A\subset\R^n$ be a subset that it's not compact.
+So $A$ is not closed and/or not bounded.
+\\
+Let us suppose $A$ is closed but not bounded and let us define
+$$f(\bm{x}) = |\bm{x}| = \sqrt{x_1^2 + x_2^2 + ... + x_n^2}$$
+Let us fix $\bm{x}_0 \in A$ then given $\epsilon > 0$ if we take
+$\delta = \epsilon$ we see that whenever $|\bm{x} - \bm{x}_0| < \delta$ we have
+that
+\begin{align*}
+    |f(\bm{x}) - f(\bm{x}_0)| = ||\bm{x}| - |\bm{x}_0||
+    \leq |\bm{x} - \bm{x}_0| < \delta = \epsilon
+\end{align*}
+Therefore $f$ is continuous in $A$.
+\\
+Now, let $M > 0$ in $\R$ then since $A$ is not bounded there is
+$\bm{x} \in A$ such that $|\bm{x}| > M$ so we see that
+\begin{align*}
+    |f(\bm{x})| = \bigg|\sqrt{x_1^2 + x_2^2 + ... + x_n^2}\bigg| = 
+    \sqrt{x_1^2 + x_2^2 + ... + x_n^2} = |\bm{x}| > M
+\end{align*}
+Therefore $f$ is not bounded.
+\\\\
+Let us suppose now that $A$ is bounded but not closed, and let us select some
+$\bm{p} \in \overline{A}/A$ then if we define $f$ as 
+$$f(\bm{x}) = \frac{1}{|\bm{x} - \bm{p}|}$$
+We see that $f$ is continuous in $A$ because $|\bm{x}|$ is continuous in $A$.
+Also, as $\bm{x}$ approaches $\bm{p}$ the function blows up so it's not bounded.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.6.3}\\
+Let $z = x + iy$ where $x,y \in \R$ and let us define the polynomial
+$p(z) = 1 + x^2y^2$.
+\\
+We want to prove that $p(z)$ has no roots, so if $p(z) = 0$ we see that
+must be that $xy = i$ which cannot happen because $x,y \in \R$ and no
+multiplication of two real numbers gives us the imaginary number $i$.
+\\
+Therefore $p(z)$ has no roots, this doesn't contradict the Fundamental theorem
+of algebra because the theorem requires that the polynomials are of the form
+\begin{align*}
+    p(z) = z^k + a_{k-1}z^{k-1} + ... + a_0
+\end{align*}
+Where $z \in \C$ and $1 + x^2y^2$ cannot be put in this form.
+\end{proof}
+
+\cleardoublepage
+\section*{1.7 - Derivatives in several variables as linear transformations}
+\begin{proof}{1.7.6}\\
+\begin{itemize}
+\item [a.] Let
+\begin{align*}
+    \bm{f}\begin{pmatrix}x\\y\end{pmatrix}
+    = \begin{pmatrix}
+        \cos x\\ x^2y + y^2 \\ \sin(x^2 - y)
+    \end{pmatrix}
+\end{align*}
+Then the partial derivative of $\bm{f}$ are
+\begin{align*}
+    \overrightarrow{D_1}\bm{f} \begin{pmatrix}x\\y\end{pmatrix}
+    &= \begin{pmatrix}
+        -\sin x\\ 2xy \\ 2x\cos(x^2 - y)
+    \end{pmatrix}
+    \qquad
+    \overrightarrow{D_2}\bm{f} \begin{pmatrix}x\\y\end{pmatrix}
+    = \begin{pmatrix}
+        0\\ x^2 + 2y \\ -\cos(x^2 - y)
+    \end{pmatrix}
+\end{align*}
+
+\item [b.] Let
+\begin{align*}
+    \bm{f}\begin{pmatrix}x\\y\end{pmatrix}
+    = \begin{pmatrix}
+        \sqrt{x^2 + y^2}\\ xy \\ \sin^2 xy
+    \end{pmatrix}
+\end{align*}
+Then the partial derivative of $\bm{f}$ are
+\begin{align*}
+    \overrightarrow{D_1}\bm{f} \begin{pmatrix}x\\y\end{pmatrix}
+    &= \begin{pmatrix}
+        \frac{x}{\sqrt{x^2 + y^2}}\\ y \\ 2y\cos xy\sin xy
+    \end{pmatrix}
+    \qquad
+    \overrightarrow{D_2}\bm{f} \begin{pmatrix}x\\y\end{pmatrix}
+    = \begin{pmatrix}
+        \frac{y}{\sqrt{x^2 + y^2}}\\ x \\ 2x\cos xy\sin xy
+    \end{pmatrix}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.7}\\
+We can write the results of problem 1.7.6 as the Jacobian matrix of both
+$\bm{f}$ as follows
+\begin{itemize}
+\item [a.]
+\begin{align*}
+    \bigg[\bm{Jf}\begin{pmatrix}x\\y\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        \overrightarrow{D_1}\bm{f}(\bm{x}) & \overrightarrow{D_2}\bm{f}(\bm{x})
+    \end{bmatrix}
+    = \begin{bmatrix}
+        -\sin x         & 0 \\
+        2xy             & x^2 + 2y \\
+        2x\cos(x^2 - y) & -\cos(x^2 - y)
+    \end{bmatrix}
+\end{align*}
+\item [b.]
+\begin{align*}
+    \bigg[\bm{Jf}\begin{pmatrix}x\\y\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        \overrightarrow{D_1}\bm{f}(\bm{x}) & \overrightarrow{D_2}\bm{f}(\bm{x})
+    \end{bmatrix}
+    = \begin{bmatrix}
+        \frac{x}{\sqrt{x^2 + y^2}} & \frac{y}{\sqrt{x^2 + y^2}} \\
+        y                          & x \\
+        2y\cos xy\sin xy           & 2x\cos xy\sin xy
+    \end{bmatrix}
+\end{align*}
+\end{itemize}
+\end{proof}
+\begin{proof}{1.7.9}\\
+\begin{itemize}
+\item [a.] Let $\bm{f}:\R^n \to \R^m$ then the derivative of $\bm{f}$ is an
+$m \times n$ matrix called $[\bm{Df}(\bm{x})]$.
+\item [b.] Let $f:\R^3 \to \R$ then the derivative of $f$ is a $1 \times 3$
+matrix or a row vector with 3 components.
+\item [c.] Let $\bm{f}:\R \to \R^4$ then the derivative of $\bm{f}$ is a
+$4 \times 1$ matrix or a column vector with 4 components.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.10}\\
+Let $\bm{f}:\R^2 \to \R^2$ be a function.
+\begin{itemize}
+\item [a.] Let $\bm{a},\bm{v} \in \R^2$ and suppose $\bm{f}$ is affine, then
+it can be written as
+$$\bm{f}(\bm{x}) = \bm{A}\bm{x} + \bm{b}$$
+where $\bm{A}$ is a $2\times 2$ matrix and $\bm{b}$ is a vector in $\R^2$.
+
+So we have that
+\begin{align*}
+    \bm{f}(\bm{a} + \bm{v}) &= \bm{A}(\bm{a} + \bm{v}) + \bm{b}
+    = \bm{A}\bm{a} + \bm{A}\bm{v} + \bm{b}
+    = \bm{f}(\bm{a}) + \bm{A}\bm{v}
+\end{align*}
+Let us show now that the derivative of $\bm{f}$ at $\bm{a}$ is $\bm{A}$ by
+using the defintion as follows
+\begin{align*}
+    &\lim_{|\bm{h}| \to \bm{0}} \frac{1}{|\bm{h}|}
+    \bigg(\bm{f}(\bm{a} + \bm{h}) - \bm{f}(\bm{a}) - \bm{A}\bm{h} \bigg) =\\
+    &\qquad= \lim_{|\bm{h}| \to \bm{0}} \frac{1}{|\bm{h}|}
+    \bigg(\bm{A}(\bm{a} + \bm{h}) + \bm{b} - (\bm{A}\bm{a} + \bm{b}) - \bm{A}\bm{h}\bigg)\\
+    &\qquad= \lim_{|\bm{h}| \to \bm{0}} \frac{1}{|\bm{h}|}
+    \bigg(\bm{A}\bm{a} + \bm{A}\bm{h} + \bm{b} - \bm{A}\bm{a} - \bm{b} - \bm{A}\bm{h}\bigg)\\
+    &\qquad=\bm{0}
+\end{align*}
+Therefore 
+\begin{align*}
+    \bm{f}(\bm{a} + \bm{v}) = \bm{f}(\bm{a}) + [\bm{Df}(\bm{a})]\bm{v}
+\end{align*}
+\item [b.] Let
+\begin{align*}
+    \bm{f}\begin{pmatrix}x_1\\ x_2\end{pmatrix} = \begin{pmatrix}
+        x_1^2 \\ 0
+    \end{pmatrix}
+\end{align*}
+We see that $\bm{f}$ is not affine because it can't be written as
+$\bm{f}(\bm{x}) = \bm{A}\bm{x} + \bm{b}$.
+Since $\bm{f}$ is differentiable at $\bm{a}$ then we know that
+$[\bm{Df}(\bm{a})] = [\bm{Jf}(\bm{a})]$ and
+\begin{align*}
+    [\bm{Jf}(\bm{a})] = \begin{bmatrix} 2a_1 & 0 \\ 0 & 0 \end{bmatrix}
+\end{align*}
+If part (a) holds for $\bm{f}$, we must have that
+\begin{align*}
+    \bm{f}\begin{pmatrix}a_1 + v_1\\ a_2 + v_2\end{pmatrix}
+    &= \bm{f}\begin{pmatrix}a_1\\ a_2\end{pmatrix}
+    + \begin{bmatrix} 2a_1 & 0 \\ 0 & 0 \end{bmatrix}
+    \begin{pmatrix}v_1\\ v_2\end{pmatrix}\\
+    &= \begin{pmatrix}a_1^2\\ 0\end{pmatrix} + 
+    \begin{pmatrix}2a_1v_1\\ 0\end{pmatrix}\\
+    &= \begin{pmatrix}a_1^2 + 2a_1v_1\\ 0\end{pmatrix} 
+\end{align*}
+But we see that
+\begin{align*}
+    \bm{f}\begin{pmatrix}a_1 + v_1\\ a_2 + v_2\end{pmatrix}
+    = \begin{pmatrix} (a_1 + v_1)^2 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} a_1^2 + 2a_1v_1 + v_1^2 \\ 0 \end{pmatrix}
+\end{align*}
+Therefore, if $\bm{f}$ is not affine, then part (a) doesn't hold.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.11}
+\begin{itemize}
+\item [a.] The Jacobian of $f\begin{pmatrix}x\\ y\end{pmatrix} = \sin(xy)$ is
+\begin{align*}
+    \bigg[\bm{J}f\begin{pmatrix}x\\ y\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        y\cos(xy) & x\cos(xy)
+    \end{bmatrix}
+\end{align*}
+\item [b.] The Jacobian of $f\begin{pmatrix}x\\ y\end{pmatrix} = e^{x^2 + y^3}$
+is
+\begin{align*}
+    \bigg[\bm{J}f\begin{pmatrix}x\\ y\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        2xe^{x^2 + y^3} & 3y^2e^{x^2 + y^3}
+    \end{bmatrix}
+\end{align*}
+\item [c.] The Jacobian of $\bm{f}\begin{pmatrix}x\\ y\end{pmatrix}
+= \begin{pmatrix}xy \\ x + y \end{pmatrix}$
+is
+\begin{align*}
+    \bigg[\bm{Jf}\begin{pmatrix}x\\ y\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        y & x\\ 1 & 1 
+    \end{bmatrix}
+\end{align*}
+
+\item [d.] The Jacobian of $\bm{f}\begin{pmatrix}r\\ \theta\end{pmatrix}
+= \begin{pmatrix}r\cos\theta \\ r\sin\theta\end{pmatrix}$
+is
+\begin{align*}
+    \bigg[\bm{Jf}\begin{pmatrix}r\\ \theta\end{pmatrix}\bigg]
+    &= \begin{bmatrix}
+        \cos\theta & -r\sin\theta\\
+        \sin\theta & r\cos\theta
+    \end{bmatrix}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.15}
+\begin{itemize}
+\item [a.] A mapping $F: \text{Mat}(n,m) \to \text{Mat}(k,l)$ is differentiable
+at $A \in \text{Mat}(n,m)$ if exists a linear transformation
+$[\bm{D}F(A)]:\text{Mat}(n,m) \to \text{Mat}(k,l)$ such that 
+\begin{align*}
+    \lim_{H\to [0]} \frac{1}{|H|}\bigg((F(A + H) - F(A)) - [\bm{D}F(A)]H\bigg) = [0]
+\end{align*}
+\item [b.] Let $F: \text{Mat}(n,m) \to \text{Mat}(n,n)$ given by $F(A) = AA^T$
+then we see that
+\begin{align*}
+    &\lim_{H\to [0]} \frac{1}{|H|}\bigg((A + H)(A + H)^T - AA^T - [\bm{D}F(A)]H\bigg) =\\
+    &\quad= \lim_{H\to [0]} \frac{1}{|H|}
+    \bigg((A + H)(A^T + H^T) - AA^T - [\bm{D}F(A)]H\bigg)\\
+    &\quad= \lim_{H\to [0]} \frac{1}{|H|}
+    \bigg((AA^T + HA^T + AH^T + HH^T) - AA^T - [\bm{D}F(A)]H\bigg)\\
+    &\quad= \lim_{H\to [0]} \frac{1}{|H|}
+    \bigg(HA^T + AH^T + HH^T - [\bm{D}F(A)]H\bigg)
+\end{align*}
+So let us define $[\bm{D}F(A)]$ as the linear transformation such that
+$$[\bm{D}F(A)]: H \to HA^T + AH^T$$
+Then we see that
+\begin{align*}
+    |HA^T + AH^T + HH^T - HA^T - AH^T| = |HH^T|
+\end{align*}
+This gives
+\begin{align*}
+    \lim_{H\to [0]} \frac{|HH^T|}{|H|}
+    \leq \lim_{H\to [0]} \frac{|H||H^T|}{|H|}
+    = \lim_{H\to [0]} \frac{|H||H|}{|H|} = 0
+\end{align*}
+Where we used that $|H| = |H^T|$.
+\\
+Therefore $F$ is differentiable and the linear transformation
+$$[\bm{D}F(A)]: H \to HA^T + AH^T$$
+is the derivative of $F$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.18}\\
+Let $U \subset \R^n$ be open and let $f:U \to \R$ be differentiable at
+$\bm{a} \in U$.
+\\
+We want to show that if $\bm{v}$ is a unit vector making an angle $\theta$
+with the gradient $\vec{\nabla} f(\bm{a})$ then
+\begin{align*}
+    [\bm{D}f(\bm{a})]\bm{v} = |\vec{\nabla} f(\bm{a})|\cos\theta
+\end{align*}
+We know that to evaluate the gradient $\vec{\nabla} f(\bm{a})$ at $\bm{v}$
+we need to compute the dot product between the two vectors i.e.
+$\vec{\nabla} f(\bm{a}) \cdot \bm{v}$ and we know that
+\begin{align*}
+    \vec{\nabla} f(\bm{a}) \cdot \bm{v}
+    = |\vec{\nabla} f(\bm{a})||\bm{v}|\cos\theta
+    = |\vec{\nabla} f(\bm{a})|\cos\theta
+\end{align*}
+Where we used that $|\bm{v}| = 1$.
+\\
+On the other hand, we know that $[\bm{D}f(\bm{a})]$ is defined as the row
+vector $[D_1f(\bm{a})~...~D_nf(\bm{a})]$ so taking the directional derivative
+in the direction $\bm{v}$ implies computing the matrix multiplication
+between $[\bm{D}f(\bm{a})]$ and $\bm{v}$ 
+\begin{align*}
+    [D_1f(\bm{a})~...~D_nf(\bm{a})]
+    \begin{bmatrix} v_1 \\ \vdots \\ v_n\end{bmatrix}
+    = D_1f(\bm{a})v_1 + ... + D_nf(\bm{a})v_n
+\end{align*}
+But this is no different from taking the dot product between\\
+$[\bm{D}f(\bm{a})]^T = \vec{\nabla} f(\bm{a})$ and $\bm{v}$, so we get that
+\begin{align*}
+    [\bm{D}f(\bm{a})]\bm{v} = |\vec{\nabla} f(\bm{a})|\cos\theta
+\end{align*}
+Evaluating $[\bm{D}f(\bm{a})]$ in the direction $\bm{v}$ gives us the how fast
+the function changes in the direction of $\bm{v}$ and this is going to be 
+maximum when $\bm{v}$ points in the direction of $\vec{\nabla} f(\bm{a})$
+i.e. $\theta = 0$ and hence $\cos{\theta} = 1$.
+\\
+So $\vec{\nabla} f(\bm{a})$ must point in the direction that $f$ changes the
+fastest.
+\\
+Finally, if $\bm{v}$ points in the direction of $\vec{\nabla} f(\bm{a})$
+we know that the directional derivative is 
+\begin{align*}
+    [\bm{D}f(\bm{a})]\bm{v} = |\vec{\nabla} f(\bm{a})|
+\end{align*}
+Then we know that the rate of change of $f$ in the direction of
+$\vec{\nabla} f(\bm{a})$ (or $\bm{v}$) is $|\vec{\nabla} f(\bm{a})|$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.7.21}\\
+Let us consider the determinant of $2\times 2$ matrices as a function\\
+$\det : \text{Mat}(2,2) \to \R$. We want to show that
+\begin{align*}
+    [\bm{D}\det(I)]H = h_{1,1} + h_{2,2}
+\end{align*}
+Where $I$ is the identity and $H$ is the increment matrix.
+\\
+If this is the derivative of $\det$ then the following limit must tend to $0$
+\begin{align*}
+    &\lim_{H \to [0]}
+    \frac{1}{|H|}\bigg((\det(I + H) - \det(I)) - [\bm{D}\det(I)]H\bigg) =\\
+    &\quad= \lim_{H \to [0]}
+    \frac{1}{|H|}\bigg(1 + h_{2,2} + h_{1,1} + h_{1,1}h_{2,2} - h_{1,2}h_{2,1}
+    - 1 - h_{1,1} - h_{2,2}\bigg)\\
+    &\quad= \lim_{H \to [0]}
+    \frac{1}{|H|}(h_{1,1}h_{2,2} - h_{1,2}h_{2,1})\\
+    &\quad= \lim_{H \to [0]} \frac{\det(H)}{|H|}
+\end{align*}
+Where we used that
+\begin{align*}
+    \det\begin{pmatrix}
+        1 + h_{1,1} & h_{1,2}\\
+        h_{2,1} & 1 + h_{2,2}\\
+    \end{pmatrix} &= (1 + h_{1,1})(1 + h_{2,2}) - h_{1,2}h_{2,1}\\
+    &= 1 + h_{2,2} + h_{1,1} + h_{1,1}h_{2,2} - h_{1,2}h_{2,1}
+\end{align*}
+We see that $|h_{1,1}| \leq \sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}$
+then
+\begin{align*}
+    0\leq \frac{|h_{1,1}h_{2,2}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    \leq |h_{2,2}|
+\end{align*}
+In the same way
+\begin{align*}
+    0\leq \frac{|h_{1,2}h_{2,1}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    \leq |h_{2,1}|
+\end{align*}
+So, by the squeeze theorem, as $H \to [0]$ we get that
+\begin{align*}
+    \lim_{H \to [0]}\frac{|h_{1,1}h_{2,2}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    &= 0\\
+    \lim_{H \to [0]}\frac{|h_{1,2}h_{2,1}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    &= 0
+\end{align*}
+Also, by the triangle inequality we see that
+\begin{align*}
+    0 \leq \frac{|h_{1,1}h_{2,2} - h_{1,2}h_{2,1}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    \leq \frac{|h_{1,1}h_{2,2}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    + \frac{|h_{1,2}h_{2,1}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+\end{align*}
+Therefore, again by the squeeze theorem we have that
+\begin{align*}
+    \lim_{H \to [0]}\frac{|h_{1,1}h_{2,2} - h_{1,2}h_{2,1}|}
+    {\sqrt{h_{1,1}^2 + h_{1,2}^2 + h_{2,1}^2 + h_{2,2}^2}}
+    = 0
+\end{align*}
+This implies that the limit of $\det(H)/|H|$ as $H \to [0]$ is 0 and hence the
+derivative of $\det : \text{Mat}(2,2) \to \R$ is $h_{1,1} + h_{2,2}$.
+\end{proof}
+\end{document}
