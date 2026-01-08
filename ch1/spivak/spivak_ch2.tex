@@ -1,0 +1,354 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of Calculus on Manifolds by Michael Spivak}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\ei}[1]{\vec{\bm{e}}_#1}
+\newcommand{\bvec}[1]{\vec{\bm{#1}}}
+\newcommand{\tr}{\text{tr}}
+\theoremstyle{definition}
+% \newtheorem*{solution*}{Solution}
+% \renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{2 - Differentiation}
+\subsection*{Basic Definitions}
+\begin{proof}{\textbf{2-2.}}
+Let $f:\R^2 \to \R$ be independent of the second variable i.e. for each
+$x \in \R$ we have that $f(x,y_1) = f(x, y_2)$ for all $y_1, y_2 \in \R$.
+\\
+Then we can take some $y_0 \in \R$ and define a function $g:\R \to \R$ such
+that $g(x) = f(x,y_0)$, then, for any $y\in \R$ we get that
+$f(x,y) = f(x,y_0) = g(x)$ because $f$ is independent of the second variable.
+\\\\
+On the other hand, suppose we have a function $g:\R \to \R$ such that
+$g(x) = f(x,y)$ then since this is true for any $y\in \R$ then we can write 
+that
+$$f(x,y_1) = g(x) = f(x, y_2)$$
+for any $y_1, y_2 \in \R$, which implies that $f$ is independent of the second
+variable.
+\\\\
+The Jacobian of $f$ at $(a,b)$ i.e. $f'(a,b)$ is given by
+\begin{align*}
+    f'(a,b) = (D_1f(a, b),~D_2f(a, b))
+\end{align*}
+Since $g(x) = f(x,y)$ then $D_1f(a,b) = D_1g(a) = g'(a)$ therefore
+\begin{align*}
+    f'(a,b) = (g'(a),~0)
+\end{align*}
+\end{proof}
+
+\begin{proof}{\textbf{2-3.}}
+A function $f:\R^2 \to \R$ is independent of the first variable if for each
+$y\in \R$ we have that$f(x_1, y) = f(x_2, y)$ for all $x_1, x_2 \in \R$.
+\\\\
+The Jacobian $f'(a,b)$ in this case is
+\begin{align*}
+    f'(a,b) = (D_1f(a,b),~D_2f(a,b)) = (0,~D_2f(a,b))
+\end{align*}
+In the same way as we did in problem 2-2, we can show that $f$ is independent
+of the first variable if and only if there is a function $g:\R \to \R$
+such that $g(y) = f(x,y)$.
+\\
+So we get that $D_2f(a,b) = D_2g(b) = g'(b)$ and therefore
+\begin{align*}
+    f'(a,b) = (0, g'(b))
+\end{align*}
+Finally, the functions that are independent of the first and the second variable
+are the functions of the form $f(x, y) = c$ where $c$ is a constant.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-4.}}
+Let us define $f:\R^2\to \R$ by
+\begin{align*}
+    f(x) = \begin{cases}
+        |x|\cdot g\big(\frac{x}{|x|}\big) & x\neq 0\\
+        0  & x = 0
+    \end{cases}
+\end{align*}
+Where $g$ is a continuous real-valued function on the unit circle\\
+$\{x \in \R^2~:~|x| = 1\}$ such that $g(0,1) = g(1,0) = 0$ and $g(-x) = -g(x)$.
+\begin{itemize}
+\item [(a)] If $x\in\R^2$ and $h:\R \to \R$ defined by $h(t) = f(tx)$, we want
+to show that $h$ is differentiable.
+\\
+Suppose $x \neq 0$, also, let $a \in \R$ and let
+$\lambda(k) = k|x|g(\frac{x}{|x|})$ then
+\begin{align*}
+    &\lim_{k \to 0} \frac{|h(a + k) - h(a) - \lambda(k)|}{|k|}
+    = \lim_{k \to 0} \frac{|f((a + k)x) - f(ax) - \lambda(k)|}{|k|} =\\
+    &\qquad= \lim_{k \to 0}
+    \frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)\bigg|
+\end{align*}
+Suppose $a + k > 0$, and suppose $a > 0$ then
+\begin{align*}
+    &\frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg| = \\
+    &= \frac{1}{|k|}
+    \bigg|(a + k)|x|g\bigg(\frac{x}{|x|}\bigg)
+    - a|x|g\bigg(\frac{x}{|x|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg|\\
+    &= 0
+\end{align*}
+If $a < 0$ then
+\begin{align*}
+    |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    = -a|x|g\bigg(-\frac{ax}{a|x|}\bigg)
+    = a|x|g\bigg(\frac{x}{|x|}\bigg)
+\end{align*}
+Where we used that $g(-x) = -g(x)$ and hence
+\begin{align*}
+    &\frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg| =\\
+    &= \frac{1}{|k|}
+    \bigg|(a + k)|x|g\bigg(\frac{x}{|x|}\bigg)
+    - a|x|g\bigg(\frac{x}{|x|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg|\\
+    &= 0
+\end{align*}
+Now suppose $a + k < 0$ then
+\begin{align*}
+    &\frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg| = \\
+    &= \bigg|-(a + k)|x|g\bigg(-\frac{(a + k)x}{(a + k)|x|}\bigg)
+    - a|x|g\bigg(\frac{x}{|x|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg|\\
+    &= \bigg|(a + k)|x|g\bigg(\frac{x}{|x|}\bigg)
+    - a|x|g\bigg(\frac{x}{|x|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg|\\
+    &= 0
+\end{align*}
+Finally if $a + k = 0$
+\begin{align*}
+    &\frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg| = \\
+    &=\frac{1}{|k|}
+    \bigg| k|x|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg|\\
+    &= 0
+\end{align*}
+In the case $x = 0$ we see that $\lambda(k) = 0$ and hence
+\begin{align*}
+    &\frac{1}{|k|}
+    \bigg||(a + k)x|g\bigg(\frac{(a + k)x}{|(a + k)x|}\bigg)
+    - |ax|g\bigg(\frac{ax}{|ax|}\bigg)
+    - k|x|g\bigg(\frac{x}{|x|}\bigg)
+    \bigg| = \\
+    &=\frac{1}{|k|} \bigg| 0 - 0 - 0 \bigg|\\
+    &= 0
+\end{align*}
+Therefore $h$ is differentiable.
+\item [(b)] Let us compute $Df(0,0)$ as follows
+\begin{align*}
+    &\lim_{(h,k) \to (0,0)} \frac{|f(0 + (h,k)) - f(0) - Df(0,0)(h,k)|}{|(h,k)|}\\
+    &= \lim_{(h,k) \to (0,0)}
+    \frac{1}{|(h,k)|}\bigg|
+    |(h,k)|g\bigg(\frac{(h,k)}{|(h,k)|}\bigg)  - Df(0,0)(h,k)\bigg|
+\end{align*}
+Let $h = 0$ then
+\begin{align*}
+    &\frac{1}{|(0,k)|}\bigg|
+    |(0,k)|g\bigg(\frac{(0,k)}{|(0,k)|}\bigg)  - Df(0,0)(0,k)\bigg|\\
+    &=\frac{1}{|k|}\bigg|
+    |k|g\bigg(0,\frac{k}{|k|}\bigg) - D_2f(0,0)k\bigg|\\
+    &\leq \frac{1}{|k|}\bigg|
+    |k|g\bigg(0,\frac{k}{|k|}\bigg)\bigg|
+    + \frac{1}{|k|}\bigg|D_2f(0,0)k\bigg|\\
+    &= \bigg|g\bigg(0,\frac{k}{|k|}\bigg)\bigg|
+    + \bigg|D_2f(0,0)\bigg|
+\end{align*}
+We see that $g(0, k/|k|) = g(0, 1) = 0$ if $k > 0$, if $k < 0$ then
+$g(0, k/|k|) = g(0, -1) = g(-(0, 1)) = -g(0,1) = 0$, then we get that
+\begin{align*}
+    0 \leq \frac{1}{|(0,k)|}\bigg|
+    |(0,k)|g\bigg(\frac{(0,k)}{|(0,k)|}\bigg)  - Df(0,0)(0,k)\bigg|
+    \leq \bigg|D_2f(0,0)\bigg|
+\end{align*}
+In the same way, if we let $k = 0$ instead
+\begin{align*}
+    &\frac{1}{|(h,0)|}\bigg|
+    |(h,0)|g\bigg(\frac{(h,0)}{|(h,0)|}\bigg)  - Df(0,0)(h,0)\bigg|\\
+    &=\frac{1}{|h|}\bigg|
+    |h|g\bigg(\frac{h}{|h|},0\bigg) - D_1f(0,0)h\bigg|\\
+    &\leq \frac{1}{|h|}\bigg|
+    |h|g\bigg(\frac{h}{|h|},0\bigg)\bigg|
+    + \frac{1}{|h|}\bigg|D_1f(0,0)h\bigg|\\
+    &= \bigg|g\bigg(\frac{h}{|h|}, 0\bigg)\bigg|
+    + \bigg|D_1f(0,0)\bigg|
+\end{align*}
+Then since $g(0,1) = 0$ we get that
+\begin{align*}
+    0 \leq \frac{1}{|(h,0)|}\bigg|
+    |(h,0)|g\bigg(\frac{(h,0)}{|(h,0)|}\bigg)  - Df(0,0)(h,0)\bigg|
+    \leq \bigg|D_1f(0,0)\bigg|
+\end{align*}
+Therefore must be that $Df(0,0) = 0$ for the limit 
+\begin{align*}
+    \lim_{(h,k) \to (0,0)} \frac{|f(0 + (h,k)) - f(0) - Df(0,0)(h,k)|}{|(h,k)|}
+\end{align*}
+to converge to 0.
+\\
+Then for any path taken by $h$ and $k$ the limit becomes
+\begin{align*}
+    &\lim_{(h,k) \to (0,0)} \frac{|f(0 + (h,k)) - f(0) - Df(0,0)(h,k)|}{|(h,k)|}\\
+    &=\lim_{(h,k) \to (0,0)}
+    \frac{1}{|(h,k)|}\bigg|
+    |(h,k)|g\bigg(\frac{(h,k)}{|(h,k)|}\bigg)  - 0\bigg|\\
+    &=\lim_{(h,k) \to (0,0)}
+    \bigg|g\bigg(\frac{(h,k)}{|(h,k)|}\bigg)\bigg|
+\end{align*}
+But $g$ is only defined at the unit circle so this limit can only be 0 if
+$g = 0$ and hence $f$ is not continuous at $(0,0)$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-5.}}
+Let $f:\R^2 \to \R$ be defined by
+\begin{align*}
+    f(x,y) = \begin{cases}
+        \frac{x|y|}{\sqrt{x^2 + y^2}} & (x,y) \neq 0\\
+        0 & (x,y) = 0
+    \end{cases}
+\end{align*}
+We can write that
+\begin{align*}
+    \frac{x|y|}{\sqrt{x^2 + y^2}}
+    = \sqrt{x^2 + y^2}\cdot \frac{x|y|}{x^2 + y^2}
+    = |(x,y)| \cdot \frac{x|y|}{|(x,y)|^2}
+\end{align*}
+Then defining $g$ as $g(x,y) = x|y|$ we see that
+\begin{align*}
+    g\bigg(\frac{(x,y)}{|(x,y)|}\bigg)
+    = \frac{x}{|(x,y)|}\bigg|\frac{y}{|(x,y)|}\bigg|
+    = \frac{x|y|}{|(x,y)|^2}
+\end{align*}
+Also, we see that $g(0,1) = g(1,0) = 0$ and that
+\begin{align*}
+    g(-x,-y) = -x|-y| = -xy = -x|y| = -g(x,y)   
+\end{align*}
+Hence we can write $f(x,y)$ as
+\begin{align*}
+    f(x,y) = \begin{cases}
+        |(x,y)|\cdot g\bigg(\frac{(x,y)}{|(x,y)|}\bigg) & (x,y) \neq 0\\
+        0 & (x,y) = 0
+    \end{cases}
+\end{align*}
+Where $g$ is a continuous real-valued function with the same properties
+described in Problem 2-4.
+\\
+Therefore we can conclude that $f$ is not differentiable at $(0,0)$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-6.}}
+Let $f: \R^2 \to \R$ be defined by $f(x,y) = \sqrt{|xy|}$, we may also define
+$f$ as
+\begin{align*}
+    f(x,y) = \begin{cases}
+        \frac{\sqrt{x^2 + y^2}\sqrt{|xy|}}{\sqrt{x^2 + y^2}} & (x,y) \neq 0\\
+        0 & (x,y) = 0
+    \end{cases}
+\end{align*}
+We see that
+\begin{align*}
+    \frac{\sqrt{x^2 + y^2}\sqrt{|xy|}}{\sqrt{x^2 + y^2}}
+    = |(x,y)| \frac{\sqrt{|xy|}}{|(x,y)|}
+\end{align*}
+We can define a function $g$ as $g(x,y) = \sqrt{|xy|}$ so
+\begin{align*}
+    g\bigg(\frac{(x,y)}{|(x,y)|}\bigg)
+    = \sqrt{\bigg|\frac{x}{|(x,y)|}\frac{y}{|(x,y)|}\bigg|}
+    = \sqrt{\frac{|xy|}{|(x,y)|^2}}
+    = \frac{\sqrt{|xy|}}{|(x,y)|}
+\end{align*}
+Also, we see that $g(0,1) = g(1,0) = 0$ and that
+\begin{align*}
+    g(-x,-y) = \pm\sqrt{|(-x)(-y)|} = \pm\sqrt{|xy|} = \pm g(x,y)
+\end{align*}
+Hence we can write $f(x,y)$ as
+\begin{align*}
+    f(x,y) = \begin{cases}
+        |(x,y)|\cdot g\bigg(\frac{(x,y)}{|(x,y)|}\bigg) & (x,y) \neq 0\\
+        0 & (x,y) = 0
+    \end{cases}
+\end{align*}
+Where $g$ is a continuous real-valued function with the same properties
+described in Problem 2-4.
+\\
+Therefore we can conclude that $f$ is not differentiable at $(0,0)$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-7.}}
+Let $f:\R^n \to \R$ be a function such that $|f(x)| \leq |x|^2$ we want to show
+that $f$ is differentiable at 0.
+\\
+Let us consider the following limit
+\begin{align*}
+    \lim_{h \to 0} \frac{|f(0+h) - f(0) - Df(0)h|}{|h|}
+\end{align*}
+We see that
+\begin{align*}
+    0 \leq \frac{|f(0+h) - f(0) - Df(0)h|}{|h|}
+    &\leq \frac{|f(h)| + |f(0)| + |Df(0)h|}{|h|}\\
+    &\leq \frac{|h|^2 + 0 + |Df(0)||h|}{|h|}\\
+    &\leq |h| + |Df(0)|
+\end{align*}
+We see that $|h| + |Df(0)| \to 0$ as $h \to 0$ if $Df(0) = 0$.
+\\
+Therefore $f$ is differnetiable at 0.
+\end{proof}
+
+\cleardoublepage
+\subsection*{Basic Theorems}
+\end{document}
