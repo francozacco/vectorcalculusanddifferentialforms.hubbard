@@ -2224,4 +2224,386 @@ Therefore, again by the squeeze theorem we have that
 This implies that the limit of $\det(H)/|H|$ as $H \to [0]$ is 0 and hence the
 derivative of $\det : \text{Mat}(2,2) \to \R$ is $h_{1,1} + h_{2,2}$.
 \end{proof}
+
+\cleardoublepage
+\section*{1.8 - Rules for computing derivatives}
+\begin{proof}{1.8.5}\\
+The proof is using the Jacobian matrix to determine the derivative of a function
+$h(\bm{a}) = (fg)(\bm{a})$ but we are only allowed to do that when we are sure
+that $h$ is a differentiable function at $\bm{a}$.
+\\
+Therefore, if we wanted to complete this proof we must show that $h$ is
+differentiable at $\bm{a}$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.8.12}\\
+\begin{itemize}
+\item [a.]
+Let $\bm{f}:\R^2 \to \R^2$ be differentiable and $[\bm{Df}(\bm{0})]$ be not
+invertible. Also, suppose $\bm{g}:\R^2 \to \R^2$ is a function such that
+\begin{align*}
+    (\bm{g}\circ\bm{f})(\bm{x}) = \bm{x}
+\end{align*}
+We want to prove that $\bm{g}$ is not differentiable.\\
+To compute the derivative $[\bm{D}(\bm{g}\circ\bm{f})(\bm{a})]$ we note that
+\begin{align*}
+    % \lim_{h \to 0}
+    &\frac{1}{|\bm{h}|}
+    \bigg|(\bm{g}\circ \bm{f})(\bm{a} + \bm{h}) - (\bm{g}\circ\bm{f})(\bm{a}) 
+    - [\bm{D}(\bm{g}\circ \bm{f})(\bm{a})]\bm{h}\bigg|\\
+    &= \frac{1}{|h|}\bigg|\bm{a} + \bm{h} - \bm{a} 
+    - [\bm{D}(\bm{g}\circ \bm{f})(\bm{a})]\bm{h}\bigg|\\
+    &= \frac{1}{|h|}\bigg|\bm{h}(\bm{1} 
+    - [\bm{D}(\bm{g}\circ \bm{f})(\bm{a})])\bigg|\\
+    &= \bigg|\bm{1} - [\bm{D}(\bm{g}\circ \bm{f})(\bm{a})]\bigg|
+\end{align*}
+So for this to tend to $\bm{0}$ when $\bm{h} \to \bm{0}$ must be that
+\begin{align*}
+    [\bm{D}(\bm{g}\circ \bm{f})(\bm{a})] = \bm{1}
+\end{align*}
+or using the chain rule assuming $\bm{g}$ is differentiable at $\bm{f}(\bm{a})$
+we get that
+\begin{align*}
+    [\bm{Dg}(\bm{f}(\bm{a}))][\bm{Df}(\bm{a})] &= \bm{1}
+\end{align*}
+So we have that 
+\begin{align*}
+    [\bm{Dg}(\bm{f}(\bm{a}))] &= [\bm{Df}(\bm{a})]^{-1}
+\end{align*}
+But if $\bm{a} = \bm{0}$ we know that $[\bm{Df}(\bm{0})]$ is not invertible
+then $\bm{g}$ is not differentiable at $\bm{f}(\bm{0})$.
+\\
+Therefore, $\bm{g}$ is not differentiable, and hence the statement is true i.e.
+there is no differentiable function $\bm{g}:\R^2 \to \R^2$ such that
+$(\bm{g}\circ\bm{f})(\bm{x}) = \bm{x}$.
+
+\item[b.] Let us define $\bm{f}:\R^2 \to \R$ as follows
+\begin{align*}
+    \bm{f}\begin{pmatrix} x \\ y \end{pmatrix}
+    = \begin{cases}
+        x^2 \sin(\frac{1}{x}) & \text{when } x\neq 0\\
+        0 & \text{when } x = 0
+    \end{cases}
+\end{align*}
+It can be shown that $\bm{f}$ is differentiable everywhere.
+\\
+We see that $D_1\bm{f}(\bm{x})$ is 
+\begin{align*}
+    D_1\bm{f}(\bm{x}) = \begin{cases}
+        2x \sin(\frac{1}{x}) - \cos(\frac{1}{x}) & \text{when } x\neq 0\\
+        0 & \text{when } x = 0
+    \end{cases}
+\end{align*}
+But $\lim_{\bm{x}\to \bm{0}} D_1\bm{f}(\bm{x})$ is undetermined since
+$\lim_{x\to 0}\cos(\frac{1}{x})$ is undetermined.
+\\
+Therefore $D_1\bm{f}(\bm{x})$ is not continuous, and hence the statement is
+false.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.8.13}\\
+Let $F: U \to \text{Mat}(n,n)$ be a map given by $F(A)= (A + A^2)^{-1}$ where
+$U\subset \text{Mat}(n,n)$ is the set of matrices $A$ such that $A + A^2$ is 
+invertible.
+\\
+We want to compute the derivative of $F$.
+\\
+Let us define $G(A) = A + A^2$ then
+\begin{align*}
+    [\bm{D}G(A)]H &= [\bm{D}(A + A^2)]H\\
+    &= [\bm{D}A]H + [\bm{D}A^2]H\\
+    &= H + AH + HA
+\end{align*}
+Also, if we define $H(A) = A^{-1}$ then we note that $F = H \circ G$, hence
+\begin{align*}
+    [\bm{D}F(A)]H &= [\bm{D}(H \circ G)(A)]H\\
+    &= [\bm{D}H(G(A))][\bm{D}G(A)]H\\
+    &= [\bm{D}H(G(A))](H + AH + HA)\\
+    &= [\bm{D}H(A + A^2)](H + AH + HA)\\
+    &= -(A + A^2)^{-1}(H + AH + HA)(A + A^2)^{-1}
+\end{align*}
+Where we used the chain rule and that $[\bm{D}A^{-1}]H = -A^{-1}HA^{-1}$.
+\end{proof}
+
+\cleardoublepage
+\section*{1.9 - The Mean Value Theorem and Criteria for Differentiability}
+\begin{proof}{1.9.2}
+\begin{itemize}
+\item [a.] Let
+\begin{align*}
+    f\begin{pmatrix} x \\ y \end{pmatrix}
+    =\begin{cases}
+        \frac{3x^2y - y^3}{x^2 + y^2} &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} \neq \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+        \\[13pt]
+        0 &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    \end{cases}
+\end{align*}
+Given that $f$ is a rational function whose denominator does not vanish, we can
+compute both partial derivatives at any point
+$\begin{pmatrix} x \\ y \end{pmatrix} \neq \begin{pmatrix} 0 \\ 0 \end{pmatrix}$.
+\\
+Let us compute the partial derivatives of $f$ at
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$.
+\\
+We see that
+\begin{align*}
+    D_1f\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    &= \lim_{h\to 0}
+    \frac{1}{h} \bigg(f\begin{pmatrix}h \\0\end{pmatrix}
+    - f\begin{pmatrix}0 \\0\end{pmatrix}\bigg)
+    = \lim_{h\to 0} \frac{1}{h}(0 + 0)  = 0\\ 
+    D_2f\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    &= \lim_{h\to 0}
+    \frac{1}{h} \bigg(f\begin{pmatrix}0 \\h\end{pmatrix}
+    - f\begin{pmatrix}0 \\0\end{pmatrix}\bigg)
+    = \lim_{h\to 0} \frac{1}{h}(-h + 0) = -1
+\end{align*}
+So all partial derivatives exist everywhere.
+\\
+Let us suppose $f$ is differentiable everywhere, we want to arrive at a
+contradiction. Then we can compute the directional derivatives using the
+jacobian.
+\\
+Let us consider the derivative of $f$ at
+$\begin{pmatrix}0 \\0\end{pmatrix}$ in the direction of the vector
+$\begin{bmatrix}1 \\ 1 \end{bmatrix}$, we see that
+\begin{align*}
+    &\lim_{h \to 0} \frac{1}{h}
+    \bigg(f\bigg(\begin{pmatrix}0 \\0\end{pmatrix}
+    + h\begin{bmatrix}1 \\ 1 \end{bmatrix}\bigg)
+    - f\begin{pmatrix}0 \\0\end{pmatrix}\bigg) = \\
+    &\quad= \lim_{h \to 0} \frac{1}{h}\frac{3h^3 - h^3}{h^2 + h^2}\\
+    &\quad= \lim_{h \to 0} \frac{1}{h}\frac{2h^3}{2h^2}\\
+    &\quad= 1
+\end{align*}
+But if we compute this directional derivative by multiplying the Jacobian
+matrix by the vector $\begin{bmatrix}1 \\ 1 \end{bmatrix}$ we get that
+\begin{align*}
+    \bigg[D_1f\begin{pmatrix} 0 \\ 0 \end{pmatrix},
+    D_2f\begin{pmatrix} 0 \\ 0 \end{pmatrix}\bigg]
+    \begin{bmatrix}1 \\ 1 \end{bmatrix}
+    = \begin{bmatrix} 0 & -1\end{bmatrix}\begin{bmatrix}1 \\ 1 \end{bmatrix}
+    = -1
+\end{align*}
+This is not the same value we got first, therefore we have a contradiction and
+hence $f$ cannot be differentiable at the origin.
+\\\\
+On the other hand, since we cannot compute the directional derivative at 
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$
+using the Jacobian because $f$ is not differentiable there, then,
+we have to compute it using the definition of directional derivative as
+follows
+\begin{align*}
+    &\lim_{h \to 0} \frac{1}{h}
+    \bigg(f\bigg(\begin{pmatrix}0 \\0\end{pmatrix}
+    + h\begin{bmatrix}v_1 \\ v_2 \end{bmatrix}\bigg)
+    - f\begin{pmatrix}0 \\0\end{pmatrix}\bigg) = \\
+    &\quad= \lim_{h \to 0} \frac{1}{h}\bigg(
+    \frac{3h^2v_1^2hv_2 - h^3v_2^3}{h^2v_1^2 + h^2v_2^2}\bigg)\\
+    &\quad= \lim_{h \to 0} \frac{1}{h}\bigg(
+    \frac{h(3v_1^2v_2 - v_2^3)}{v_1^2 + v_2^2}\bigg)\\
+    &\quad=\frac{3v_1^2v_2 - v_2^3}{v_1^2 + v_2^2}
+\end{align*}
+Therefore the limit exist for any vector
+$\bm{v} = \begin{bmatrix}v_1 \\ v_2 \end{bmatrix}$
+and hence the directional derivative exist at
+$\begin{pmatrix}0 \\0\end{pmatrix}$.
+\\
+This implies that all directional derivatives exists, since at any other point
+different from the origin we can use the jacobian to determine it.
+
+\cleardoublepage
+\item [b.] Let
+\begin{align*}
+    g\begin{pmatrix} x \\ y \end{pmatrix}
+    =\begin{cases}
+        \frac{x^2y}{x^4 + y^2} &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} \neq \bm{0}
+        \\[13pt]
+        0 &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} = \bm{0}
+    \end{cases}
+\end{align*}
+Given that $g$ is a rational function whose denominator does not vanish, we can
+compute both partial derivatives at any point
+$\begin{pmatrix} x \\ y \end{pmatrix} \neq \bm{0}$.
+\\
+So we can compute the directional derivatives at any point different from $\bm{0}$
+using the Jacobian, let us check that the directional derivative also exists at
+$\bm{0}$.
+\begin{align*}
+    &\lim_{h \to 0} \frac{1}{h}
+    \bigg(g\bigg(\begin{pmatrix}0 \\0\end{pmatrix}
+    + h\begin{bmatrix}v_1 \\ v_2 \end{bmatrix}\bigg)
+    - g\begin{pmatrix}0 \\0\end{pmatrix}\bigg) = \\
+    &\quad= \lim_{h \to 0} \frac{1}{h}\bigg(
+    \frac{h^2v_1^2hv_2}{h^4v_1^4 + h^2v_2^2}\bigg)\\
+    &\quad= \lim_{h \to 0} \bigg(
+    \frac{v_1^2v_2}{h^2v_1^4 + v_2^2}\bigg)\\
+    &\quad= \frac{v_1^2}{v_2}
+\end{align*}
+Hence $g$ has directional derivatives at every point.
+\\
+On the other hand, we know that $g(\bm{0}) = 0$ but if we approach the origin
+along the curve
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix}t \\t^2 \end{pmatrix}$
+we see that
+\begin{align*}
+    \lim_{t\to 0} g\begin{pmatrix}t \\t^2\end{pmatrix}
+    = \lim_{t\to 0} \frac{t^4}{t^4 + t^4}
+    = \frac{1}{2}
+\end{align*}
+Therefore $g$ is not continuous at the origin.
+
+\cleardoublepage
+\item [c.] Let
+\begin{align*}
+    h\begin{pmatrix} x \\ y \end{pmatrix}
+    =\begin{cases}
+        \frac{x^2y}{x^6 + y^2} &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} \neq \bm{0}
+        \\[13pt]
+        0 &\text{if}
+        \begin{pmatrix} x \\ y \end{pmatrix} = \bm{0}
+    \end{cases}
+\end{align*}
+Given that $h$ is a rational function whose denominator does not vanish, we can
+compute both partial derivatives at any point
+$\begin{pmatrix} x \\ y \end{pmatrix} \neq \bm{0}$.
+\\
+So we can compute the directional derivatives at any point different from $\bm{0}$
+using the Jacobian, let us check that the directional derivative also exists at
+$\bm{0}$.
+\begin{align*}
+    &\lim_{t \to 0} \frac{1}{t}
+    \bigg(h\bigg(\begin{pmatrix}0 \\0\end{pmatrix}
+    + t\begin{bmatrix}v_1 \\ v_2 \end{bmatrix}\bigg)
+    - h\begin{pmatrix}0 \\0\end{pmatrix}\bigg) = \\
+    &\quad= \lim_{t \to 0} \frac{1}{t}\bigg(
+    \frac{t^2v_1^2tv_2}{t^6v_1^6 + t^2v_2^2}\bigg)\\
+    &\quad= \lim_{t \to 0} \bigg(
+    \frac{v_1^2v_2}{t^4v_1^6 + v_2^2}\bigg)\\
+    &\quad= \frac{v_1^2}{v_2}
+\end{align*}
+Hence $h$ has directional derivatives at every point.
+\\
+On the other hand, suppose we approach the origin along the curve
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix}t \\t^3 \end{pmatrix}$
+then we see that
+\begin{align*}
+    \lim_{t\to 0} \bigg|h\begin{pmatrix}t \\t^3\end{pmatrix}\bigg|
+    = \lim_{t\to 0} \bigg|\frac{t^2t^3}{t^6 + t^6}\bigg|
+    = \lim_{t\to 0} \bigg|\frac{t^5}{2t^6}\bigg|
+    = \lim_{t\to 0} \frac{1}{2|t|}
+    = \infty
+\end{align*}
+Therefore $h$ cannot be bounded in a neighborhood of the origin.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\section*{1.10 - Review exercises for Chapter 1}
+\begin{proof}{1.10.28}
+\begin{itemize}
+\item [a.] Let us consider the mapping $F: \text{Mat}(n,n) \to \text{Mat}(n,n)$
+given by $F(A) = A^3$ we want to prove it's differentiable, then we must show
+that there is a linear mapping $[\bm{D}F(A)]H$ such that
+\begin{align*}
+    \lim_{H\to[0]} \frac{1}{|H|}\bigg(F(A + H) - F(A) - [\bm{D}F(A)]H\bigg) = [0]
+\end{align*}
+Then
+\begin{align*}
+    &\lim_{H\to[0]} \frac{1}{|H|}\bigg((A + H)^3 - A^3 - [\bm{D}F(A)]H\bigg)=\\
+    &\quad= \lim_{H\to[0]} \frac{1}{|H|}
+    \bigg((A + H)(A + H)(A + H) - A^3 - [\bm{D}F(A)]H\bigg)\\
+    &\quad= \lim_{H\to[0]} \frac{1}{|H|}
+    \bigg(A^3 + A^2H + AHA + AH^2 + HA^2 + HAH\\
+    &\qquad+ H^2A + H^3 - A^3 - [\bm{D}F(A)]H\bigg)\\
+    &\quad= \lim_{H\to[0]} \frac{1}{|H|}
+    \bigg(A^2H + AHA + AH^2 + HA^2 + HAH + H^2A + H^3 - [\bm{D}F(A)]H\bigg)
+\end{align*}
+So if we let $[\bm{D}F(A)]$ be a mapping such that
+\begin{align*}
+    [\bm{D}F(A)]: H \to  A^2H + AHA + HA^2
+\end{align*}
+We get that
+\begin{align*}
+    &\lim_{H\to[0]} \frac{1}{|H|}\bigg((A + H)^3 - A^3 - [\bm{D}F(A)]H\bigg)=\\
+    &\quad= \lim_{H\to[0]} \frac{1}{|H|}
+    \bigg(AH^2 + HAH + H^2A + H^3\bigg)
+\end{align*}
+But also, we have that
+\begin{align*}
+    \frac{1}{|H|}(|AH^2 + HAH + H^2A + H^3|)
+    &\leq \frac{1}{|H|}(|AH^2| + |HAH| + |H^2A| + |H^3|)\\
+    &\leq \frac{1}{|H|}(|A||H|^2 + |H||A||H| + |H|^2|A| + |H|^3)\\
+    &= |A||H| + |A||H| + |H||A| + |H^2|\\
+    &= 3|A||H| + |H^2|
+\end{align*}
+And
+\begin{align*}
+    \lim_{H \to [0]} 3|A||H| + |H^2| = [0]
+\end{align*}
+Therefore $F(A) = A^3$ is differentiable and its derivative is
+$A^2H + AHA + HA^2$.
+
+\item [b.] Let $F: \text{Mat}(n,n)\to \text{Mat}(n,n)$ given by $F(A) = A^k$
+for $k \geq 1$. Then the derivative $[\bm{D}F(A)]$ must be a mapping such that
+\begin{align*}
+    \lim_{H\to[0]} \frac{1}{|H|}\bigg((A + H)^k - A^k - [\bm{D}F(A)]H\bigg) = [0]
+\end{align*}
+Let $[\bm{D}F(A)]$ be the mapping such that
+\begin{align*}
+    H \to A^{k-1}H + A^{k-2} H A + A^{k-3} H A^2 + ... + HA^{k-1}
+\end{align*}
+Since $(A + H)^k$ contains all combinations of powers between $A$ and $H$ such
+that the sum of the powers of each term is $k$ then the expression
+$$(A + H)^k - A^k - [\bm{D}F(A)]H$$
+will have all terms with powers of $H$ bigger or equal than 2, then using the
+properties the matrix norm such as $|AH| \leq |A||H|$ and $|H^n| \leq |H|^n$
+we get that
+\begin{align*}
+    \frac{1}{|H|}\bigg|(A + H)^k - A^k - [\bm{D}F(A)]H\bigg| \leq 0
+    \quad\text{as } H \to [0]
+\end{align*}
+ Therefore the derivative of the mapping $F(A) = A^k$ is
+\begin{align*}
+    A^{k-1}H + A^{k-2} H A + A^{k-3} H A^2 + ... + HA^{k-1}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{1.10.32}
+\begin{itemize}
+\item [a.] Let the map $A \to A^{-3}$, so, if we let $f(A) = A^3$ and
+$g(A) = A^{-1}$ then we can compute the derivative using the chain rule
+as follows
+\begin{align*}
+    [\bm{D}(f\circ g)(A)]H &= [\bm{D}f(g(A))][\bm{D}g(A)]H\\
+    &=[\bm{D}f(A^{-1})](-A^{-1}HA^{-1})\\
+    &= A^{-2}(-A^{-1}HA^{-1}) + A^{-1}(-A^{-1}HA^{-1})A^{-1}
+    + (-A^{-1}HA^{-1})A^{-2}\\
+    &= -(A^{-3}HA^{-1} + A^{-2}HA^{-2} + A^{-1}HA^{-3})
+\end{align*}
+\item [b.] Let the map $A \to A^{-n}$, so, if we let $f(A) = A^n$ and
+$g(A) = A^{-1}$ then we can compute the derivative using the chain rule
+as follows
+\begin{align*}
+    &[\bm{D}(f\circ g)(A)]H = \\
+    &\quad = [\bm{D}f(g(A))][\bm{D}g(A)]H\\
+    &\quad= [\bm{D}f(A^{-1})](-A^{-1}HA^{-1})\\
+    &\quad= -[A^{-n+1}(A^{-1}HA^{-1}) + A^{-n+2}(A^{-1}HA^{-1})A^{-1}
+    + A^{-n+3}(A^{-1}HA^{-1})A^{-2} +\\
+    &\qquad+ ... + (A^{-1}HA^{-1})A^{-n+1}]\\
+    &\quad= -[A^{-n}HA^{-1} + A^{-n+1}HA^{-2}
+    + A^{-n+2}HA^{-3} + ... + A^{-1}HA^{-n}]
+\end{align*}
+\end{itemize}
+\end{proof}
 \end{document}
