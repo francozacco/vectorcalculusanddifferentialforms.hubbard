@@ -31,9 +31,8 @@
 \newcommand{\ei}[1]{\vec{\bm{e}}_#1}
 \newcommand{\bvec}[1]{\vec{\bm{#1}}}
 \newcommand{\tr}{\text{tr}}
+\newcommand{\inprd}[1]{\langle #1\rangle}
 \theoremstyle{definition}
-% \newtheorem*{solution*}{Solution}
-% \renewcommand*{\proofname}{Solution}
 
 \begin{document}
 \maketitle
@@ -351,4 +350,731 @@ Therefore $f$ is differnetiable at 0.
 
 \cleardoublepage
 \subsection*{Basic Theorems}
+\begin{proof}{\textbf{2-12}}\\
+Let $f:\R^n \times \R^m \to \R^p$ be a bilinear function.
+\begin{itemize}
+\item[(a)] We want to prove that $\lim_{(h,k)\to 0}|f(h,k)|/|(h,k)| = 0$, we
+note that
+\begin{align*}
+    f(h,k) = \sum_{i= 1}^n\sum_{j=1}^m h^ik^jf(e_i, e_j)
+\end{align*}
+Where $h^i$ and $k^j$ are the components of $h$ and $k$ respectively. Then
+we see that
+\begin{align*}
+    \frac{|f(h,k)|}{|(h,k)|}
+    &\leq \frac{1}{|(h,k)|}\sum_{i= 1}^n\sum_{j=1}^m |h^ik^jf(e_i, e_j)|
+    \leq \frac{1}{|(h,k)|}\sum_{i= 1}^n\sum_{j=1}^m |h^i||k^j||f(e_i, e_j)|
+\end{align*}
+Let us take $M = \max_{i,j}{|f(e_i, e_j)|}$ then we get that
+\begin{align*}
+    \frac{|f(h,k)|}{|(h,k)|}
+    &\leq \frac{1}{|(h,k)|}\sum_{i= 1}^n\sum_{j=1}^m |h^i||k^j||f(e_i, e_j)|
+    \leq \frac{M}{|(h,k)|}\sum_{i= 1}^n\sum_{j=1}^m |h^i||k^j|
+\end{align*}
+Now, given that $|h^i||k^j| \leq |h||k|$ we have that
+\begin{align*}
+    M\frac{1}{|(h,k)|}\sum_{i= 1}^n\sum_{j=1}^m |h^i||k^j|
+    &\leq M\frac{nm|h||k|}{\sqrt{|h|^2 + |k|^2}}\\
+    &\leq M \frac{nm|h||k|}{\max\{|h|, |k|\}}\\
+    &\leq M nm \min\{|h|,|k|\}
+\end{align*}
+Therefore following the chain of inequalities we get that
+\begin{align*}
+    0 \leq \lim_{(h,k)\to 0} \frac{|f(h,k)|}{|(h,k)|}
+    \leq \lim_{(h,k) \to 0}M nm \min\{|h|,|k|\} = 0
+\end{align*}
+Hence
+\begin{align*}
+    \lim_{(h,k)\to 0} \frac{|f(h,k)|}{|(h,k)|} = 0
+\end{align*}
+\item[(b)] We want to prove that $Df(a,b)(x,y) = f(a,y) + f(x,b)$, then
+see that
+\begin{align*}
+    &\frac{|f(a + h, b + k) - f(a,b) - Df(a,b)(h,k)|}{|(h,k)|} =\\
+    &\quad= \frac{|f(a,b) + f(a, k) + f(h, b) + f(h,k) - f(a,b) - Df(a,b)(h,k)|}{|(h,k)|}\\
+    &\quad= \frac{|f(a, k) + f(h, b) + f(h,k) - Df(a,b)(h,k)|}{|(h,k)|}\\
+    &\quad= \frac{|f(a, k) + f(h, b) + f(h,k) - (f(a,k) + f(h,b))|}{|(h,k)|}\\
+    &\quad= \frac{|f(h,k)|}{|(h,k)|}
+\end{align*}
+But we saw on part (a) that
+\begin{align*}
+    \lim_{(h,k)\to 0} \frac{|f(h,k)|}{|(h,k)|} = 0
+\end{align*}
+Therefore $Df(a,b)(x,y) = f(a,y) + f(x,b)$ is the derivative.
+\item[(c)] From Theorem 2-3 if $p(x,y) = xy$ then we know that
+\begin{align*}
+    Dp(a,b)(x,y) = bx + ay
+\end{align*}
+But from part (b) we know that
+\begin{align*}
+    Df(a,b)(x,y) = f(x,b) + f(a,y)
+\end{align*}
+So taking $f = p$ we get that
+\begin{align*}
+    Dp(a,b)(x,y) = p(x,b) + p(a,y) = xb + ay
+\end{align*}
+Therefore the equation we have for $Dp(a,b)(x,y)$ from Theorem 2-3 is a special
+case of the equation $Df(a,b)(x,y) = f(x,b) + f(a,y)$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-13}}\\
+Let $IP:\R^n \times \R^n \to \R$ be defined as $IP(x,y)= \inprd{x,y}$
+\begin{itemize}
+\item [(a)] We see that if $x, x_1, x_2, y, y_1, y_2 \in \R^n$ and $a \in \R$
+we have that
+\begin{align*}
+    \inprd{ax,y} &= a\inprd{x,y} = \inprd{x,ay}\\
+    \inprd{x_1 + x_2,y} &= \inprd{x_1, y} + \inprd{x_2, y}\\
+    \inprd{x,y_1 + y_2} &= \inprd{x, y_1} + \inprd{x, y_2}
+\end{align*}
+Then $IP$ is a bilinear function so from Problem 2-12 we have that
+\begin{align*}
+    D(IP(x,y))(a,b) = IP(a, y) + IP(x, b) = \inprd{a,y} + \inprd{x,b}
+\end{align*}
+To compute the Jacobian matrix $(IP(x,y))'(a,b)$ we assume that $IP(x,y)$ is
+defined as $IP(x,y) = x_1y_1 + x_2y_2 + ... + x_ny_n$ where $x_i$ and $y_i$ are
+the components of $x$ and $y$. Then 
+\begin{align*}
+    (IP(x,y))' = \begin{pmatrix}
+        y_1, y_2, ..., y_n, x_1, x_2, ..., x_n
+    \end{pmatrix}
+\end{align*}
+Hence
+\begin{align*}
+    (IP(x,y))'(a,b) &= \begin{pmatrix}
+        y_1, y_2, ..., y_n, x_1, x_2, ..., x_n
+    \end{pmatrix}
+    \begin{pmatrix}
+        a_1\\ ...\\ a_n\\ b_1\\ ...\\ b_n
+    \end{pmatrix}\\
+    &= a_1y_1 + ... + a_ny_n + b_1x_1 + ... + b_nx_n\\
+    &= IP(a, y) + IP(x, b)
+\end{align*}
+
+\item [(b)] Let $f,g:\R \to \R^n$ be differentiable functions and let
+$h:\R\to \R$ be defined by $h(t) = \inprd{f(t), g(t)}$.
+\\
+We can write $h$ as $h(t) = IP(f(t), g(t))$, so using the chain rule we get
+that
+\begin{align*}
+    D(h(a))(v) &= D(IP(f(a),g(a)))(Df(a)(v), Dg(a)(v))\\
+    &= IP(Df(a)(v),g(a)) + IP(f(a),Dg(a)(v))
+\end{align*}
+Since $f,g$ are differentiable then $Df(a)(v) = f'(a)(v)$ and
+$Dg(a)(v) = g'(a)(v)$. Taking $v = 1$ we get that
+\begin{align*}
+    h'(a) &= \inprd{f'(a)^T, g(a)} + \inprd{f(a), g'(a)^T}
+\end{align*}
+Where we put $f'(a)^T$ and $g'(a)^T$ because we are considering
+$IP: \R^n \times \R^n \to \R$ to be defined as $\inprd{x,y} = xy$.
+
+\cleardoublepage
+\item [(c)] Let $f:\R \to \R^n$ be differentiable and let $|f(t)| = 1$ for all
+$t$.\\
+Let us consider the function $h(t) = \inprd{f(t), f(t)}$, then we know that
+\begin{align*}
+    h'(a) = \inprd{f'(a)^T, f(a)} + \inprd{f(a), f'(a)^T}
+\end{align*}
+But also we know that
+\begin{align*}
+    h(t) = \inprd{f(t), f(t)} = |f(t)|^2 = 1
+\end{align*}
+So we get that $h'(a) = 0$ for any $a$, and hence
+\begin{align*}
+    0 &= \inprd{f'(a)^T, f(a)} + \inprd{f(a), f'(a)^T}\\
+    \inprd{f(a), f'(a)^T} &= -\inprd{f'(a)^T, f(a)}\\
+    \inprd{f'(a)^T, f(a)} &= -\inprd{f'(a)^T, f(a)}
+\end{align*}
+Where we used that $\inprd{y,x} = \inprd{x,y}$ if $x,y \in \R^n$.
+But this can only be true if
+\begin{align*}
+    \inprd{f'(t)^T, f(t)} &= 0
+\end{align*}
+
+\item [(d)] Let us consider the function $f(t) = t$ then the function $|f|$
+gives us
+\begin{align*}
+    |f|(t) = |f(t)| = |t|
+\end{align*}
+Then we see that
+\begin{align*}
+    \lim_{h\to 0^+} \frac{|f|(0+ h) - |f|(0)}{h}
+    = \lim_{h\to 0^+} \frac{|h| - |0|}{h} 
+    = \lim_{h\to 0^+} \frac{h}{h} 
+    = 1
+\end{align*}
+But
+\begin{align*}
+    \lim_{h\to 0^-} \frac{|f|(0+ h) - |f|(0)}{h}
+    = \lim_{h\to 0^-} \frac{|h| - |0|}{h} 
+    = \lim_{h\to 0^-} \frac{-h}{h} 
+    = -1
+\end{align*}
+Then $|f|$ is not differentiable at 0.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-14}}\\
+\begin{itemize}
+\item [(a)] Let $f$ be multilinear, $i \neq j$ and $h = (h_1, ..., h_k)$ with
+$h_l \in E_l$ then we note that
+\begin{align*}
+    0 \leq \frac{|f(a_1, ..., h_i, ..., h_j, ..., a_k)|}{|h|}
+    \leq \frac{|f(a_1, ..., h_i, ..., h_j, ..., a_k)|}{|(h_i, h_j)|}
+\end{align*}
+We see that $f(a_1, ..., h_i, ..., h_j, ..., a_k)$ is bilinear with respect to
+$h_i$ and $h_j$, but from problem 2-12 we know that
+\begin{align*}
+    \lim_{(h_i, h_j) \to 0}
+    \frac{|f(a_1, ..., h_i, ..., h_j, ..., a_k)|}{|(h_i, h_j)|} = 0 
+\end{align*}
+So by the squeeze theorem we get that
+\begin{align*}
+    \lim_{h\to 0} \frac{|f(a_1, ..., h_i, ..., h_j, ..., a_k)|}{|h|} = 0
+\end{align*}
+
+\item [(b)] Let note that for the case $k = 4$ we have that
+\begin{align*}
+    &f(a_1 + h_1, a_2 + h_2, a_3 + h_3, a_4 + h_4) = \\
+    &= f(a_1, a_2 + h_2, a_3 + h_3, a_4 + h_4)
+    + f(h_1, a_2 + h_2, a_3 + h_3, a_4 + h_4)\\
+    %
+    &= f(a_1, a_2, a_3 + h_3, a_4 + h_4)
+    + f(a_1, h_2, a_3 + h_3, a_4 + h_4)\\
+    &\quad+ f(h_1, a_2, a_3 + h_3, a_4 + h_4)
+    + f(h_1, h_2, a_3 + h_3, a_4 + h_4)\\
+    %
+    &= f(a_1, a_2, a_3, a_4 + h_4)
+    + f(a_1, a_2, h_3, a_4 + h_4)\\
+    &\quad + f(a_1, h_2, a_3, a_4 + h_4)
+    + f(a_1, h_2, h_3, a_4 + h_4)\\
+    &\quad+ f(h_1, a_2, a_3, a_4 + h_4)
+    + f(h_1, a_2, h_3, a_4 + h_4)\\
+    &\quad+ f(h_1, h_2, a_3 , a_4 + h_4)
+    + f(h_1, h_2, h_3, a_4 + h_4)\\
+    %
+    &= f(a_1, a_2, a_3, a_4) + f(a_1, a_2, a_3, h_4)
+    + f(a_1, a_2, h_3, a_4) + f(a_1, a_2, h_3, h_4)\\
+    &\quad + f(a_1, h_2, a_3, a_4) + f(a_1, h_2, a_3, h_4)
+    + f(a_1, h_2, h_3, a_4) + f(a_1, h_2, h_3, h_4)\\
+    &\quad + f(h_1, a_2, a_3, a_4) + f(h_1, a_2, a_3, h_4)
+    + f(h_1, a_2, h_3, a_4) + f(h_1, a_2, h_3, h_4)\\
+    &\quad + f(h_1, h_2, a_3, a_4) + f(h_1, h_2, a_3, h_4)
+    + f(h_1, h_2, h_3, a_4) + f(h_1, h_2, h_3, h_4)
+\end{align*}
+This is also true for when we take $k$ arguments, where
+we are summing over all possible choices of $a_i$ and $h_i$.
+So, when computing 
+\begin{align*}
+   &\frac{|f(a_1 + h_1, ..., a_k + h_k)
+    - f(a_1, ..., a_k) - Df(a_1, ..., a_k)h|}{|h|}
+\end{align*}
+We note that except for the terms $f(a_1, ..., h_i, ..., a_k)$ the rest
+are bilinear functions of some $h_i$ and $h_j$ and from part (a) we know that
+\begin{align*}
+    \lim_{h\to 0} \frac{|f(a_1, ..., h_i, ..., h_j, ..., a_k)|}{|h|} = 0
+\end{align*}
+So we are left with 
+\begin{align*}
+   &\frac{|f(a_1 + h_1, ..., a_k + h_k)
+    - f(a_1, ..., a_k) - Df(a_1, ..., a_k)h|}{|h|} =\\
+    &= \frac{|\sum_{i=1}^k f(a_1, ..., h_i, ..., a_k) - Df(a_1, ..., a_k)h|}{|h|}
+\end{align*}
+Therefore must be that
+\begin{align*}
+    Df(a_1, ..., a_k)(h_1, ..., h_k) = \sum_{i=1}^k f(a_1, ..., h_i, ..., a_k)
+\end{align*}
+Which is possible since each $f(a_1, ..., h_i, ..., a_k)$ is a linear function
+of $h_i$ as it should be.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-15}}\\
+Let us consider an $n \times n$ matrix as a point in the $n$-fold product
+$\R^n \times ... \times \R^n$ by considering each row as a member of $\R^n$.
+\begin{itemize}
+    \item [(a)] Let $\det: \R^n \times ... \times \R^n \to \R$ we want to
+    prove it's differentiable.
+    \\
+    Let us consider first the case when $n = 3$ then fixing all rows except for
+    the second one we get that
+    \begin{align*}
+        \det\begin{pmatrix}
+            a_1\\ x \\ a_3
+        \end{pmatrix}
+        &= \det\begin{pmatrix}
+            a_{11} & a_{12} & a_{13} \\ x_1 & x_2 & x_3 \\ a_{31} & a_{32} & a_{33}
+        \end{pmatrix}\\
+        &= a_{11}x_2a_{33} + a_{12}x_3a_{31} + x_1a_{32}a_{13}\\
+        &\quad- a_{31}x_2a_{13} - a_{32}x_3a_{11} - x_1a_{12}a_{33}
+    \end{align*}
+    So we see that the determinant is linear with respect to the second row;
+    the same can be shown for all rows.
+    \\
+    In the $n$ case, this is still valid, so we see that $\det$ is a
+    multilinear function with respect to its rows, so from problem 2-14 if we
+    let $f = \det$ we get that
+    \begin{align*}
+        Df(a_1, ..., a_n)(x_1, ..., x_n)
+        &= \sum_{i=1}^n f(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)
+    \end{align*}
+    Hence
+    \begin{align*}
+        D(\det)(a_1, ..., a_n)(x_1, ..., x_n)
+        &= \sum_{i=1}^n \det\begin{pmatrix}
+            a_1\\ \vdots \\ a_{i-1} \\ x_i \\ a_{i+1} \\ \vdots \\ a_n
+        \end{pmatrix}
+    \end{align*}
+    \item [(b)] Let $a_{ij}:\R \to \R$ be differentiable and let
+    $f(t) = \det(a_{ij}(t))$.
+    \\
+    We note that
+    \begin{align*}
+        Df(a_{ij}(t))(v) = Df(a_{ij}(t))~(Da_{ij}(t)(v))
+    \end{align*}
+    Since $a_{ij}(t)$ is differentiable and taking $v = 1$ we get that 
+    \begin{align*}
+        f'(t) = Df(a_{ij}(t))(1) 
+        = Df(a_{ij}(t))~(a_{ij}'(t))
+        &= \sum_{i=1}^n \det\begin{pmatrix}
+            a_{11}(t), & ..., & a_{1n}(t)\\
+            \vdots &  & \vdots \\
+            a_{i1}'(t), & ..., & a_{in}'(t)\\
+            \vdots &  & \vdots \\
+            a_{n1}(t), & ..., & a_{nn}(t)\\
+        \end{pmatrix}
+    \end{align*}
+
+\cleardoublepage
+    \item [(c)] We know that $s_j(t)$ is a solution to the equation
+    \begin{align*}
+        \sum_{j=1}^n a_{ji}(t)s_j(t) = b_i(t)
+    \end{align*}
+    Since all factors are differentiable  we can differentiate both sides as
+    \begin{align*}
+        \bigg(\sum_{j=1}^n a_{ji}(t)s_j(t)\bigg)' &= b_i'(t)\\
+        a'_{1i}(t)s_1(t) + a_{1i}(t)s_1'(t) + ... +
+        a'_{ni}(t)s_n(t) + a_{ni}(t)s_n'(t)
+        &= b_i'(t)\\
+        \sum_{j=1}^n a'_{ji}(t)s_j(t) + \sum_{j=1}^n a_{ji}(t)s_j'(t)
+        &= b_i'(t)
+    \end{align*}
+    Hence
+    \begin{align*}
+        \sum_{j=1}^n a_{ji}(t)s_j'(t) &= b_i'(t) - \sum_{j=1}^n a'_{ji}(t)s_j(t)
+    \end{align*}
+    We may write this equation for every $i$th column, so if we write it in
+    matrix notation as $A(t) = [a_{ji}(t)]$, $b(t) = [b_i(t)]$ and
+    $s(t) = [s_j(t)]$ we get that
+    \begin{align*}
+        A(t)s'(t) &= b'(t) - A'(t)s(t)\\
+        s'(t) &= A^{-1}(t)(b'(t) - A'(t)s(t))
+    \end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-16}}\\
+Let $f:\R^n \to \R^n$ and $f^{-1}:\R^n\to\R^n$ be differentiable, we want to
+show that $(f^{-1})'(a) = [f'(f^{-1}(a))]^{-1}$.
+\\
+Let us notice that $f(f^{-1}(x)) = x$ and since $x\in \R^n$ is also
+differentiable we can differentiate both sides as follows
+\begin{align*}
+    (f(f^{-1}(a)))' &= a'\\
+    f'(f^{-1}(a))(f^{-1}(a))' &= 1\\
+    (f^{-1})'(a) &= \frac{1}{f'(f^{-1}(a))}
+\end{align*}
+Where we used the chain rule on the LHS.
+\end{proof}
+
+\cleardoublepage
+\subsection*{Partial Derivatives}
+\begin{proof}{\textbf{2-21}}\\
+Let $g_1,g_2: \R^2 \to \R$ be continuous and let us define $f:\R^2 \to\R$ by
+\begin{align*}
+    f(x,y) = \int_{0}^x g_1(t,0)~dt + \int_{0}^y g_2(x,t)~dt
+\end{align*}
+\begin{itemize}
+\item [(a)] We want to compute $D_2f(x,y)$ then using the Leibniz rule we get
+that
+\begin{align*}
+    D_2f(x,y) &= D_2\bigg(\int_{0}^x g_1(t,0)~dt\bigg)
+    + D_2\bigg(\int_{0}^y g_2(x,t)~dt\bigg)\\
+    &= g_1(x,0)\cdot 0 - g_1(0,0)\cdot 0 + \int_{0}^x D_2g_1(t,0)~dt\\
+    &\quad+ g_2(x,y) D_2(y) - g_2(x,0)\cdot 0 + \int_{0}^y D_2g_2(x,t)~dt\\
+    &= g_2(x,y)
+\end{align*}
+Where we used that $D_2(x) = D_2(0) = 0$ and that
+\begin{align*}
+    \int_{0}^x D_2g_1(t,0)~dt = \int_{0}^y D_2g_2(x,t)~dt = 0
+\end{align*}
+Since none of them depend on $y$.
+\item [(b)] If we define $f$ as
+\begin{align*}
+    f(x,y) = \int_{0}^x g_1(t,y)~dt + \int_{0}^y g_2(0,t)~dt
+\end{align*}
+Then in the same way as in part (a) we see that
+\begin{align*}
+    D_1f(x,y) &= D_1\bigg(\int_{0}^x g_1(t,y)~dt\bigg)
+    + D_1\bigg(\int_{0}^y g_2(0,t)~dt\bigg)\\
+    &= g_1(x,y)\cdot D_1(x) - g_1(0,y)\cdot D_1(0) + \int_{0}^x D_1g_1(t,y)~dt\\
+    &\quad+ g_2(0,y) D_1(y) - g_2(0,0)\cdot D_1(0) + \int_{0}^y D_1g_2(0,t)~dt\\
+    &= g_1(x,y)
+\end{align*}
+\item [(c)] Let $f:\R^2 \to \R$ defined as
+$$f(x,y) = \frac{1}{2}x^2 + \frac{1}{2}y^2$$
+Then we see that
+\begin{align*}
+    D_1f(x,y) = x \qquad D_2f(x,y) = y
+\end{align*}
+On the other hand, if we let $f:\R^2 \to \R$ be defined as $f(x,y) = xy$ then
+we see that
+\begin{align*}
+    D_1f(x,y) = y \qquad D_2f(x,y) = x
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-22}}\\
+Let $f:\R^2 \to \R$ such that $D_2f = 0$, also, let us take $(x, y)\in \R^2$
+where $x$ is fixed, then we can define $g(y) = f(x,y)$ i.e. $g$ is a function
+of 1 variable.
+\\
+By the Mean Value Theorem taking an interval $[a,b]\in\R$ we know there is
+$c \in [a,b]$ such that
+\begin{align*}
+    g'(c) = \frac{g(b) - g(a)}{b - a}
+\end{align*}
+But since $g'(y) = D_2f(x,y) = 0$ for all $y \in \R$ we have that
+\begin{align*}
+    \frac{g(b) - g(a)}{b - a} &= 0\\
+    g(b) &= g(a)
+\end{align*}
+But then this implies that $f(x,b) = g(b) = g(a) = f(x,a)$. Since the interval
+is arbitrary then $f$ is independent of the second variable.
+\\
+So we may assume that $f$ is of the form $h(x) = f(x,y)$, if we also have that
+$$D_1f(x,y) = 0 = h'(x)$$
+then, must be that $h(x) = c$ for some constant $c$. Therefore
+$$f(x,y) = c$$
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-23}}\\
+Let $A = \{(x,y)\in\R^2~:~x<0 \text{ or } x\geq 0 \text{ and }y\neq 0\}$
+\begin{itemize}
+\item [(a)] Let $f:A \to \R$ such that $D_1f = D_2f = 0$.
+\\
+Suppose we take a point $(a,b)\in A$ where $a, b> 0$ we see that
+\begin{align*}
+    f(a,b) = f(-a,b)
+\end{align*}
+because $D_1f = 0$.\\
+In the same way
+\begin{align*}
+    f(-a,b) = f(-a,-b)
+\end{align*}
+because $D_2f = 0$.\\
+Hence we can get that
+\begin{align*}
+    f(a,b) = f(-a,b) = f(-a,-b) = f(a,-b)
+\end{align*}
+If $a< 0$ and $b> 0$ then we see that
+\begin{align*}
+    f(a,b) = f(-a,b) = f(a,-b) = f(-a,-b)
+\end{align*}
+We can show this for all the cases and since $a,b$ are arbitrary then $f$ must
+be constant in $A$.
+\item [(b)] Let us define 
+\begin{align*}
+    f(x,y) = \begin{cases}
+        1 & \text{when } x < 0\\
+        1 & \text{when } x \geq 0, y > 0\\
+        2 & \text{when } x \geq 0, y < 0\\
+    \end{cases}
+\end{align*}
+Then in all cases we have that $D_2f = 0$ but the function $f$ still depends
+on $y$ since we get different results for it depending on which side of the
+possitive $x$-axis we are.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-24}}\\
+Let $f:\R^2 \to \R$ defined as
+\begin{align*}
+    f(x,y) = \begin{cases}
+        xy \frac{x^2 - y^2}{x^2 + y^2} & (x,y) \neq 0\\
+        0 & (x,y) = 0
+    \end{cases} 
+\end{align*}
+\begin{itemize}
+\item [(a)] We see that for $(x,y)\neq 0$ we get that
+\begin{align*}
+    D_1f(x,y) &= \frac{y(x^4 + 4x^2y^2 - y^4)}{(x^2 + y^2)^2}\\
+    D_2f(x,y) &= \frac{x^5 - 4x^3y^2 - xy^4}{(x^2 + y^2)^2}
+\end{align*}
+Then for $x\neq 0$, $D_2f(x,0)$ is
+\begin{align*}
+    D_2f(x,0) &= \frac{x^5 - 0 - 0}{(x^2 + 0)^2}
+    = \frac{x^5}{x^4} = x
+\end{align*}
+If $x = 0$ we see that
+\begin{align*}
+    D_2f(0,0) &= \lim_{h \to 0}\frac{f(0, 0 + h) - f(0,0)}{h}
+    = \lim_{h \to 0}\frac{0\cdot h \cdot \frac{0 - h^2}{0 + h^2} - 0}{h}
+    = 0 = x
+\end{align*}
+\\
+On the other hand, $D_1f(0,y)$ for $y \neq 0$ is
+\begin{align*}
+    D_1f(0,y) &= \frac{y(0 + 0 - y^4)}{(0 + y^2)^2}
+    = \frac{- y^5}{y^4} = -y
+\end{align*}
+And when $y = 0$ we get that
+\begin{align*}
+    D_1f(0,0) &= \lim_{h \to 0}\frac{f(0 + h, 0) - f(0,0)}{h}
+    = \lim_{h \to 0}\frac{h\cdot 0 \cdot \frac{h^2 - 0}{h^2 + 0} - 0}{h}
+    = 0 = -y
+\end{align*}
+Therefore $D_2f(x,0) = x$ for all $x$ and $D_1f(0,y) = -y$ for all $y$.
+
+\cleardoublepage
+\item [(b)] We see that
+\begin{align*}
+    D_{1,2}f(0,0) &= \lim_{h\to 0}\frac{D_2f(0 + h, 0) - D_2f(0 , 0)}{h}\\
+    &= \lim_{h\to 0}\frac{D_2f(h, 0) - 0}{h}\\
+    &= \lim_{h\to 0}\frac{h - 0}{h}\\
+    &= 1
+\end{align*}
+Where we used that $D_2f(h, 0) = h$ for all $h$.
+On the other hand, we have that
+\begin{align*}
+    D_{2,1}f(0,0) &= \lim_{h\to 0}\frac{D_1f(0, 0 + h) - D_1f(0 , 0)}{h}\\
+    &= \lim_{h\to 0}\frac{D_1f(0, h) - 0}{h}\\
+    &= \lim_{h\to 0}\frac{-h - 0}{h}\\
+    &= -1
+\end{align*}
+Where we used that $D_1f(0, h) = -h$ for all $h$.
+Therefore
+\begin{align*}
+    D_{1,2}f(0,0) \neq D_{2,1}f(0,0)
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-25}}\\
+Let $f:\R\to\R$ be defined as
+\begin{align*}
+    f(x) = \begin{cases}
+        e^{-x^{-2}} & x \neq 0\\
+        0 & x = 0
+    \end{cases}
+\end{align*}
+If $x \neq 0$ then we see that the function $-1/x^2$ is in $C^\infty$ on
+$\R \setminus \{0\}$ and since the function $e^{t}$ is in $C^{\infty}$ as well,
+then we can conclude that the composition $e^{-x^{-2}}$ is in $C^\infty$.
+\\
+If $x = 0$ we see that
+\begin{align*}
+    f'(0) = \lim_{h\to 0} \frac{f(0 + h) - f(0)}{h}
+    = \lim_{h\to 0} \frac{e^{-h^{-2}}}{h}
+    = \lim_{h\to 0} \frac{1/h}{e^{h^{-2}}}
+\end{align*}
+Since we have an indeterminate limit we can use L'Hopital rule as follows
+\begin{align*}
+    \lim_{h\to 0} \frac{1/h}{e^{h^{-2}}}
+    = \lim_{h\to 0} \frac{-1/h^2}{-2e^{h^{-2}}/h^3}
+    = \lim_{h\to 0} \frac{h}{2e^{h^{-2}}}
+    = 0
+\end{align*}
+Now let us compute $f''(0)$ as follows
+\begin{align*}
+    f''(0) = \lim_{h\to 0} \frac{f'(0 + h) - f'(0)}{h}
+    = \lim_{h\to 0} \frac{2e^{-h^{-2}}/h^3}{h}
+    = \lim_{h\to 0} \frac{2/h^4}{e^{h^{-2}}}
+\end{align*}
+Applying L'Hopital rule twice, we get that
+\begin{align*}
+    \lim_{h\to 0} \frac{2/h^4}{e^{h^{-2}}}
+    &= \lim_{h\to 0} \frac{-8/h^5}{-2e^{h^{-2}}/h^3}\\
+    &= \lim_{h\to 0} \frac{4/h^2}{e^{h^{-2}}}\\
+    &= \lim_{h\to 0} \frac{-8/h^3}{-2e^{h^{-2}}/h^3}\\
+    &= \lim_{h\to 0} \frac{4}{e^{h^{-2}}}\\
+    &= 0
+\end{align*}
+We see that every derivative of $e^{-x^{-2}}$ when $x\neq 0$ is of the form
+\begin{align*}
+    f^{(i)}(x) = \frac{P(x)}{Q(x)}e^{-x^{-2}}
+\end{align*}
+Where $P(x)$ and $Q(x)$ are polynomials. So when computing the derivatives
+at $x = 0$ we always get something like
+\begin{align*}
+    f^{(i)}(x) = \lim_{h\to 0} \frac{f^{(i-1)}(h)}{h}
+    = \frac{P(h)}{Q(h)}\frac{1/h}{e^{h^{-2}}}
+\end{align*}
+We may solve this by applying L'Hopital rule a few times but we also notice
+that the growth of $e^{h^{-2}}$ is always faster than any polynomial, so the 
+limit will always tend to $1/\infty = 0$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-26}}\\
+Let $f:\R \to \R$ defined by
+\begin{align*}
+    f(x) = \begin{cases}
+        e^{-(x-1)^{-2}} e^{-(x+1)^{-2}} & x \in (-1,1)\\
+        0 & x \not\in (-1, 1)
+    \end{cases}
+\end{align*}
+\begin{itemize}
+\item [(a)] If $x \in (-1,1)$ we see that the expression can be written as
+\begin{align*}
+    e^{-(x-1)^{-2}} e^{-(x+1)^{-2}} = e^{-\frac{2(x^2 + 1)}{(x-1)^2(x+1)^2}}
+\end{align*}
+Since $x \in (-1, 1)$ we know the function $-\frac{2(x^2 + 1)}{(x-1)^2(x+1)^2}$
+is in $C^\infty$ and since $e^t$ is also in $C^\infty$ the the composition is
+in $C^\infty$.
+\\
+If $x \in (1, \infty)$ or $x \in (-\infty, -1)$ then the function is 0 so $f$
+is in $C^\infty$ there.
+\\
+The only points where $f$ might not be infinitely differentiable are $x = -1$
+and $x = 1$.
+Suppose $x = -1$ then we see that
+\begin{align*}
+    f'(-1) &= \lim_{h\to 0}\frac{f(-1+h) - f(-1)}{h}\\
+    &= \lim_{h\to 0}\frac{e^{-(h-2)^{-2}} e^{-h^{-2}}}{h}\\
+    &= \lim_{h\to 0}e^{-(h-2)^{-2}}\lim_{h\to 0}\frac{e^{-h^{-2}}}{h}\\
+    &= e^{-x^{-4}}\lim_{h\to 0}\frac{e^{-h^{-2}}}{h}\\
+    &= 0
+\end{align*}
+Where we used the result we got from problem 2-25. Also, from problem 2-25 we
+get that
+\begin{align*}
+    f^{(i)}(-1) = 0    
+\end{align*}
+For all $i$.\\
+On the other hand, if $x = 1$ we get that
+\begin{align*}
+    f'(1) &= \lim_{h\to 0}\frac{f(1+h) - f(1)}{h}\\
+    &= \lim_{h\to 0}\frac{e^{-h^{-2}} e^{-(h+2)^{-2}}}{h}\\
+    &= \lim_{h\to 0}e^{-(h+2)^{-2}}\lim_{h\to 0}\frac{e^{-h^{-2}}}{h}\\
+    &= e^{-x^{-4}}\lim_{h\to 0}\frac{e^{-h^{-2}}}{h}\\
+    &= 0
+\end{align*}
+So we see that also for all $i$ we get that $f^{(i)}(1) = 0$.\\
+Therefore the function $f$ is in $C^\infty$.
+\\
+If $x = 0$ we see that
+\begin{align*}
+    f(0) = e^{-(-1)^{-2}} e^{-(1)^{-2}}
+    = \frac{1}{e^{\frac{1}{(-1)^2}}}\frac{1}{e^{\frac{1}{1^2}}}
+    = \frac{1}{e^2} > 0
+\end{align*}
+If $x \in (-1, 1) \setminus \{0\}$ the function is given by
+\begin{align*}
+    f(x) = \frac{1}{e^{\frac{1}{(x-1)^2}}}\frac{1}{e^{\frac{1}{(x+1)^2}}}
+\end{align*}
+But $(x-1)^2$ and $(x + 1)^2$ are positive always so the function is always
+positive here.
+\\
+Therefore the function $f$ is positive in the interval $(-1,1)$
+
+\item [(b)] Let us consider the function
+\begin{align*}
+    g(x) = \frac{\int_0^x f}{\int_0^\epsilon f}
+\end{align*}
+Where $f$ is a function $C^\infty$ which is positive on $(0,\epsilon)$ and 0 
+elsewhere.\\
+If $x \leq 0$ we see that $\int_0^x f = 0$ and $\int_0^\epsilon f > 0$ then
+$g(x) = 0$.\\
+Now, suppose $x \geq \epsilon$ then $\int_0^x f = \int_0^\epsilon f$ since 
+$f$ is positive on $(0,\epsilon)$ and 0 elsewere, hence
+\begin{align*}
+    g(x) = \frac{\int_0^x f}{\int_0^\epsilon f}
+    = \frac{\int_0^\epsilon f}{\int_0^\epsilon f} = 1
+\end{align*}
+We need to prove now that $g$ is in $C^\infty$.\\
+We note that
+\begin{align*}
+    g'(x) &= \frac{(\int_0^x f)'}{\int_0^\epsilon f}
+    = \frac{f'}{\int_0^\epsilon f}
+\end{align*}
+Where we used the Fundamental Theorem of Calculus. Since $f \in C^\infty$ then
+the expression for $g'$ is also infinitely differentiate, so $g \in C^\infty$.
+
+\cleardoublepage
+\item [(c)] Let $f$ be defined as 
+\begin{align*}
+    f(x) = \begin{cases}
+        e^{-(x-1)^{-2}} e^{-(x+1)^{-2}} & x \in (-1,1)\\
+        0 & x \not\in (-1, 1)
+    \end{cases}
+\end{align*}
+Also, we define $g:\R^n \to \R$ as 
+\begin{align*}
+    g(x) = f([x^1 - a^1]/\epsilon) \cdot ... \cdot f([x^n - a^n]/\epsilon)
+\end{align*}
+Where $a \in \R^n$.
+We know that $f$ is in $C^\infty$ because of part (a) then the
+multiplication of $f$ n-times is in $C^\infty$ so $g$ is in $C^\infty$.
+\\
+Let $x \in (a^1 - \epsilon, a^1 + \epsilon) \times ... \times
+(a^n - \epsilon, a^n + \epsilon)$ then we see that
+\begin{align*}
+    -1 \leq \frac{x^i - a^i}{\epsilon} \leq 1
+\end{align*}
+for $i \in \{1, ..., n\}$. We know that in the interval $(-1,1)$, $f$
+is positive then so is $g$. \\
+We know that elsewhere $f$ is 0 so $g$ is also 0 elsewhere.
+
+\item [(d)] Let $A\subset \R^n$ be open and $C\subset A$ be compact.
+Let us take for every point $c \in C$ an open box
+$$(c^1 - \epsilon, c^1 + \epsilon) \times ... \times (c^n - \epsilon, c^n + \epsilon)$$
+where $\epsilon$ is sufficiently small so the open boxes do not intersect with
+the closed set $B$ where $f$ is supposed to be $0$.
+\\
+This is an open cover of $C$ and since $C$ is compact must be a finite subcover
+that covers $C$ as well.
+\\
+Then we can define a set of functions $g_i: \cup_{i = 1}^m O_i \to \R$ over
+the finite subcover $\cup_{i = 1}^m O_i$ such that $g_i$ is defined as
+\begin{align*}
+    g_i(x) = \begin{cases}
+        f([x^1 - o_i^1]/\epsilon) \cdot ... \cdot f([x^n - o_i^n]/\epsilon)
+        & x \in O_i\\
+        0 & x \not\in O_i\\
+    \end{cases}
+\end{align*}
+Where $o_i$ is the center of the open box $O_i$ and the function $f$ is defined
+as in part (c).
+\\
+If we add all the functions we get another function $g: \cup_{i = 1}^m O_i \to \R$
+defined as
+\begin{align*}
+    g(x) = \sum_{i=1}^m g_i(x)
+\end{align*}
+We note that $g$ is defined in an open set $A =\cup_{i = 1}^m O_i$, also $g$ is
+in $C^\infty$ because each $g_i$ is in $C^\infty$ and $g(x) > 0$ for $x \in C$
+but $g = 0$ at $B$, the closed set.
+
+\cleardoublepage
+\item [(e)] Since the function $g$ defined in part (d) has the property
+$g(x) > 0$ for every $x \in C$ then we can always choose an $\epsilon > 0$
+such that $g(x) \geq \epsilon$.
+\\
+So if we take the composed function $f = h \circ g$ where $h$ is defined as in
+part (b) i.e. $h :\R \to [0,1]$ such that $h(x) = 0$ for $x \leq 0$ and
+$h(x) = 1$ for $x\geq \epsilon$ then we see that $f = 1$ for every $x \in C$.
+\end{itemize}
+\end{proof}
 \end{document}
