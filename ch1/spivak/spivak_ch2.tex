@@ -65,6 +65,7 @@ Since $g(x) = f(x,y)$ then $D_1f(a,b) = D_1g(a) = g'(a)$ therefore
 \end{align*}
 \end{proof}
 
+\cleardoublepage
 \begin{proof}{\textbf{2-3.}}
 A function $f:\R^2 \to \R$ is independent of the first variable if for each
 $y\in \R$ we have that$f(x_1, y) = f(x_2, y)$ for all $x_1, x_2 \in \R$.
@@ -1076,5 +1077,348 @@ So if we take the composed function $f = h \circ g$ where $h$ is defined as in
 part (b) i.e. $h :\R \to [0,1]$ such that $h(x) = 0$ for $x \leq 0$ and
 $h(x) = 1$ for $x\geq \epsilon$ then we see that $f = 1$ for every $x \in C$.
 \end{itemize}
+\end{proof}
+
+\cleardoublepage
+\subsection*{Derivatives}
+\begin{proof}{\textbf{2-29}}\\
+Let $f:\R^n \to \R$
+\begin{itemize}
+\item [(a)] Let us consider the directional derivative of $f$ at $a$ in the
+direction of $e_i$ then by definition we have that
+\begin{align*}
+    D_{e_i}f(a) &= \lim_{t\to 0}\frac{f(a + te_i) - f(a)}{t}\\
+    &= \lim_{t\to 0}\frac{f(a^1, ...,a^i + t, ..., a^n) - f(a^1, ..., a^n)}{t}\\
+    &= D_{i}f(a)
+\end{align*}
+Where we used that $e_i = (0, ..., 1,..., 0)$ and hence
+$te_i = (0, ..., t,..., 0)$ where the only non-zero entry is at the $i$-th
+place.
+
+\item [(b)] Let us consider the directional derivative of $f$ at $a$ in the 
+direction of $tx$ then by definition we see that
+\begin{align*}
+    D_{tx}f(a) &= \lim_{k\to 0}\frac{f(a + k(tx)) - f(a)}{k}\\
+    &= t\lim_{k\to 0}\frac{f(a + ktx) - f(a)}{kt}\\
+    &= t\lim_{h\to 0}\frac{f(a + hx) - f(a)}{h}\\
+    &= tD_{x}f(a)
+\end{align*}
+Where we changed variables $h = kt$.
+
+\item [(c)] Suppose $f$ is differentiable at $a$ and let us consider the
+directional derivative of $f$ at $a$ in the direction of $x$ then
+we have that
+\begin{align*}
+    D_{x}f(a) &= \lim_{t\to 0}\frac{f(a + tx) - f(a)}{t}\\
+    &= \left(\lim_{t\to 0}\frac{f(a + tx) - f(a)}{tx}\right)x\\
+    &= \left(\lim_{h\to 0}\frac{f(a + h) - f(a)}{h}\right)x\\
+    &= Df(a)(x)
+\end{align*}
+Where we changed variables $tx = h$ and we used that the limit
+$$Df(a) = \lim_{h\to 0} \frac{f(a + h) - f(a)}{h}$$
+exists since $f$ is differentiable.
+Hence, we see that
+\begin{align*}
+    D_{x + y}f(a) &= Df(a)(x + y)\\
+    &= Df(a)(x) + Df(a)(y)\\
+    &= D_xf(a) + D_yf(a)
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-30}}\\
+Let $f:\R^2\to\R$ be defined as
+\begin{align*}
+    f(x,y) = \begin{cases}
+        |(x,y)| \cdot g\left(\frac{(x,y)}{|(x,y)|}\right) & (x,y) \neq (0,0)\\
+        0 & (x,y) = (0,0)
+    \end{cases}
+\end{align*}
+Where $g$ is a continuous linear function defined on the unit circle
+$\{x\in \R^2:|x| = 1\}$ such that $g(0,1) = g(1,0) = 0$ and $g(-x) = -g(x)$.\\
+Let us compute $D_x f(0,0)$ as follows
+\begin{align*}
+    D_x f(0,0) &= \lim_{t\to 0} \frac{f(0 + tx^1, 0 + tx^2) - f(0,0)}{t}\\
+    &= \lim_{t\to 0} \frac{|(tx^1,tx^2)|
+    \cdot g\left(\frac{(tx^1, tx^2)}{|(tx^1,tx^2)|}\right) - 0}{t}\\
+    &= \lim_{t\to 0} \frac{|t||(x^1, x^2)|
+    \cdot g\left(\frac{t(x^1, x^2)}{|t||(x^1,x^2)|}\right)}{t}
+\end{align*}
+If $t > 0$ then
+\begin{align*}
+    D_x f(0,0)
+    &= \lim_{t\to 0} \frac{t|(x^1, x^2)|
+    \cdot g\left(\frac{t(x^1, x^2)}{t|(x^1,x^2)|}\right)}{t}\\
+    &= \lim_{t\to 0} |(x^1, x^2)|
+    \cdot g\left(\frac{(x^1, x^2)}{|(x^1,x^2)|}\right)\\
+    &= |(x^1, x^2)|\cdot g\left(\frac{(x^1, x^2)}{|(x^1,x^2)|}\right)
+\end{align*}
+and if $t < 0$
+\begin{align*}
+    D_x f(0,0)
+    &= \lim_{t\to 0} \frac{-t|(x^1, x^2)|
+    \cdot g\left(-\frac{t(x^1, x^2)}{t|(x^1,x^2)|}\right)}{t}\\
+    &= \lim_{t\to 0} (-|(x^1, x^2)|)
+    \cdot \left(-g\left(\frac{(x^1, x^2)}{|(x^1,x^2)|}\right)\right)\\
+    &= |(x^1, x^2)|\cdot g\left(\frac{(x^1, x^2)}{|(x^1,x^2)|}\right)
+\end{align*}
+Therefore in any case $D_x f(0,0)$ exists for all $x$.\\
+Suppose now that $g \neq 0$ then there is at least some point $(x', y') \in \R^2$
+such that $g(x', y') \neq 0$ if we take $x = (x',0)$ and $y = (0,y')$ we
+note that
+\begin{align*}
+    D_xf(0,0) &= |(x',0)|\cdot g\left(\frac{(x',0)}{|(x',0)|}\right)
+    = \begin{cases}
+        |(x',0)| \cdot g(1,0) = 0 & \text{if } x' > 0\\
+        -|(x',0)| \cdot g(1,0) = 0 & \text{if } x' < 0
+    \end{cases}
+\end{align*}
+And 
+\begin{align*}
+    D_yf(0,0) &= |(0,y')|\cdot g\left(\frac{(0,y')}{|(0,y')|}\right)
+    = \begin{cases}
+        |(0, y')| \cdot g(0,1) = 0 & \text{if } y' > 0\\
+        -|(0, y')| \cdot g(0,1) = 0 & \text{if } y' < 0
+    \end{cases}
+\end{align*}
+But since $x + y = (x',y')$ then
+\begin{align*}
+    D_{x + y}f(0,0)
+    &= |(x', y')|\cdot g\left(\frac{(x', y')}{|(x',y')|}\right)
+    = g(x',y') \neq 0
+\end{align*}
+Where we used that $|(x',y')| = 1$ since $g$ is defined on the unit circle.\\
+Therefore $D_{x + y}f(0,0) \neq D_xf(0,0) + D_yf(0,0) = 0$.
+
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-31}}\\
+Let $A = \{(x,y)\in \R^2:~x>0 \text{ and } 0< y < x^2\}$ and let us define the
+function $f: \R^2 \to \R$ by $f(\bm{x}) = 0$ if $\bm{x} \not\in A$ and $f(\bm{x}) = 1$ if
+$\bm{x} \in A$.
+\\
+We want to compute the directional derivative $D_xf(0,0)$ then 
+\begin{align*}
+    D_xf(0,0) &= \lim_{t\to 0} \frac{f(0 + tx_1, 0 + tx_2) - f(0,0)}{t}
+    = \lim_{t\to 0} \frac{f(t(x_1, x_2))}{t}
+    = \lim_{t\to 0} \frac{f(t\bm{x})}{t}
+\end{align*}
+Fixing $\bm{x} = (x_1, x_2)$ we want to know if $t\bm{x}$ is in $A$ or not.
+If $t\bm{x} = t(x_1, x_2) \in A$ then must be that $tx_1 > 0$ and
+$0 < tx_2 < t^2x_1^2$ so $0 < x_2 < tx_1^2$.\\
+Suppose $x_1 > 0$ then must be that $t$ follows a positive path i.e. $t > 0$
+otherwise $tx_1 < 0$ and $t\bm{x} \not\in A$. Then, as $t\to 0$ we see that
+$0 < x_2 < tx_1^2 \to 0$ so must be that $x_2 = 0$ because of the squeeze
+theorem but then $tx_2 = 0$ for any path taken by $t$.
+Therefore if $x_1 > 0$ we have that $t(x_1, x_2) \not\in A$, so
+\begin{align*}
+    D_xf(0,0) = \lim_{t\to 0} \frac{f(t\bm{x})}{t} = 0
+\end{align*}
+Now, suppose $x_1 < 0$ then must be that $t$ follows a negative path i.e.
+$t < 0$ otherwise $tx_1 < 0$ and $t\bm{x} \not\in A$.
+Then, in the same way, as $t\to 0$ we see that
+$0 < x_2 < tx_1^2 \to 0$ so must be that $x_2 = 0$ because of the squeeze
+theorem but then $tx_2 = 0$ for any path taken by $t$.
+Therefore if $x_1 < 0$ we have that $t(x_1, x_2) \not\in A$, so
+\begin{align*}
+    D_xf(0,0) = \lim_{t\to 0} \frac{f(t\bm{x})}{t} = 0
+\end{align*}
+Finally if $x_1 = 0$ then no matter the path taken by $t$ we see that
+$tx_1 = 0$ so $t\bm{x} \not\in A$.
+\\
+Therefore the directional derivative exists for all $x$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-32}}\\
+\begin{itemize}
+\item [(a)] Let $f:\R\to \R$ be defined by
+\begin{align*}
+    f(x) = \begin{cases}
+        x^2\sin\frac{1}{x} & x\neq 0\\
+        0 & x = 0
+    \end{cases}
+\end{align*}
+Let us compute $f'(0)$ as follows
+\begin{align*}
+    f'(0)
+    = \lim_{h\to 0} \frac{f(0 + h) - f(0)}{h}
+    = \lim_{h\to 0} \frac{h^2\sin\frac{1}{h} - 0}{h}
+    =\lim_{h\to 0} h\sin\frac{1}{h}
+\end{align*}
+We note that
+\begin{align*}
+    |h\sin\frac{1}{h}| \leq |h|
+\end{align*}
+Since $\sin\frac{1}{h}$ can only take values between 1 and -1.\\
+Therefore by the squeeze theorem we see that
+\begin{align*}
+    f'(0) = \lim_{h\to 0} h\sin\frac{1}{h} = 0
+\end{align*}
+And hence $f$ is differentiable at 0.\\
+If $x \neq 0$ then we see that
+\begin{align*}
+    f'(x) = 2x\sin\frac{1}{x} - \cos\frac{1}{x}
+\end{align*}
+Then
+\begin{align*}
+    \lim_{x\to 0} f'(x) &= \lim_{x\to 0} 2x\sin\frac{1}{x} - \cos\frac{1}{x}
+    = 0 - \lim_{x \to 0} \cos\frac{1}{x}
+\end{align*}
+But $\lim_{x \to 0} \cos\frac{1}{x}$ is undetermined, so $f'$ is not continuous
+at 0.
+
+\cleardoublepage
+\item [(b)] Let $f:\R^2 \to \R$ be defined by
+\begin{align*}
+    f(x,y) = \begin{cases}
+        (x^2 + y^2)\sin\frac{1}{\sqrt{x^2 + y^2}} & (x,y)\neq 0\\
+        0 & (x,y) = 0
+    \end{cases}
+\end{align*}
+We want to know if $f$ is differentiable at 0, so compute the following
+\begin{align*}
+    &\lim_{(h,k)\to 0} \frac{|f(0+ h, 0 + k) - f(0) - Df(0)(h,k)|}{|(h,k)|} = \\
+    &\qquad= \lim_{(h,k)\to 0}
+    \frac{|(h^2 + k^2)\sin\frac{1}{\sqrt{h^2 + k^2}} - 0 - Df(0)(h,k)|}{|(h,k)|}
+\end{align*}
+Since $-1 \leq \sin (1/\sqrt{h^2 + k^2}) \leq 1$, we see that
+\begin{align*}
+    \frac{|(h^2 + k^2)\sin\frac{1}{\sqrt{h^2 + k^2}}|}{|(h,k)|}
+    \leq \frac{h^2 + k^2}{\sqrt{h^2 + k^2}}
+    = \sqrt{h^2 + k^2}
+\end{align*}
+And as $(h,k) \to 0$ then $\sqrt{h^2 + k^2} \to 0$ so by the squeeze theorem
+\begin{align*}
+    \frac{|(h^2 + k^2)\sin\frac{1}{\sqrt{h^2 + k^2}}|}{|(h,k)|} \to 0
+    \quad \text{ as } \quad (h,k) \to 0
+\end{align*}
+Hence if $Df(0)(h,k) = 0$ then
+\begin{align*}
+    \frac{|(h^2 + k^2)\sin\frac{1}{\sqrt{h^2 + k^2}} - 0 - Df(0)(h,k)|}{|(h,k)|}
+    \leq \frac{|(h^2 + k^2)\sin\frac{1}{\sqrt{h^2 + k^2}}|}{|(h,k)|}
+    + \frac{|Df(0)(h,k)|}{|(h,k)|} \to 0
+\end{align*}
+as $(h,k) \to 0$ and therefore $f$ is differentiable at 0.\\
+Let $(x,y) \neq 0$ then
+\begin{align*}
+    D_xf(x,y) = 2x\sin \frac{1}{\sqrt{x^2 + y^2}}
+    - \frac{x}{\sqrt{x^2 + y^2}}\cos\frac{1}{\sqrt{x^2 + y^2}}
+\end{align*}
+Computing the limit as $(x,y) \to 0$ the first term goes to 0, for
+the second term if we change to polar coordinates where $x = r\cos\theta$
+and $r = \sqrt{x^2 + y^2}$ we see that
+\begin{align*}
+    \lim_{(x,y) \to 0} \frac{x\cos\frac{1}{\sqrt{x^2 + y^2}}}{\sqrt{x^2 + y^2}}
+    = \lim_{r \to 0} \frac{r\cos\theta\cos\frac{1}{r}}{r}
+    = \lim_{r \to 0} \cos\theta\cos\frac{1}{r}
+\end{align*}
+This limit is undetermined since $\lim_{r\to 0} \cos(1/r)$ is undetermined no
+matter the value of $\theta$.\\
+In the same way for $D_yf$ we see that
+\begin{align*}
+    D_yf(x,y) = 2y\sin \frac{1}{\sqrt{x^2 + y^2}}
+    - \frac{y}{\sqrt{x^2 + y^2}}\cos\frac{1}{\sqrt{x^2 + y^2}}
+\end{align*}
+And hence $\lim_{(x,y)\to 0}D_yf(x,y)$ is undetermined.\\
+Therefore none of the partial derivatives is continuous at $(0,0)$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-33}}\\
+If we suppose $D_1f$ is not continuous at $a$ then we cannot apply the mean
+value theorem to the first variable and hence the last limit becomes
+\begin{align*}
+    &\lim_{h\to 0} \frac{|f(a + h) - f(a) - \sum_{i=1}^n D_if(a) h^i|}{|h|}\\
+    &\quad= \lim_{h\to 0}
+    \frac{|f(a^1 + h^1, a^2, ..., a^n) - f(a^1, a^2, ..., a^n)
+    - D_1f(a)h^1 - \sum_{i=2}^n [D_if(c_i) - D_if(a)] h^i|}{|h|}\\
+    &\quad\leq \lim_{h\to 0}
+    \frac{|f(a^1 + h^1, a^2, ..., a^n) - f(a^1, a^2, ..., a^n) - D_1f(a) h^1|}{|h|}
+    + \frac{|\sum_{i=2}^n [D_if(c_i) - D_if(a)] h^i|}{|h|}\\
+    &\quad\leq \lim_{h\to 0}
+    \frac{|f(a^1 + h^1, a^2, ..., a^n) - f(a^1, a^2, ..., a^n) - D_1f(a) h^1|}{|h|} + 0
+\end{align*}
+So, we have to prove that the limit
+\begin{align*}
+    \lim_{h \to 0}\frac{|g(a + h) - g(a) - g'(a) h|}{|h|}
+\end{align*}
+goes to 0 where $g(x) = f(x, a^2, ..., a^n)$. We note that
+\begin{align*}
+    \lim_{h \to 0}\frac{|h(\frac{g(a + h) - g(a)}{h} - g'(a))|}{|h|}
+    = \lim_{h \to 0} \bigg|\frac{g(a + h) - g(a)}{h} - g'(a)\bigg|
+    = g'(a) - g'(a) 
+    = 0
+\end{align*}
+Where we used that $g$ is differentiable. Therefore
+\begin{align*}
+    \lim_{h\to 0} \frac{|f(a + h) - f(a) - \sum_{i=1}^n D_if(a) h^i|}{|h|} = 0
+\end{align*}
+even though $D_1f$ is not continuous at $a$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-34}}\\
+Let $f:\R^n \to \R$ be homogeneous of degree $m$ and a differentiable function.
+Also, let us define $g(t) = f(tx)$. We note that
+\begin{align*}
+    g'(t) = m t^{m-1} f(x)
+\end{align*}
+Since $f(tx) = t^m f(x)$ for all $x$.\\
+If we consider $g(t)$ as
+\begin{align*}
+    g(t) = f(u_1(t), u_2(t), ..., u_n(t))
+\end{align*}
+Where $u_i(t) = tx^i$ then applying the Theorem 2-9 we see that
+\begin{align*}
+    g'(t) &= \sum_{i=1}^n D_if(u_1(t), u_2(t), ..., u_n(t)) \cdot u_i'(t)\\
+    &= \sum_{i=1}^n D_if(tx^1, tx^2, ..., tx^n) \cdot x^i
+\end{align*}
+Now, setting $t = 1$ we get that
+\begin{align*}
+    g'(1) = m (1)^{m-1} f(x) = mf(x)
+\end{align*}
+And
+\begin{align*}
+    g'(1) &= \sum_{i=1}^n D_if(x^1, x^2, ..., x^n) \cdot x^i
+    = \sum_{i =1}^n x^i D_i f(x)
+\end{align*}
+Therefore
+\begin{align*}
+    \sum_{i =1}^n x^i D_i f(x) = mf(x)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{2-35}}\\
+Let $f:\R^n \to \R$ be differentiable and $f(0) = 0$.\\
+We know that if $h_x(t) = f(tx)$ then $f(x) = \int_0^1 h_x'(t) dt$.\\
+If we consider $h_x(t)$ as
+\begin{align*}
+    h_x(t) = f(u_1(t), u_2(t),..., u_n(t))
+\end{align*}
+Where $u_i(t) = tx^i$ then applying the Theorem 2-9 we see that
+\begin{align*}
+    h_x'(t) = \sum_{i=1}^n D_if(u_1(t), u_2(t), ..., u_n(t))\cdot u_i'(t)\\
+    = \sum_{i=1}^n D_if(tx^1, tx^2, ..., tx^n)\cdot x^i
+\end{align*}
+So
+\begin{align*}
+    f(x) &= \int_0^1 h_x'(t)~dt\\
+    &= \int_0^1 \bigg[\sum_{i=1}^n D_if(tx^1, tx^2, ..., tx^n)\cdot x^i\bigg]~dt\\
+    &= \sum_{i=1}^n x^i \int_0^1 D_if(tx^1, tx^2, ..., tx^n)~dt
+\end{align*}
+Therefore defining $g_i:\R^n \to \R$ as
+\begin{align*}
+    g_i(x) = \int_0^1 D_if(tx^1, tx^2, ..., tx^n)~dt
+\end{align*}
+We can write $f(x)$ as
+\begin{align*}
+    f(x) &= \sum_{i=1}^n x^i g_i(x)
+\end{align*}
 \end{proof}
 \end{document}
